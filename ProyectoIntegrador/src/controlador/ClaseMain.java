@@ -5,7 +5,7 @@ import java.awt.EventQueue;
 import vista.VentanaPrincipal;
 
 public class ClaseMain {
-
+//sure
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			
