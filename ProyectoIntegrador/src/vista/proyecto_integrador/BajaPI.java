@@ -5,6 +5,9 @@ import java.awt.HeadlessException;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.WindowConstants;
+
+import Controlador.CBajaPI;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JList;
@@ -50,21 +53,25 @@ public class BajaPI extends JFrame{
 		
 		btnBorrarSeleccion = new JButton("Borrar seleccion");
 		btnBorrarSeleccion.setBounds(30, 268, 131, 20);
+		btnBorrarSeleccion.setActionCommand("btnBorrarSeleccion");
 		getContentPane().add(btnBorrarSeleccion);
+		
 		
 		btnBuscar = new JButton("Buscar");
 		btnBuscar.setBounds(10, 42, 89, 23);
+		btnBuscar.setActionCommand("btnBuscar");
 		getContentPane().add(btnBuscar);
 		
 		btnReset = new JButton("reset");
 		btnReset.setBounds(275, 267, 89, 23);
+		btnReset.setActionCommand("btnReset");
 		getContentPane().add(btnReset);
 		
 		
 		
 		
 		/////////////////////////////////////////////////////
-		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //por defecto en todo
+		//setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //por defecto en todo
 		setBounds(250, 250,450,355);  //por defecto en todo
 	}
 	
@@ -72,8 +79,13 @@ public class BajaPI extends JFrame{
 		setVisible(true);
 	}
 	
-	public static void main(String[] args) {
-		BajaPI pi = new BajaPI();
-		pi.hacerVisible();
+	//TODO addactionListener
+	
+	public void addActionListener(CBajaPI bpi) {
+		btnBorrarSeleccion.addActionListener(bpi);
+		btnBuscar.addActionListener(bpi);
+		btnReset.addActionListener(bpi);
 	}
+	
+
 }
