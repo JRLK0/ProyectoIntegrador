@@ -59,7 +59,7 @@ public class VentanaPrincipal extends JFrame {
 		}
 
 		/////////////////////////////////////	
-		
+		///
 		getContentPane().setLayout(null);
 
 		setBackground(SystemColor.text);
