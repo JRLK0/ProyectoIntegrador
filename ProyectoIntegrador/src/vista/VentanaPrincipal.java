@@ -8,22 +8,16 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 
-import controlador.area.CAltaArea;
-import controlador.area.CBajaArea;
-import vista.area.AltaArea;
-import vista.area.BajaArea;
-import vista.area.ConsultaArea;
-import vista.area.ModificacionArea;
+import controlador.proyecto_integrador.CVentanaPrincipal;
 
 import javax.swing.JLabel;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import java.awt.SystemColor;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
-public class VentanaPrincipal extends JFrame {
+public class VentanaPrincipal extends JFrame implements EstructVentana{
+	
 	private JPanel panel;
 	private JMenuBar menuBar;
 	private JMenu mnPI;
@@ -48,7 +42,7 @@ public class VentanaPrincipal extends JFrame {
 		inicializar();
 	}
 
-	private void inicializar() {
+	public void inicializar() {
 		// TODO Auto-generated method stub
 		try { // por defecto en todo
 			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());// esto es pa que se vea en unos
@@ -66,19 +60,19 @@ public class VentanaPrincipal extends JFrame {
 		getContentPane().setBackground(SystemColor.text);
 		panel = new JPanel();
 		panel.setBackground(SystemColor.text);
-		panel.setBounds(0, 0, 488, 260);
+		panel.setBounds(0, 0, 743, 436);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		lblLogo = new JLabel("");
 		lblLogo.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/Imagenes/LogoSample_ByTailorBrands.jpg")));
 		lblLogo.setBackground(Color.WHITE);
-		lblLogo.setBounds(127, 0, 220, 260);
+		lblLogo.setBounds(261, 88, 220, 260);
 		panel.add(lblLogo);
 	
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); // por defecto en todo
-		setBounds(250, 250, 504, 320); // por defecto en todo
+		setBounds(250, 250, 749, 486); // por defecto en todo
 		setResizable(false);
 
 	}
@@ -121,48 +115,30 @@ public class VentanaPrincipal extends JFrame {
 		menuBar.add(mnAreas);
 		
 		mntmConsultasAR = new JMenuItem("Consultas");
+		mntmConsultasAR.setActionCommand("ConsultasAR");
 		mnAreas.add(mntmConsultasAR);
-		mntmConsultasAR.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ConsultaArea consultaArea = new ConsultaArea();
-				consultaArea.hacerVisible();
-			}
-		});
 		
 		mntmAltaAR = new JMenuItem("Alta");
-		mnAreas.add(mntmAltaAR);
-		mntmAltaAR.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				AltaArea altaArea = new AltaArea();
-				CAltaArea cAltaArea = new CAltaArea(altaArea);
-				altaArea.addActionListener(cAltaArea);
-				altaArea.hacerVisible();
-			}
-		});
+		mntmAltaAR.setActionCommand("AltaAR");
+		mnAreas.add(mntmAltaAR);			
 
 		mntmBajaAR = new JMenuItem("Baja");
+		mntmBajaAR.setActionCommand("BajaAR");
 		mnAreas.add(mntmBajaAR);
-		mntmBajaAR.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				BajaArea bajaArea = new BajaArea();
-				CBajaArea cBajaArea = new CBajaArea(bajaArea);
-				bajaArea.addActionPerfomed(cBajaArea);
-				bajaArea.hacerVisible();
-			}
-		});
 		
 		mntmModificacionAR = new JMenuItem("Modificacion");
+		mntmModificacionAR.setActionCommand("ModificacionAR");
 		mnAreas.add(mntmModificacionAR);
-		mntmModificacionAR.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ModificacionArea modificacionArea = new ModificacionArea();
-				modificacionArea.hacerVisible();
-			}
-		});
 	}
 	
 	
 	public void hacerVisible() {
 		setVisible(true);
+	}
+
+	public void addActionListener(CVentanaPrincipal control) {
+		mntmAltaAR.addActionListener(control);
+		// TODO Auto-generated method stub
+		
 	}
 }

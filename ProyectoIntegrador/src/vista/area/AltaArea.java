@@ -1,128 +1,79 @@
 package vista.area;
 
-import java.awt.Font;
-import java.awt.HeadlessException;
+import java.awt.Dimension;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.UIManager;
-import javax.swing.WindowConstants;
+import javax.swing.JPanel;
 
 import controlador.area.CAltaArea;
 import vista.EstructVentana;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JTextArea;
+import javax.swing.JButton;
 
 @SuppressWarnings("serial")
-public class AltaArea extends JFrame implements EstructVentana{
-
-	private JLabel lblId;  //"ID:"
-	private JTextField txtId;  //Introducir ID
+public class AltaArea extends JPanel implements EstructVentana{
 	
-	private JLabel lblNombre;  //"Nombre:"
-	private JTextField txtNombre;  //Introducir nombre
+	private JLabel lblId;
+	private JTextField txtId;
+	private JLabel lblNombre;
+	private JTextField txtNombre;
+	private JLabel lblDescripcion;
+	private JTextArea txtDescripcion;
+	private JButton btnLimpiarDatos;
+	private JButton btnCrear;
 	
-	private JLabel lblDescripcion;  //"Decripción:"
-	private JTextArea txtDescripcion;  //"Introducir descripción"
-	
-	private JButton btnFinalizar;  //Botón "Finalizar"
-	private JButton btnLimpiar;	 //Botón Limpiar
-	
-	public AltaArea() throws HeadlessException {
-		super("Alta para Áreas");
+	public AltaArea() {
 		inicializar();
 	}
 
 	@Override
 	public void inicializar() {
-		try {
-			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		getContentPane().setLayout(null);
+		// TODO Auto-generated method stub
+		setPreferredSize(new Dimension(600, 400));
+		setLayout(null);
 		
 		lblId = new JLabel("ID:");
-		lblId.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblId.setBounds(37, 16, 52, 23);
-		getContentPane().add(lblId);
+		lblId.setBounds(32, 37, 46, 14);
+		add(lblId);
 		
 		txtId = new JTextField();
+		txtId.setBounds(88, 34, 122, 20);
+		add(txtId);
 		txtId.setColumns(10);
-		txtId.setBounds(116, 18, 125, 20);
-		getContentPane().add(txtId);
 		
 		lblNombre = new JLabel("Nombre:");
-		lblNombre.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNombre.setBounds(37, 50, 65, 23);
-		getContentPane().add(lblNombre);
+		lblNombre.setBounds(32, 82, 46, 14);
+		add(lblNombre);
 		
 		txtNombre = new JTextField();
+		txtNombre.setBounds(88, 79, 174, 20);
+		add(txtNombre);
 		txtNombre.setColumns(10);
-		txtNombre.setBounds(116, 52, 145, 20);
-		getContentPane().add(txtNombre);
 		
-		lblDescripcion = new JLabel("Descripcion:");
-		lblDescripcion.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblDescripcion.setBounds(37, 84, 89, 23);
-		getContentPane().add(lblDescripcion);
+		lblDescripcion = new JLabel("Descripci\u00F3n:");
+		lblDescripcion.setBounds(32, 132, 73, 14);
+		add(lblDescripcion);
 		
 		txtDescripcion = new JTextArea();
-		txtDescripcion.setBounds(37, 118, 355, 29);
-		getContentPane().add(txtDescripcion);
+		txtDescripcion.setBounds(32, 157, 531, 131);
+		add(txtDescripcion);
 		
-		btnFinalizar = new JButton("Finalizar");
-		btnFinalizar.setBounds(96, 158, 89, 23);
-		getContentPane().add(btnFinalizar);
-		btnFinalizar.setActionCommand(CAltaArea.FINALIZAR);
+		btnCrear = new JButton("Crear");
+		btnCrear.setBounds(197, 325, 89, 23);
+		add(btnCrear);
+		btnCrear.setActionCommand("btnCrear");
 		
-		btnLimpiar = new JButton("Limpiar");
-		btnLimpiar.setBounds(222, 158, 89, 23);
-		getContentPane().add(btnLimpiar);
-		btnLimpiar.setActionCommand(CAltaArea.LIMPIAR);
+		btnLimpiarDatos = new JButton("Limpiar Datos");
+		btnLimpiarDatos.setBounds(308, 325, 114, 23);
+		add(btnLimpiarDatos);
+		btnLimpiarDatos.setActionCommand("btnLimpiarDatos");
 		
-		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		setBounds(250, 250, 450, 230);
-		setResizable(false);
 	}
 
-	public void hacerVisible() {
-		setVisible(true);
-	}
-
-	//Eventos de botones
 	public void addActionListener(CAltaArea control) {
-		btnFinalizar.addActionListener(control);
-		btnLimpiar.addActionListener(control);
+		btnCrear.addActionListener(control);
+		btnLimpiarDatos.addActionListener(control);
+		
 	}
-	
-	//Setter y Getter para utilizar a la hora de escribir por teclado
-	public JTextField getTxtId() {
-		return txtId;
-	}
-
-	public void setTxtId(JTextField txtId) {
-		this.txtId = txtId;
-	}
-
-	public JTextField getTxtNombre() {
-		return txtNombre;
-	}
-
-	public void setTxtNombre(JTextField txtNombre) {
-		this.txtNombre = txtNombre;
-	}
-
-	public JTextArea getTxtDescripcion() {
-		return txtDescripcion;
-	}
-
-	public void setTxtDescripcion(JTextArea txtDescripcion) {
-		this.txtDescripcion = txtDescripcion;
-	}
-
-	
-	
 }
