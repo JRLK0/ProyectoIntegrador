@@ -1,4 +1,4 @@
-package controlador.proyecto_integrador;
+package controlador;
 
 import java.awt.TrayIcon.MessageType;
 import java.awt.event.ActionEvent;
@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import controlador.proyecto_integrador.CBajaPI;
 import vista.VentanaPrincipal;
 import vista.proyecto_integrador.BajaPI;
 import vista.proyecto_integrador.ConsultaPI;

@@ -1,9 +1,10 @@
 package vista.alumno;
 
-import controlador.proyecto_integrador.CVentanaPrincipal;
 import vista.EstructVentana;
 
 import javax.swing.JPanel;
+
+import controlador.CVentanaPrincipal;
 
 /**
  * Modificar alumnos en bases de datos

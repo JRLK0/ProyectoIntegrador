@@ -12,7 +12,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
-import controlador.proyecto_integrador.CVentanaPrincipal;
+import controlador.CVentanaPrincipal;
 import vista.EstructVentana;
 
 @SuppressWarnings("serial")

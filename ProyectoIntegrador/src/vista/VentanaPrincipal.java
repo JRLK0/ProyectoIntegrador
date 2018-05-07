@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 
-import controlador.proyecto_integrador.CVentanaPrincipal;
+import controlador.CVentanaPrincipal;
 
 import javax.swing.JLabel;
 import java.awt.Color;

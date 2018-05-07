@@ -3,7 +3,7 @@ package vista.alumno;
 
 import javax.swing.JPanel;
 
-import controlador.proyecto_integrador.CVentanaPrincipal;
+import controlador.CVentanaPrincipal;
 import vista.EstructVentana;
 
 /**

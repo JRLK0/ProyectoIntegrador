@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-import controlador.proyecto_integrador.CVentanaPrincipal;
+import controlador.CVentanaPrincipal;
 import vista.EstructVentana;
 import javax.swing.JLabel;
 import java.awt.Font;

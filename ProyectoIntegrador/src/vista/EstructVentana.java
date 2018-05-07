@@ -1,6 +1,6 @@
 package vista;
 
-import controlador.proyecto_integrador.CVentanaPrincipal;
+import controlador.CVentanaPrincipal;
 
 /**
  * Añado métodos comunes a todas las ventanas
