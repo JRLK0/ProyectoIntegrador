@@ -12,13 +12,15 @@ import controlador.CVentanaPrincipal;
 
 import javax.swing.JLabel;
 import java.awt.Color;
+import java.awt.HeadlessException;
+
 import javax.swing.ImageIcon;
-import java.awt.SystemColor;
+import javax.swing.JScrollPane;
+import java.awt.BorderLayout;
 
 @SuppressWarnings("serial")
 public class VentanaPrincipal extends JFrame implements EstructVentana{
 	
-	private JPanel panel;
 	private JMenuBar menuBar;
 	private JMenu mnPI;
 	private JMenuItem mntmConsultas;
@@ -26,24 +28,30 @@ public class VentanaPrincipal extends JFrame implements EstructVentana{
 	private JMenuItem mntmBaja;
 	private JMenuItem mntmModificacion;
 	private JMenu mnAlumnos;
+	private JMenuItem mntmConsultasA;
 	private JMenuItem mntmAltaA;
 	private JMenuItem mntmBajaA;
 	private JMenuItem mntmModificacionA;
 	private JMenu mnAreas;
+	private JMenuItem mntmConsultasAR;
 	private JMenuItem mntmAltaAR;
 	private JMenuItem mntmBajaAR;
 	private JMenuItem mntmModificacionAR;
+	
 	private JLabel lblLogo;
-	private JMenuItem mntmConsultasA;
-	private JMenuItem mntmConsultasAR;
+	
+	private JPanel pnlPaneles;
+	private JScrollPane scpPaneles;
 
-	public VentanaPrincipal() {
-		cargarMenu();
+	public VentanaPrincipal(String title) throws HeadlessException {
+		super(title);
+		getContentPane().setBackground(Color.WHITE);
 		inicializar();
+		cargarMenu();
 	}
 
 	public void inicializar() {
-		// TODO Auto-generated method stub
+
 		try { // por defecto en todo
 			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());// esto es pa que se vea en unos
 																						// laos igual Mac linux windows
@@ -51,30 +59,11 @@ public class VentanaPrincipal extends JFrame implements EstructVentana{
 		} catch (Exception e) { // por defecto en todo
 			e.printStackTrace(); // por defecto en todo
 		}
-
-		/////////////////////////////////////	
-		///
-		getContentPane().setLayout(null);
-
-		setBackground(SystemColor.text);
-		getContentPane().setBackground(SystemColor.text);
-		panel = new JPanel();
-		panel.setBackground(SystemColor.text);
-		panel.setBounds(0, 0, 743, 436);
-		getContentPane().add(panel);
-		panel.setLayout(null);
-		
-		lblLogo = new JLabel("");
-		lblLogo.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/Imagenes/LogoSample_ByTailorBrands.jpg")));
-		lblLogo.setBackground(Color.WHITE);
-		lblLogo.setBounds(261, 88, 220, 260);
-		panel.add(lblLogo);
-	
-		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); // por defecto en todo
 		setBounds(250, 250, 749, 486); // por defecto en todo
 		setResizable(false);
 
+		
 	}
 
 	private void cargarMenu() {
@@ -129,6 +118,22 @@ public class VentanaPrincipal extends JFrame implements EstructVentana{
 		mntmModificacionAR = new JMenuItem("Modificacion");
 		mntmModificacionAR.setActionCommand("ModificacionAR");
 		mnAreas.add(mntmModificacionAR);
+		getContentPane().setLayout(null);
+		
+		lblLogo = new JLabel("");
+		lblLogo.setBounds(261, 104, 220, 227);
+		lblLogo.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/Imagenes/LogoSample_ByTailorBrands.jpg")));
+		getContentPane().add(lblLogo);
+		
+		pnlPaneles = new JPanel();
+		pnlPaneles.setBackground(Color.WHITE);
+		pnlPaneles.setBounds(0, 0, 743, 436);
+		getContentPane().add(pnlPaneles);
+		pnlPaneles.setLayout(new BorderLayout(0, 0));
+		
+		scpPaneles = new JScrollPane();
+		scpPaneles.setBackground(Color.WHITE);
+		pnlPaneles.add(scpPaneles, BorderLayout.CENTER);
 	}
 	
 	
@@ -138,7 +143,16 @@ public class VentanaPrincipal extends JFrame implements EstructVentana{
 
 	public void addActionListener(CVentanaPrincipal control) {
 		mntmAltaAR.addActionListener(control);
-		// TODO Auto-generated method stub
-		
+		mntmBajaAR.addActionListener(control);
+		mntmConsultasAR.addActionListener(control);
+		mntmModificacionAR.addActionListener(control);
+	}
+
+	public JScrollPane getScpPaneles() {
+		return scpPaneles;
+	}
+
+	public JLabel getLblLogo() {
+		return lblLogo;
 	}
 }

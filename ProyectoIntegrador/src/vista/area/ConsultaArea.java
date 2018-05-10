@@ -12,7 +12,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
-import controlador.CVentanaPrincipal;
+import controlador.area.CConsultaArea;
 import vista.EstructVentana;
 
 @SuppressWarnings("serial")
@@ -40,7 +40,6 @@ public class ConsultaArea extends JPanel implements EstructVentana{
 
 	@Override
 	public void inicializar() {
-		// TODO Auto-generated method stub
 		setPreferredSize(new Dimension(600, 500));
 		setLayout(null);
 		
@@ -57,6 +56,7 @@ public class ConsultaArea extends JPanel implements EstructVentana{
 		rdbtnId = new JRadioButton("ID");
 		btnGBusqueda.add(rdbtnId);
 		rdbtnId.setBounds(27, 32, 51, 23);
+		rdbtnId.setActionCommand("rdbtnId");
 		pnlBusqueda.add(rdbtnId);
 		
 		txtId = new JTextField();
@@ -68,6 +68,7 @@ public class ConsultaArea extends JPanel implements EstructVentana{
 		rdbtnNombre.setSelected(true);
 		btnGBusqueda.add(rdbtnNombre);
 		rdbtnNombre.setBounds(27, 58, 79, 23);
+		rdbtnNombre.setActionCommand("rdbtnNombre");
 		pnlBusqueda.add(rdbtnNombre);
 		
 		txtNombre = new JTextField();
@@ -86,6 +87,7 @@ public class ConsultaArea extends JPanel implements EstructVentana{
 		
 		btnActBusqueda = new JButton("Comenzar");
 		btnActBusqueda.setBounds(245, 94, 89, 23);
+		btnActBusqueda.setActionCommand("btnActBusqueda");
 		pnlBusqueda.add(btnActBusqueda);
 		
 		pnlTablaAreas = new JPanel();
@@ -98,13 +100,32 @@ public class ConsultaArea extends JPanel implements EstructVentana{
 		
 		btnDetalles = new JButton("Detalles");
 		btnDetalles.setBounds(255, 468, 89, 23);
+		btnDetalles.setActionCommand("btnDetalles");
 		add(btnDetalles);
 		
 	}
 
-	public void addActionListener(CVentanaPrincipal control) {
-		// TODO Auto-generated method stub
-		
+	public void addActionListener(CConsultaArea control) {
+		rdbtnId.addActionListener(control);
+		rdbtnNombre.addActionListener(control);
+		btnActBusqueda.addActionListener(control);
+		btnDetalles.addActionListener(control);
+	}
+	
+	public JRadioButton getRdbtnId() {
+		return rdbtnId;
+	}
+	
+	public JRadioButton getRdbtnNombre() {
+		return rdbtnNombre;
+	}
+
+	public JLabel getLblApellidos() {
+		return lblApellidos;
+	}
+
+	public JTextField getTxtApellidos() {
+		return txtApellidos;
 	}
 
 	/*private JPanel pnlBusqueda;  //Panel de los componentes búsqueda

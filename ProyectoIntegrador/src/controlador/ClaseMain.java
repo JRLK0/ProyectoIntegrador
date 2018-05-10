@@ -11,7 +11,9 @@ public class ClaseMain {
 			
 			@Override
 			public void run() {
-				VentanaPrincipal vp = new VentanaPrincipal();
+				VentanaPrincipal vp = new VentanaPrincipal("Bienvenidos");
+				CVentanaPrincipal control = new CVentanaPrincipal(vp);
+				vp.addActionListener(control);
 				vp.hacerVisible();	
 			}
 		});

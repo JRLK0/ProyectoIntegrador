@@ -1,18 +1,24 @@
 package controlador;
 
-import java.awt.TrayIcon.MessageType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import controlador.area.CAltaArea;
+import controlador.area.CBajaArea;
+import controlador.area.CConsultaArea;
+import controlador.area.CModificacionArea;
 import controlador.proyecto_integrador.CBajaPI;
 import vista.VentanaPrincipal;
+import vista.area.AltaArea;
+import vista.area.BajaArea;
+import vista.area.ConsultaArea;
+import vista.area.ModificacionArea;
 import vista.proyecto_integrador.BajaPI;
 import vista.proyecto_integrador.ConsultaPI;
 import vista.proyecto_integrador.CrearPI;
 import vista.proyecto_integrador.ModificarPI;
-
 
 
 
@@ -21,16 +27,16 @@ public class CVentanaPrincipal implements ActionListener {
 	private VentanaPrincipal vp1;
 
 	public CVentanaPrincipal(VentanaPrincipal vp1) {
-		super();
 		this.vp1 = vp1;
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		
 		String cmd = e.getActionCommand();
 
+		vp1.getLblLogo().setVisible(false);
+		
 		switch (cmd) {
 		case "AltaPI":
 			// TODO abrir ventana de crear PI con su titulo.
@@ -78,27 +84,33 @@ public class CVentanaPrincipal implements ActionListener {
 
 			break;
 		case "ConsultasAR":
-			// TODO
-
+			ConsultaArea consultaArea = new ConsultaArea();
+			CConsultaArea cConsultaArea = new CConsultaArea(consultaArea);
+			consultaArea.addActionListener(cConsultaArea);
+			vp1.getScpPaneles().setViewportView(consultaArea);
 			break;
 		case "AltaAR":
-			// TODO
-
+			AltaArea altaArea = new AltaArea();
+			CAltaArea cAltaArea = new CAltaArea(altaArea);
+			altaArea.addActionListener(cAltaArea);
+			vp1.getScpPaneles().setViewportView(altaArea);
 			break;
 		case "BajaAR":
-			// TODO
-
+			BajaArea bajaArea = new BajaArea();
+			CBajaArea cBajaArea = new CBajaArea(bajaArea);
+			bajaArea.addActionListener(cBajaArea);
+			vp1.getScpPaneles().setViewportView(bajaArea);
 			break;
 		case "ModificacionAR":
-			// TODO
-
+			ModificacionArea modificacionArea = new ModificacionArea();
+			CModificacionArea cModificacionArea = new CModificacionArea(modificacionArea);
+			modificacionArea.addActionListener(cModificacionArea);
+			vp1.getScpPaneles().setViewportView(modificacionArea);
 			break;
 
 		default:
 			JOptionPane.showInternalMessageDialog(vp1, "Boton no definido, por favor definelo dentro del switch");
 			break;
 		}
-
 	}
-
 }

@@ -12,7 +12,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
-import controlador.CVentanaPrincipal;
+import controlador.area.CModificacionArea;
 import vista.EstructVentana;
 import java.awt.Color;
 
@@ -59,6 +59,7 @@ public class ModificacionArea extends JPanel implements EstructVentana{
 		rdbtnId = new JRadioButton("ID");
 		btnGBusqueda.add(rdbtnId);
 		rdbtnId.setBounds(27, 32, 51, 23);
+		rdbtnId.setActionCommand("rdbtnId");
 		pnlBusqueda.add(rdbtnId);
 		
 		txtId = new JTextField();
@@ -70,6 +71,7 @@ public class ModificacionArea extends JPanel implements EstructVentana{
 		rdbtnNombre.setSelected(true);
 		btnGBusqueda.add(rdbtnNombre);
 		rdbtnNombre.setBounds(27, 58, 79, 23);
+		rdbtnNombre.setActionCommand("rdbtnNombre");
 		pnlBusqueda.add(rdbtnNombre);
 		
 		txtNombre = new JTextField();
@@ -88,6 +90,7 @@ public class ModificacionArea extends JPanel implements EstructVentana{
 		
 		btnActBusqueda = new JButton("Comenzar");
 		btnActBusqueda.setBounds(245, 94, 89, 23);
+		btnActBusqueda.setActionCommand("btnActBusqueda");
 		pnlBusqueda.add(btnActBusqueda);
 		
 		pnlTablaAreas = new JPanel();
@@ -100,21 +103,40 @@ public class ModificacionArea extends JPanel implements EstructVentana{
 		
 		btnReset = new JButton("Reset");
 		btnReset.setForeground(new Color(204, 0, 0));
-		btnReset.setBackground(new Color(204, 0, 0));
 		btnReset.setBounds(314, 468, 89, 23);
+		btnReset.setActionCommand("btnReset");
 		add(btnReset);
 		
 		btnGuardarCambios = new JButton("Guardar Cambios");
 		btnGuardarCambios.setForeground(Color.BLUE);
-		btnGuardarCambios.setBackground(Color.BLUE);
 		btnGuardarCambios.setBounds(181, 468, 123, 23);
+		btnGuardarCambios.setActionCommand("btnGuardarCambios");
 		add(btnGuardarCambios);
 		
 	}
 
-	public void addActionListener(CVentanaPrincipal control) {
-		// TODO Auto-generated method stub
-		
+	public void addActionListener(CModificacionArea control) {
+		rdbtnId.addActionListener(control);
+		rdbtnNombre.addActionListener(control);
+		btnActBusqueda.addActionListener(control);
+		btnReset.addActionListener(control);
+		btnGuardarCambios.addActionListener(control);
+	}
+	
+	public JRadioButton getRdbtnId() {
+		return rdbtnId;
+	}
+	
+	public JRadioButton getRdbtnNombre() {
+		return rdbtnNombre;
+	}
+
+	public JLabel getLblApellidos() {
+		return lblApellidos;
+	}
+
+	public JTextField getTxtApellidos() {
+		return txtApellidos;
 	}
 
 	/*private JRadioButton rbtnId;  //Si selecciona el ID

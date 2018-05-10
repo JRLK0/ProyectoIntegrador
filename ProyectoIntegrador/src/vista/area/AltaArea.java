@@ -29,7 +29,6 @@ public class AltaArea extends JPanel implements EstructVentana{
 
 	@Override
 	public void inicializar() {
-		// TODO Auto-generated method stub
 		setPreferredSize(new Dimension(600, 400));
 		setLayout(null);
 		
