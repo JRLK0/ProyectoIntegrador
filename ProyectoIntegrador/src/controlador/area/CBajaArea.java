@@ -8,7 +8,7 @@ import vista.area.BajaAreaPanel;
 
 public class CBajaArea implements ActionListener{
 	
-	public static final String BUSQUEDA="B";
+	public static final String BUSQUEDA="t";
 	public static final String FINALIZAR="F";
 	public static final String ELIMINAR ="E";
 	private BajaArea vBajaArea;

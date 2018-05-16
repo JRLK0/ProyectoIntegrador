@@ -10,11 +10,13 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
+import javax.swing.JPanel;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ListSelectionModel;
 
-public class ModificarPI extends JFrame{
+public class ModificarPI extends JPanel {
 	private JTextField textField;
 	private JLabel lblModificarUnProyecto;
 	private JButton button;
@@ -26,63 +28,48 @@ public class ModificarPI extends JFrame{
 		super();
 
 		inicializar();
-	
+
 	}
 
 	private void inicializar() {
-		// TODO Auto-generated method stub
-		
-		try {  //por defecto en todo
-			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());//esto es pa que se vea en unos laos igual Mac linux windows //por defecto en todo
-		} catch (Exception e) {   //por defecto en todo
-			// TODO Auto-generated catch block   //por defecto en todo
-			e.printStackTrace();   //por defecto en todo
-		}
 		
 		///////////////////////////////////////////////////////////////////////
-		getContentPane().setLayout(null);
-		
+		setLayout(null);
+
 		lblModificarUnProyecto = new JLabel("Modificar un proyecto integrador");
 		lblModificarUnProyecto.setBounds(10, 11, 414, 14);
-		getContentPane().add(lblModificarUnProyecto);
-		
+		add(lblModificarUnProyecto);
+
 		textField = new JTextField();
 		textField.setColumns(10);
 		textField.setBounds(112, 41, 312, 20);
-		getContentPane().add(textField);
-		
+		add(textField);
+
 		button = new JButton("Buscar");
 		button.setBounds(10, 39, 89, 23);
-		getContentPane().add(button);
-		
+		add(button);
+
 		list = new JList();
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list.setBounds(10, 89, 414, 181);
-		getContentPane().add(list);
-		
+		add(list);
+
 		btnModificarSeleccionado = new JButton("Modificar seleccionado");
-		//TODO que abra la ventana de CrearPi pero en MODO MODIFICAR
+		// TODO que abra la ventana de CrearPi pero en MODO MODIFICAR
 		btnModificarSeleccionado.setBounds(38, 285, 153, 20);
-		getContentPane().add(btnModificarSeleccionado);
-		
+		add(btnModificarSeleccionado);
+
 		btnReset = new JButton("Reset");
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
 		btnReset.setBounds(256, 285, 92, 20);
-		getContentPane().add(btnReset);
-		
-		
-		
-		
-		/////////////////////////////////////////////////////
-		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //por defecto en todo
-		setBounds(250, 250,450,355);  //por defecto en todo
+		add(btnReset);
+
 	}
 
-	
-	public void hacerVisible() {
-		setVisible(true);
-	}
+		public void setControlador() {
+			//TODO setControlador  EL CONTROLADORRR
+		}
 }

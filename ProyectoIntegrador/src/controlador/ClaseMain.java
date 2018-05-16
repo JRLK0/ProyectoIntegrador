@@ -12,6 +12,8 @@ public class ClaseMain {
 			@Override
 			public void run() {
 				VentanaPrincipal vp = new VentanaPrincipal();
+				CVentanaPrincipal cvp= new CVentanaPrincipal(vp);
+				vp.setControlador(cvp);
 				vp.hacerVisible();	
 			}
 		});

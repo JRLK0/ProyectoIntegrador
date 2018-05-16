@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 
+import controlador.CVentanaPrincipal;
 import controlador.area.CAltaArea;
 import controlador.area.CBajaArea;
 import vista.area.AltaArea;
@@ -17,14 +18,18 @@ import vista.area.ModificacionArea;
 
 import javax.swing.JLabel;
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.ImageIcon;
 import java.awt.SystemColor;
+import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.BorderLayout;
+import javax.swing.JScrollPane;
 
 @SuppressWarnings("serial")
 public class VentanaPrincipal extends JFrame {
-	private JPanel panel;
 	private JMenuBar menuBar;
 	private JMenu mnPI;
 	private JMenuItem mntmConsultas;
@@ -39,9 +44,9 @@ public class VentanaPrincipal extends JFrame {
 	private JMenuItem mntmAltaAR;
 	private JMenuItem mntmBajaAR;
 	private JMenuItem mntmModificacionAR;
-	private JLabel lblLogo;
 	private JMenuItem mntmConsultasA;
 	private JMenuItem mntmConsultasAR;
+	private JScrollPane scrollPane;
 
 	public VentanaPrincipal() {
 		cargarMenu();
@@ -58,28 +63,36 @@ public class VentanaPrincipal extends JFrame {
 			e.printStackTrace(); // por defecto en todo
 		}
 
-		/////////////////////////////////////	
-		///
-		getContentPane().setLayout(null);
-
 		setBackground(SystemColor.text);
 		getContentPane().setBackground(SystemColor.text);
-		panel = new JPanel();
-		panel.setBackground(SystemColor.text);
-		panel.setBounds(0, 0, 488, 260);
-		getContentPane().add(panel);
-		panel.setLayout(null);
+		getContentPane().setLayout(new BorderLayout(0, 0));
 		
-		lblLogo = new JLabel("");
-		lblLogo.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/Imagenes/LogoSample_ByTailorBrands.jpg")));
-		lblLogo.setBackground(Color.WHITE);
-		lblLogo.setBounds(127, 0, 220, 260);
-		panel.add(lblLogo);
+		scrollPane = new JScrollPane();
+		getContentPane().add(scrollPane, BorderLayout.CENTER);
 	
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); // por defecto en todo
-		setBounds(250, 250, 504, 320); // por defecto en todo
-		setResizable(false);
+	setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); // por defecto en todo
+	setBounds(250, 250, 704, 520); // por defecto en todo
+	setResizable(true);
+		
+
+
+		// asignamos tamaño a la ventana 
+
+		setPreferredSize(new Dimension(600, 400));  
+
+		// Se obtienen las dimensiones en pixels de la pantalla.       
+
+		Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();               
+
+		// Se obtienen las dimensiones en pixels de la ventana.       
+
+		Dimension ventana = this.getPreferredSize();               
+
+		// Una cuenta para situar la ventana en el centro de la pantalla.       
+
+		setLocation((pantalla.width - ventana.width) / 2,  (pantalla.height - ventana.height) / 2);
+
 
 	}
 
@@ -92,6 +105,7 @@ public class VentanaPrincipal extends JFrame {
 
 		mntmConsultas = new JMenuItem("Consultas");
 		mnPI.add(mntmConsultas);
+		mntmConsultas.setActionCommand("ConsultaPI");
 
 		mntmAlta = new JMenuItem("Alta");
 		mnPI.add(mntmAlta);
@@ -122,47 +136,94 @@ public class VentanaPrincipal extends JFrame {
 		
 		mntmConsultasAR = new JMenuItem("Consultas");
 		mnAreas.add(mntmConsultasAR);
-		mntmConsultasAR.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ConsultaArea consultaArea = new ConsultaArea();
-				consultaArea.hacerVisible();
-			}
-		});
+		mntmConsultasAR.setActionCommand("mntmConsultasAR");
 		
 		mntmAltaAR = new JMenuItem("Alta");
 		mnAreas.add(mntmAltaAR);
-		mntmAltaAR.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				AltaArea altaArea = new AltaArea();
-				CAltaArea cAltaArea = new CAltaArea(altaArea);
-				altaArea.addActionListener(cAltaArea);
-				altaArea.hacerVisible();
-			}
-		});
 
 		mntmBajaAR = new JMenuItem("Baja");
 		mnAreas.add(mntmBajaAR);
-		mntmBajaAR.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				BajaArea bajaArea = new BajaArea();
-				CBajaArea cBajaArea = new CBajaArea(bajaArea);
-				bajaArea.addActionPerfomed(cBajaArea);
-				bajaArea.hacerVisible();
-			}
-		});
 		
 		mntmModificacionAR = new JMenuItem("Modificacion");
 		mnAreas.add(mntmModificacionAR);
-		mntmModificacionAR.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ModificacionArea modificacionArea = new ModificacionArea();
-				modificacionArea.hacerVisible();
-			}
-		});
+		
 	}
 	
 	
 	public void hacerVisible() {
 		setVisible(true);
 	}
+	
+	public void setControlador(CVentanaPrincipal c1) {
+		mntmAlta.addActionListener(c1);
+		mntmAltaA.addActionListener(c1);
+		mntmAltaAR.addActionListener(c1);
+		
+		mntmBaja.addActionListener(c1);
+		mntmBajaA.addActionListener(c1);
+		mntmBajaAR.addActionListener(c1);
+		
+		mntmModificacion.addActionListener(c1);
+		mntmModificacionA.addActionListener(c1);
+		mntmModificacionAR.addActionListener(c1);
+		
+		mntmConsultas.addActionListener(c1);
+		mntmConsultasA.addActionListener(c1);
+		mntmConsultasAR.addActionListener(c1);
+	}
+//getters de los botones del menu
+	public JMenuItem getMntmConsultas() {
+		return mntmConsultas;
+	}
+
+	public JMenuItem getMntmAlta() {
+		return mntmAlta;
+	}
+
+	public JMenuItem getMntmBaja() {
+		return mntmBaja;
+	}
+
+	public JMenuItem getMntmModificacion() {
+		return mntmModificacion;
+	}
+
+	public JMenuItem getMntmAltaA() {
+		return mntmAltaA;
+	}
+
+	public JMenuItem getMntmBajaA() {
+		return mntmBajaA;
+	}
+
+	public JMenuItem getMntmModificacionA() {
+		return mntmModificacionA;
+	}
+
+	public JMenuItem getMntmAltaAR() {
+		return mntmAltaAR;
+	}
+
+	public JMenuItem getMntmBajaAR() {
+		return mntmBajaAR;
+	}
+
+	public JMenuItem getMntmModificacionAR() {
+		return mntmModificacionAR;
+	}
+
+	public JMenuItem getMntmConsultasA() {
+		return mntmConsultasA;
+	}
+
+	public JMenuItem getMntmConsultasAR() {
+		return mntmConsultasAR;
+	}
+//final de los getter del menu de la ventana principal
+	
+	public void verPanel(JPanel obj1) {
+		scrollPane.setViewportView(obj1);
+	}
+		
+	
 }
