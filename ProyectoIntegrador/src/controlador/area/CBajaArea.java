@@ -8,14 +8,13 @@ import javax.swing.JOptionPane;
 import vista.area.BajaArea;
 
 public class CBajaArea implements ActionListener{
-<<<<<<< HEAD
+
 	
 	public static final String BUSQUEDA="t";
 	public static final String FINALIZAR="F";
 	public static final String ELIMINAR ="E";
-=======
 
->>>>>>> branch 'master' of git@github.com:JorgeMO17/ProyectoIntegrador.git
+
 	private BajaArea vBajaArea;
 	
 	public CBajaArea(BajaArea vBajaArea) {
