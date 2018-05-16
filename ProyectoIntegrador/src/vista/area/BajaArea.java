@@ -1,122 +1,139 @@
 package vista.area;
 
-import java.awt.BorderLayout;
-import java.awt.HeadlessException;
+import java.awt.Dimension;
 
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import javax.swing.UIManager;
-import javax.swing.WindowConstants;
 
 import controlador.area.CBajaArea;
 import vista.EstructVentana;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import java.awt.BorderLayout;
+import javax.swing.JScrollPane;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
-public class BajaArea extends JFrame implements EstructVentana{
+public class BajaArea extends JPanel implements EstructVentana{
 
-private final ButtonGroup Id_Nombre = new ButtonGroup();  //Solo busca por ID o por Nombre
+	private JPanel pnlBusqueda;
+	private JLabel lblBusqueda;
+	private final ButtonGroup btnGBusqueda = new ButtonGroup();
+	private JRadioButton rdbtnId;
+	private JTextField txtId;
+	private JRadioButton rdbtnNombre;
+	private JTextField txtNombre;
+	private JLabel lblApellidos;
+	private JTextField txtApellidos;
+	private JButton btnActBusqueda;
 	
-	private JRadioButton rdbtnBusqId;  //Si selecciona ID
-	private JTextField txtID;  //Introducir ID
+	private JPanel pnlTablaAreas;
+	private JScrollPane scpTablaAreas;
 	
-	private JRadioButton rdbtnBusqNombre;  //Si selecciona Nombre
-	private JTextField txtNombre;  //Introducir Nombre
-	private JRadioButton rdbtnBusqDescripcion;  //Si el rdbtnNombre está seleccionado y si acepta la descripción
-	private JTextField txtDescripcion;  //Introducir descripción
-	private JButton btnActivarBsqueda;  //Empezar a buscar
+	private JButton btnEliminar;
+	private JButton btnFinalizar;
 	
-	private JPanel pnlAreas;  //Panel de la tabla area
-	private JScrollPane scrpAreas;  //En caso de que la tabla sea sobredimensionada
-	
-	private JButton btnFinalizar;  //Botón "Finalizar"
-	private JButton btnEliminar;  //Botón "Eliminar"
-	
-	public BajaArea() throws HeadlessException {
-		super("Bajada de Áreas");
+	public BajaArea() {
 		inicializar();
 	}
 
 	@Override
 	public void inicializar() {
-		try {
-			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		setPreferredSize(new Dimension(600, 500));
+		setLayout(null);
 		
-		getContentPane().setLayout(null);
+		pnlBusqueda = new JPanel();
+		pnlBusqueda.setBounds(10, 11, 580, 128);
+		add(pnlBusqueda);
+		pnlBusqueda.setLayout(null);
 		
-		rdbtnBusqId = new JRadioButton("Mediante ID");
-		Id_Nombre.add(rdbtnBusqId);
-		rdbtnBusqId.setBounds(50, 22, 109, 23);
-		getContentPane().add(rdbtnBusqId);
+		lblBusqueda = new JLabel("B\u00FAsqueda");
+		lblBusqueda.setBounds(260, 8, 60, 17);
+		pnlBusqueda.add(lblBusqueda);
+		lblBusqueda.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		txtID = new JTextField();
-		txtID.setBounds(165, 23, 118, 20);
-		getContentPane().add(txtID);
-		txtID.setColumns(10);
+		rdbtnId = new JRadioButton("ID");
+		btnGBusqueda.add(rdbtnId);
+		rdbtnId.setBounds(27, 32, 51, 23);
+		rdbtnId.setActionCommand("rdbtnId");
+		pnlBusqueda.add(rdbtnId);
 		
-		rdbtnBusqNombre = new JRadioButton("Mediante Nombre");
-		rdbtnBusqNombre.setSelected(true);
-		Id_Nombre.add(rdbtnBusqNombre);
-		rdbtnBusqNombre.setBounds(50, 48, 109, 23);
-		getContentPane().add(rdbtnBusqNombre);
+		txtId = new JTextField();
+		txtId.setBounds(84, 33, 113, 20);
+		pnlBusqueda.add(txtId);
+		txtId.setColumns(10);
+		
+		rdbtnNombre = new JRadioButton("Nombre");
+		rdbtnNombre.setSelected(true);
+		rdbtnNombre.setActionCommand("rdbtnNombre");
+		btnGBusqueda.add(rdbtnNombre);
+		rdbtnNombre.setBounds(27, 58, 79, 23);
+		pnlBusqueda.add(rdbtnNombre);
 		
 		txtNombre = new JTextField();
-		txtNombre.setBounds(165, 49, 118, 20);
-		getContentPane().add(txtNombre);
+		txtNombre.setBounds(112, 59, 144, 20);
+		pnlBusqueda.add(txtNombre);
 		txtNombre.setColumns(10);
 		
-		rdbtnBusqDescripcion = new JRadioButton("Descripcion");
-		rdbtnBusqDescripcion.setBounds(289, 48, 89, 23);
-		getContentPane().add(rdbtnBusqDescripcion);
+		lblApellidos = new JLabel("Apellidos");
+		lblApellidos.setBounds(266, 62, 46, 14);
+		pnlBusqueda.add(lblApellidos);
 		
-		txtDescripcion = new JTextField();
-		txtDescripcion.setBounds(378, 49, 159, 20);
-		getContentPane().add(txtDescripcion);
-		txtDescripcion.setColumns(10);
+		txtApellidos = new JTextField();
+		txtApellidos.setBounds(322, 59, 152, 20);
+		pnlBusqueda.add(txtApellidos);
+		txtApellidos.setColumns(10);
 		
-		btnActivarBsqueda = new JButton("Activar Búsqueda");
-		btnActivarBsqueda.setBounds(213, 80, 133, 23);
-		getContentPane().add(btnActivarBsqueda);
-		btnActivarBsqueda.setActionCommand(CBajaArea.BUSQUEDA);
+		btnActBusqueda = new JButton("Comenzar");
+		btnActBusqueda.setBounds(245, 94, 89, 23);
+		btnActBusqueda.setActionCommand("btnActBusqueda");
+		pnlBusqueda.add(btnActBusqueda);
 		
-		pnlAreas = new JPanel();
-		pnlAreas.setBounds(10, 114, 527, 294);
-		getContentPane().add(pnlAreas);
-		pnlAreas.setLayout(new BorderLayout(0, 0));
+		pnlTablaAreas = new JPanel();
+		pnlTablaAreas.setBounds(10, 150, 580, 307);
+		add(pnlTablaAreas);
+		pnlTablaAreas.setLayout(new BorderLayout(0, 0));
 		
-		scrpAreas = new JScrollPane();
-		pnlAreas.add(scrpAreas, BorderLayout.CENTER);
-		
-		btnFinalizar = new JButton("Finalizar");
-		btnFinalizar.setBounds(165, 419, 89, 23);
-		getContentPane().add(btnFinalizar);
+		scpTablaAreas = new JScrollPane();
+		pnlTablaAreas.add(scpTablaAreas, BorderLayout.CENTER);
 		
 		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(289, 419, 89, 23);
-		getContentPane().add(btnEliminar);
+		btnEliminar.setForeground(Color.RED);
+		btnEliminar.setBounds(301, 468, 89, 23);
+		btnEliminar.setActionCommand("btnEliminar");
+		add(btnEliminar);
 		
-		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		setBounds(250, 250, 563, 481);
-		setResizable(false);
+		btnFinalizar = new JButton("Finalizar");
+		btnFinalizar.setBounds(201, 468, 89, 23);
+		btnFinalizar.setActionCommand("btnFinalizar");
+		add(btnFinalizar);
+		
 	}
 
-
-	public void hacerVisible() {
-		setVisible(true);
+	public void addActionListener(CBajaArea control) {
+		rdbtnId.addActionListener(control);
+		rdbtnNombre.addActionListener(control);
+		btnActBusqueda.addActionListener(control);
+		btnEliminar.addActionListener(control);
+		btnFinalizar.addActionListener(control);
 	}
 
-	public JScrollPane getScrpAreas() {
-		return scrpAreas;
+	public JRadioButton getRdbtnId() {
+		return rdbtnId;
 	}
 	
-	public void addActionPerfomed(CBajaArea control) {
-		btnActivarBsqueda.addActionListener(control);
+	public JRadioButton getRdbtnNombre() {
+		return rdbtnNombre;
+	}
+
+	public JLabel getLblApellidos() {
+		return lblApellidos;
+	}
+
+	public JTextField getTxtApellidos() {
+		return txtApellidos;
 	}
 }

@@ -1,30 +1,29 @@
 package vista.alumno;
 
-import java.awt.HeadlessException;
-
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import java.awt.BorderLayout;
-import javax.swing.JScrollPane;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.SwingConstants;
 
+import controlador.CVentanaPrincipal;
 import vista.EstructVentana;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JTextField;
 
 /**
  * Consultar los alumnos en bases de datos
  *
  */
 @SuppressWarnings("serial")
-public class ConsultaAlumnos extends JFrame implements EstructVentana{
+public class ConsultaAlumnos extends JPanel implements EstructVentana{
+
+	@Override
+	public void inicializar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addActionListener(CVentanaPrincipal control) {
+		// TODO Auto-generated method stub
+		
+	}
 	
-	private JPanel pnlBusqueda;  //Panel de los componentes búsqueda
+	/*private JPanel pnlBusqueda;  //Panel de los componentes búsqueda
 	private JLabel lblBsqueda;   //"Búsqueda"
 
 	private JLabel lblNombre;   //"Nombre:"
@@ -119,5 +118,5 @@ public class ConsultaAlumnos extends JFrame implements EstructVentana{
 
 	public void hacerVisible() {
 		setVisible(true);
-	}
+	}*/
 }

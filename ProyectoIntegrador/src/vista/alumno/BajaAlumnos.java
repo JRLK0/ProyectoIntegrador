@@ -1,29 +1,30 @@
 package vista.alumno;
 
-import java.awt.HeadlessException;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.UIManager;
-import javax.swing.WindowConstants;
-
-import vista.EstructVentana;
-
-import javax.swing.JTextField;
-import javax.swing.JRadioButton;
-import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
-import java.awt.BorderLayout;
-import javax.swing.JScrollPane;
+
+import controlador.CVentanaPrincipal;
+import vista.EstructVentana;
 
 /**
  * Eliminar alumno
  *
  */
 @SuppressWarnings("serial")
-public class BajaAlumnos extends JFrame implements EstructVentana{
+public class BajaAlumnos extends JPanel implements EstructVentana{
+
+	@Override
+	public void inicializar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addActionListener(CVentanaPrincipal control) {
+		// TODO Auto-generated method stub
+		
+	}
 	
-	private final ButtonGroup Id_Nombre = new ButtonGroup();  //Solo busca por ID o por Nombre
+	/*private final ButtonGroup Id_Nombre = new ButtonGroup();  //Solo busca por ID o por Nombre
 	
 	private JRadioButton rdbtnBusqId;  //Si selecciona ID
 	private JTextField txtID;  //Introducir ID
@@ -106,5 +107,5 @@ public class BajaAlumnos extends JFrame implements EstructVentana{
 
 	public void hacerVisible() {
 		setVisible(true);
-	}
+	}*/
 }

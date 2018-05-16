@@ -1,28 +1,30 @@
 package vista.alumno;
 
-import java.awt.HeadlessException;
-
-import javax.swing.JFrame;
-import javax.swing.UIManager;
-import javax.swing.WindowConstants;
-
 import vista.EstructVentana;
 
-import javax.swing.JButton;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
-import javax.swing.JScrollPane;
 import javax.swing.JPanel;
-import java.awt.BorderLayout;
+
+import controlador.CVentanaPrincipal;
 
 /**
  * Modificar alumnos en bases de datos
  *
  */
 @SuppressWarnings("serial")
-public class ModificacionAlumnos extends JFrame implements EstructVentana{
+public class ModificacionAlumnos extends JPanel implements EstructVentana{
+
+	@Override
+	public void inicializar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addActionListener(CVentanaPrincipal control) {
+		// TODO Auto-generated method stub
+		
+	}
 	
-	private JRadioButton rbtnId;  //Si selecciona el ID
+	/*private JRadioButton rbtnId;  //Si selecciona el ID
 	private JTextField txtId;  //Introducir ID
 	
 	private JRadioButton rbtnNombre;  //Si selecciona Nombre
@@ -105,5 +107,5 @@ public class ModificacionAlumnos extends JFrame implements EstructVentana{
 
 	public void hacerVisible() {
 		setVisible(true);
-	}
+	}*/
 }

@@ -2,35 +2,33 @@ package controlador.area;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
-import modelo.Area;
+import javax.swing.JOptionPane;
+
 import vista.area.AltaArea;
 
 public class CAltaArea implements ActionListener {
 
-	public static final String FINALIZAR="F";
-	public static final String LIMPIAR="L";
-	private ArrayList<Area> areas = new ArrayList<Area>();
-	private AltaArea vArea;
+	private AltaArea VAltaArea;
 	
-	public CAltaArea(AltaArea vArea){
-		this.vArea = vArea;
+	public CAltaArea(AltaArea vAltaArea) {
+		super();
+		VAltaArea = vAltaArea;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		switch (e.getActionCommand()) {
-		case CAltaArea.FINALIZAR:
-			areas.add(new Area(vArea.getTxtId().getText(),vArea.getTxtNombre().getText(),vArea.getTxtDescripcion().getText()));
-			vArea.dispose();
+		String cmd = e.getActionCommand();
+		switch (cmd) {
+		case "btnCrear":
+			JOptionPane.showConfirmDialog(VAltaArea, "Boton crear");
 			break;
-
-		case CAltaArea.LIMPIAR:
-			vArea.getTxtId().setText("");
-			vArea.getTxtNombre().setText("");
-			vArea.getTxtDescripcion().setText("");
+		case "btnLimpiarDatos":
+			JOptionPane.showConfirmDialog(VAltaArea, "Boton limpiar Datos");
 			break;
-		}
+		default:
+			JOptionPane.showConfirmDialog(VAltaArea, "Boton NO ASIGNADO");
+			break;
+		}		
 	}
 }

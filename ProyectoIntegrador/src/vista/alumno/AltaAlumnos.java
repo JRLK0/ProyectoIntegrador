@@ -1,27 +1,29 @@
 package vista.alumno;
 
-import java.awt.HeadlessException;
+import javax.swing.JPanel;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.UIManager;
-import javax.swing.WindowConstants;
-
+import controlador.CVentanaPrincipal;
 import vista.EstructVentana;
-
-import javax.swing.JButton;
-import javax.swing.JTextArea;
 
 /**
  * Añadir alumnos
  *
  */
 @SuppressWarnings("serial")
-public class AltaAlumnos extends JFrame implements EstructVentana{
+public class AltaAlumnos extends JPanel implements EstructVentana{
+
+	@Override
+	public void inicializar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addActionListener(CVentanaPrincipal control) {
+		// TODO Auto-generated method stub
+		
+	}
 	
-	private JLabel lblId;  //"ID:"
+	/*private JLabel lblId;  //"ID:"
 	private JTextField txtId;  //Introducir ID
 	
 	private JLabel lblNombre;  //"Nombre:"
@@ -106,4 +108,10 @@ public class AltaAlumnos extends JFrame implements EstructVentana{
 	public void hacerVisible() {
 		setVisible(true);
 	}
+
+	@Override
+	public void addActionListener(CVentanaPrincipal control) {
+		// TODO Auto-generated method stub
+		
+	}*/
 }

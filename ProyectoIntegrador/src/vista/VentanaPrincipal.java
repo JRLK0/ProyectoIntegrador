@@ -9,27 +9,44 @@ import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 
 import controlador.CVentanaPrincipal;
+<<<<<<< HEAD
 import controlador.area.CAltaArea;
 import controlador.area.CBajaArea;
 import vista.area.AltaArea;
 import vista.area.BajaArea;
 import vista.area.ConsultaArea;
 import vista.area.ModificacionArea;
+=======
+>>>>>>> branch 'master' of git@github.com:JorgeMO17/ProyectoIntegrador.git
 
 import javax.swing.JLabel;
 import java.awt.Color;
+<<<<<<< HEAD
 import java.awt.Dimension;
+=======
+import java.awt.HeadlessException;
+>>>>>>> branch 'master' of git@github.com:JorgeMO17/ProyectoIntegrador.git
 
 import javax.swing.ImageIcon;
+<<<<<<< HEAD
 import java.awt.SystemColor;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
+=======
+import javax.swing.JScrollPane;
+import java.awt.BorderLayout;
+>>>>>>> branch 'master' of git@github.com:JorgeMO17/ProyectoIntegrador.git
 
 @SuppressWarnings("serial")
+<<<<<<< HEAD
 public class VentanaPrincipal extends JFrame {
+=======
+public class VentanaPrincipal extends JFrame implements EstructVentana{
+	
+>>>>>>> branch 'master' of git@github.com:JorgeMO17/ProyectoIntegrador.git
 	private JMenuBar menuBar;
 	private JMenu mnPI;
 	private JMenuItem mntmConsultas;
@@ -37,24 +54,36 @@ public class VentanaPrincipal extends JFrame {
 	private JMenuItem mntmBaja;
 	private JMenuItem mntmModificacion;
 	private JMenu mnAlumnos;
+	private JMenuItem mntmConsultasA;
 	private JMenuItem mntmAltaA;
 	private JMenuItem mntmBajaA;
 	private JMenuItem mntmModificacionA;
 	private JMenu mnAreas;
+	private JMenuItem mntmConsultasAR;
 	private JMenuItem mntmAltaAR;
 	private JMenuItem mntmBajaAR;
 	private JMenuItem mntmModificacionAR;
+<<<<<<< HEAD
 	private JMenuItem mntmConsultasA;
 	private JMenuItem mntmConsultasAR;
 	private JScrollPane scrollPane;
+=======
+	
+	private JLabel lblLogo;
+	
+	private JPanel pnlPaneles;
+	private JScrollPane scpPaneles;
+>>>>>>> branch 'master' of git@github.com:JorgeMO17/ProyectoIntegrador.git
 
-	public VentanaPrincipal() {
-		cargarMenu();
+	public VentanaPrincipal(String title) throws HeadlessException {
+		super(title);
+		getContentPane().setBackground(Color.WHITE);
 		inicializar();
+		cargarMenu();
 	}
 
-	private void inicializar() {
-		// TODO Auto-generated method stub
+	public void inicializar() {
+
 		try { // por defecto en todo
 			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());// esto es pa que se vea en unos
 																						// laos igual Mac linux windows
@@ -62,6 +91,7 @@ public class VentanaPrincipal extends JFrame {
 		} catch (Exception e) { // por defecto en todo
 			e.printStackTrace(); // por defecto en todo
 		}
+<<<<<<< HEAD
 
 		setBackground(SystemColor.text);
 		getContentPane().setBackground(SystemColor.text);
@@ -93,7 +123,13 @@ public class VentanaPrincipal extends JFrame {
 
 		setLocation((pantalla.width - ventana.width) / 2,  (pantalla.height - ventana.height) / 2);
 
+=======
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); // por defecto en todo
+		setBounds(250, 250, 749, 486); // por defecto en todo
+		setResizable(false);
+>>>>>>> branch 'master' of git@github.com:JorgeMO17/ProyectoIntegrador.git
 
+		
 	}
 
 	private void cargarMenu() {
@@ -135,24 +171,55 @@ public class VentanaPrincipal extends JFrame {
 		menuBar.add(mnAreas);
 		
 		mntmConsultasAR = new JMenuItem("Consultas");
+		mntmConsultasAR.setActionCommand("ConsultasAR");
 		mnAreas.add(mntmConsultasAR);
+<<<<<<< HEAD
 		mntmConsultasAR.setActionCommand("mntmConsultasAR");
+=======
+>>>>>>> branch 'master' of git@github.com:JorgeMO17/ProyectoIntegrador.git
 		
 		mntmAltaAR = new JMenuItem("Alta");
+<<<<<<< HEAD
 		mnAreas.add(mntmAltaAR);
+=======
+		mntmAltaAR.setActionCommand("AltaAR");
+		mnAreas.add(mntmAltaAR);			
+>>>>>>> branch 'master' of git@github.com:JorgeMO17/ProyectoIntegrador.git
 
 		mntmBajaAR = new JMenuItem("Baja");
+		mntmBajaAR.setActionCommand("BajaAR");
 		mnAreas.add(mntmBajaAR);
 		
 		mntmModificacionAR = new JMenuItem("Modificacion");
+		mntmModificacionAR.setActionCommand("ModificacionAR");
 		mnAreas.add(mntmModificacionAR);
+<<<<<<< HEAD
 		
+=======
+		getContentPane().setLayout(null);
+		
+		lblLogo = new JLabel("");
+		lblLogo.setBounds(261, 104, 220, 227);
+		lblLogo.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/Imagenes/LogoSample_ByTailorBrands.jpg")));
+		getContentPane().add(lblLogo);
+		
+		pnlPaneles = new JPanel();
+		pnlPaneles.setBackground(Color.WHITE);
+		pnlPaneles.setBounds(0, 0, 743, 436);
+		getContentPane().add(pnlPaneles);
+		pnlPaneles.setLayout(new BorderLayout(0, 0));
+		
+		scpPaneles = new JScrollPane();
+		scpPaneles.setBackground(Color.WHITE);
+		pnlPaneles.add(scpPaneles, BorderLayout.CENTER);
+>>>>>>> branch 'master' of git@github.com:JorgeMO17/ProyectoIntegrador.git
 	}
 	
 	
 	public void hacerVisible() {
 		setVisible(true);
 	}
+<<<<<<< HEAD
 	
 	public void setControlador(CVentanaPrincipal c1) {
 		mntmAlta.addActionListener(c1);
@@ -226,4 +293,21 @@ public class VentanaPrincipal extends JFrame {
 	}
 		
 	
+=======
+
+	public void addActionListener(CVentanaPrincipal control) {
+		mntmAltaAR.addActionListener(control);
+		mntmBajaAR.addActionListener(control);
+		mntmConsultasAR.addActionListener(control);
+		mntmModificacionAR.addActionListener(control);
+	}
+
+	public JScrollPane getScpPaneles() {
+		return scpPaneles;
+	}
+
+	public JLabel getLblLogo() {
+		return lblLogo;
+	}
+>>>>>>> branch 'master' of git@github.com:JorgeMO17/ProyectoIntegrador.git
 }
