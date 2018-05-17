@@ -7,24 +7,10 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.WindowConstants;
-
 import controlador.CVentanaPrincipal;
-import controlador.area.CAltaArea;
-import controlador.area.CBajaArea;
-import vista.area.AltaArea;
-import vista.area.BajaArea;
-import vista.area.ConsultaArea;
-import vista.area.ModificacionArea;
-
-import javax.swing.JLabel;
-import java.awt.Color;
 import java.awt.Dimension;
-
-import javax.swing.ImageIcon;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 
@@ -54,7 +40,6 @@ public class VentanaPrincipal extends JFrame {
 	}
 
 	private void inicializar() {
-		// TODO Auto-generated method stub
 		try { // por defecto en todo
 			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());// esto es pa que se vea en unos
 																						// laos igual Mac linux windows
@@ -92,8 +77,6 @@ public class VentanaPrincipal extends JFrame {
 		// Una cuenta para situar la ventana en el centro de la pantalla.       
 
 		setLocation((pantalla.width - ventana.width) / 2,  (pantalla.height - ventana.height) / 2);
-
-
 	}
 
 	private void cargarMenu() {

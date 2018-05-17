@@ -75,4 +75,24 @@ public class AltaArea extends JPanel implements EstructVentana{
 		btnLimpiarDatos.addActionListener(control);
 		
 	}
+
+	public JTextField getTxtId() {
+		return txtId;
+	}
+
+	public JTextField getTxtNombre() {
+		return txtNombre;
+	}
+
+	public JTextArea getTxtDescripcion() {
+		return txtDescripcion;
+	}
+
+	public JButton getBtnLimpiarDatos() {
+		return btnLimpiarDatos;
+	}
+
+	public JButton getBtnCrear() {
+		return btnCrear;
+	}
 }

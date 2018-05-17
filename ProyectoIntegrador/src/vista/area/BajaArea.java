@@ -133,7 +133,27 @@ public class BajaArea extends JPanel implements EstructVentana{
 		return lblApellidos;
 	}
 
+	public JTextField getTxtId() {
+		return txtId;
+	}
+
+	public JTextField getTxtNombre() {
+		return txtNombre;
+	}
+	
 	public JTextField getTxtApellidos() {
 		return txtApellidos;
+	}
+
+	public JButton getBtnActBusqueda() {
+		return btnActBusqueda;
+	}
+
+	public JButton getBtnEliminar() {
+		return btnEliminar;
+	}
+
+	public JButton getBtnFinalizar() {
+		return btnFinalizar;
 	}
 }

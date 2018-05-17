@@ -3,32 +3,37 @@ package controlador.area;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import vista.area.AltaArea;
 
 public class CAltaArea implements ActionListener {
 
-	private AltaArea VAltaArea;
+	private AltaArea vAltaArea;
 	
 	public CAltaArea(AltaArea vAltaArea) {
 		super();
-		VAltaArea = vAltaArea;
+		this.vAltaArea = vAltaArea;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String cmd = e.getActionCommand();
-		switch (cmd) {
-		case "btnCrear":
-			JOptionPane.showConfirmDialog(VAltaArea, "Boton crear");
-			break;
-		case "btnLimpiarDatos":
-			JOptionPane.showConfirmDialog(VAltaArea, "Boton limpiar Datos");
-			break;
-		default:
-			JOptionPane.showConfirmDialog(VAltaArea, "Boton NO ASIGNADO");
-			break;
-		}		
+		
+		Object cmd = e.getSource();
+		
+		if(cmd instanceof JButton) {
+			if(cmd.equals(vAltaArea.getBtnCrear())) {
+				JOptionPane.showConfirmDialog(vAltaArea, "Los datos de area se ha guardado correctamente");
+				vAltaArea.getTxtDescripcion().setText("");
+				vAltaArea.getTxtId().setText("");
+				vAltaArea.getTxtNombre().setText("");
+			}
+			else if(cmd.equals(vAltaArea.getBtnLimpiarDatos())){
+				vAltaArea.getTxtDescripcion().setText("");
+				vAltaArea.getTxtId().setText("");
+				vAltaArea.getTxtNombre().setText("");
+			}
+		}
 	}
 }

@@ -1,11 +1,9 @@
 package controlador;
 
-import java.awt.TrayIcon.MessageType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 
 import vista.VentanaPrincipal;
 import vista.proyecto_integrador.BajaPI;
@@ -24,7 +22,6 @@ public class CVentanaPrincipal implements ActionListener {
 	public CVentanaPrincipal(VentanaPrincipal vp1) {
 		super();
 		this.vp1 = vp1;
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -56,27 +53,24 @@ public class CVentanaPrincipal implements ActionListener {
 
 				////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			} else if (source.equals(vp1.getMntmConsultasA())) {// #AREA#
-				System.out.println("boton de consulta Area");
+				System.out.println("Boton de consulta de alumnos");
 			} else if (source.equals(vp1.getMntmAltaA())) {
-				System.out.println("boton de alta de Area");
+				System.out.println("Boton de alta de alumnos");
 			} else if (source.equals(vp1.getMntmBajaA())) {
-				System.out.println("boton de baja de Area");
+				System.out.println("Boton de baja de alumnos");
 			} else if (source.equals(vp1.getMntmModificacionA())) {
-				System.out.println("Boton de modificacion de Area");
+				System.out.println("boton de modificacion de alumnos");
 
 				//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			} else if (source.equals(vp1.getMntmConsultasAR())) {// #Alumnos#
-				System.out.println("Boton de consulta de alumnos");
+				System.out.println("boton de consulta Area");
 			} else if (source.equals(vp1.getMntmAltaAR())) {
-				System.out.println("Boton de alta de alumnos");
+				System.out.println("boton de alta de Area");
 			} else if (source.equals(vp1.getMntmBajaAR())) {
-				System.out.println("Boton de baja de alumnos");
+				System.out.println("boton de baja de Area");
 			} else if (source.equals(vp1.getMntmModificacionAR())) {
-				System.out.println("boton de modificacion de alumnos");
+				System.out.println("Boton de modificacion de Area");
 			}
-
 		}
-
 	}
-
 }
