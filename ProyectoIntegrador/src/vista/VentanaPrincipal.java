@@ -58,7 +58,7 @@ public class VentanaPrincipal extends JFrame implements EstructVentana{
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); // por defecto en todo
 	setBounds(250, 250, 704, 520); // por defecto en todo
-	setResizable(false);
+	setResizable(true);
 		
 
 

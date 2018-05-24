@@ -6,6 +6,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JMenuItem;
 
 import vista.VentanaPrincipal;
+import vista.area.AltaArea;
+import vista.area.BajaArea;
+import vista.area.ConsultaArea;
+import vista.area.ModificacionArea;
 import vista.proyecto_integrador.BajaPI;
 import vista.proyecto_integrador.ConsultaPI;
 import vista.proyecto_integrador.CrearPI;
@@ -18,6 +22,10 @@ public class CVentanaPrincipal implements ActionListener {
 	private BajaPI bPI2;
 	private ConsultaPI cPI0;
 	private ModificarPI mPI3;
+	private AltaArea vAltaArea;
+	private BajaArea vBajaArea;
+	private ModificacionArea vModificacionArea;
+	private ConsultaArea vConsultaArea;
 
 	public CVentanaPrincipal(VentanaPrincipal vp1) {
 		super();
@@ -64,6 +72,8 @@ public class CVentanaPrincipal implements ActionListener {
 				//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			} else if (source.equals(vp1.getMntmConsultasAR())) {// #Alumnos#
 				System.out.println("boton de consulta Area");
+				vConsultaArea = new ConsultaArea();
+				vp1.verPanel(vConsultaArea);
 			} else if (source.equals(vp1.getMntmAltaAR())) {
 				System.out.println("boton de alta de Area");
 			} else if (source.equals(vp1.getMntmBajaAR())) {

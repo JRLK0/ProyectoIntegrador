@@ -1,5 +1,6 @@
 package vista.proyecto_integrador;
 
+import java.awt.Dimension;
 import java.awt.HeadlessException;
 
 import javax.swing.JFrame;
@@ -15,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import javax.swing.JButton;
 
+@SuppressWarnings("serial")
 public class ConsultaPI extends JPanel implements EstructVentana{
 	private JTextField textField;
 	private JButton btnDetalle;
@@ -30,7 +32,7 @@ public class ConsultaPI extends JPanel implements EstructVentana{
 	@Override
 	public void inicializar() {
 		// TODO Auto-generated method stub
-
+		setPreferredSize(new Dimension(250, 100));
 		/////////////////////////////////////////////////////
 		setLayout(null);
 		
