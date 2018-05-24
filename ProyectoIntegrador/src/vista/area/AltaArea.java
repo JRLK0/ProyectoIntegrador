@@ -42,7 +42,7 @@ public class AltaArea extends JPanel implements EstructVentana{
 		txtId.setColumns(10);
 		
 		lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(32, 82, 46, 14);
+		lblNombre.setBounds(32, 82, 56, 14);
 		add(lblNombre);
 		
 		txtNombre = new JTextField();

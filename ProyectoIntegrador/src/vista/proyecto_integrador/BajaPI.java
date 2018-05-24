@@ -2,24 +2,23 @@ package vista.proyecto_integrador;
 
 import java.awt.HeadlessException;
 
-import javax.swing.JFrame;
-import javax.swing.UIManager;
-import javax.swing.WindowConstants;
-
 import vista.EstructVentana;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import controlador.proyecto_integrador.ControladorPI;
+
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JButton;
-import javax.swing.SwingConstants;
 
+@SuppressWarnings("serial")
 public class BajaPI extends JPanel implements EstructVentana{
-	private JTextField textField;
+	private JTextField txtBusqueda;
 	private JLabel lblDarDeBaja;
-	private JList list;
-	private JButton btnReset;
+	private JList listaResultado;
+	private JButton btnRestaurar;
 	private JButton btnBuscar;
 	private JButton btnBorrarSeleccion;
 
@@ -38,14 +37,15 @@ public class BajaPI extends JPanel implements EstructVentana{
 		lblDarDeBaja.setBounds(10, 11, 414, 14);
 		add(lblDarDeBaja);
 		
-		textField = new JTextField();
-		textField.setBounds(112, 43, 312, 20);
-		add(textField);
-		textField.setColumns(10);
+		txtBusqueda = new JTextField();
+		txtBusqueda.setBounds(112, 43, 312, 20);
+		add(txtBusqueda);
+		txtBusqueda.setColumns(10);
 		
-		list = new JList();
-		list.setBounds(10, 93, 414, 164);
-		add(list);
+		listaResultado = new JList();
+		listaResultado.setToolTipText("");
+		listaResultado.setBounds(10, 93, 414, 164);
+		add(listaResultado);
 		
 		btnBorrarSeleccion = new JButton("Borrar seleccion");
 		btnBorrarSeleccion.setBounds(30, 268, 131, 20);
@@ -58,10 +58,10 @@ public class BajaPI extends JPanel implements EstructVentana{
 		btnBuscar.setActionCommand("btnBuscar");
 		add(btnBuscar);
 		
-		btnReset = new JButton("reset");
-		btnReset.setBounds(275, 267, 89, 23);
-		btnReset.setActionCommand("btnReset");
-		add(btnReset);
+		btnRestaurar = new JButton("Restaurar");
+		btnRestaurar.setBounds(275, 267, 89, 23);
+		btnRestaurar.setActionCommand("btnReset");
+		add(btnRestaurar);
 		
 		
 		
@@ -71,13 +71,9 @@ public class BajaPI extends JPanel implements EstructVentana{
 		//setBounds(250, 250,450,355);  //por defecto en todo
 	}
 	
-	public void hacerVisible() {
-		setVisible(true);
-	}
+	//Añadir el controlador
+		
+	/*public void setControlador(ControladorPI control) {			
 	
-	//TODO addactionListener
-	
-
-	
-
+	}*/
 }

@@ -1,14 +1,8 @@
 package vista.proyecto_integrador;
 
-import java.awt.HeadlessException;
-import java.awt.LayoutManager;
-import java.sql.Date;
-
-import javax.swing.JFrame;
-import javax.swing.UIManager;
-import javax.swing.WindowConstants;
-
 import vista.EstructVentana;
+
+import controlador.proyecto_integrador.ControladorPI;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -20,29 +14,27 @@ import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
-import javax.swing.JScrollPane;
 import javax.swing.JPanel;
-import javax.swing.JCheckBox;
 
 public class CrearPI extends JPanel implements EstructVentana{
-	private JTextField textField;
-	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private JTextField textField_1;
+	private JTextField txtUrl;
+	private final ButtonGroup btnGCursos = new ButtonGroup();
+	private JTextField txtGrupo;
 	private JLabel lblNombreDelProyecto;
 	private JTextField txtNamePrj;
 	private JLabel lblComponentes;
-	private JList<String> list;
+	private JList<String> listComponentes;
 	private JLabel lblUrlGithubProyecto;
 	private JLabel lblNota;
-	private JSpinner spinner;
-	private JLabel lblAo;
-	private JSpinner spinner_1;
+	private JSpinner spnNota;
+	private JLabel lblAnyo;
+	private JSpinner spnAnyo;
 	private JLabel lblCurso;
-	private JRadioButton radioButton;
-	private JRadioButton radioButton_1;
+	private JRadioButton rdbtn1;
+	private JRadioButton rdbtn2;
 	private JLabel lblGrupo;
 	private JLabel lblArea;
-	private JComboBox comboBox;
+	private JComboBox cmbArea;
 	private JButton btnGuardar;
 	private JButton btnLimpiar;
 	private JLabel lblIdentificadorunico;
@@ -52,7 +44,6 @@ public class CrearPI extends JPanel implements EstructVentana{
 
 	public CrearPI() {
 		super();
-
 		inicializar();
 
 	}
@@ -60,6 +51,10 @@ public class CrearPI extends JPanel implements EstructVentana{
 	public void inicializar() {
 
 		setLayout(null);
+		
+		lblIdentificadorunico = new JLabel("Identificador \u00FAnico:");
+		lblIdentificadorunico.setBounds(10, 11, 123, 14);
+		add(lblIdentificadorunico);
 
 		txtIdun = new JTextField();
 		txtIdun.setBounds(143, 8, 281, 20);
@@ -81,67 +76,67 @@ public class CrearPI extends JPanel implements EstructVentana{
 		lblComponentes.setBounds(10, 61, 123, 14);
 		add(lblComponentes);
 
-		list = new JList<String>();
-		list.setBounds(143, 64, 281, 71);
-		add(list);
+		listComponentes = new JList<String>();
+		listComponentes.setBounds(143, 64, 281, 71);
+		add(listComponentes);
 
 		lblUrlGithubProyecto = new JLabel("URL GitHub Proyecto:");
 		lblUrlGithubProyecto.setBounds(10, 149, 123, 14);
 		add(lblUrlGithubProyecto);
 
-		textField = new JTextField();
-		textField.setBounds(143, 146, 281, 20);
-		add(textField);
-		textField.setColumns(10);
+		txtUrl = new JTextField();
+		txtUrl.setBounds(143, 146, 281, 20);
+		add(txtUrl);
+		txtUrl.setColumns(10);
 
 		lblNota = new JLabel("Nota:");
 		lblNota.setBounds(71, 188, 46, 14);
 		add(lblNota);
 
-		spinner = new JSpinner();
-		spinner.setBounds(114, 185, 61, 20);
-		spinner.setModel(new SpinnerNumberModel(0, 0, 10, 1));
-		add(spinner);
+		spnNota = new JSpinner();
+		spnNota.setBounds(114, 185, 61, 20);
+		spnNota.setModel(new SpinnerNumberModel(0, 0, 10, 1));
+		add(spnNota);
 
-		lblAo = new JLabel("A\u00F1o:");
-		lblAo.setBounds(71, 213, 46, 14);
-		add(lblAo);
+		lblAnyo = new JLabel("A\u00F1o:");
+		lblAnyo.setBounds(71, 213, 46, 14);
+		add(lblAnyo);
 
-		spinner_1 = new JSpinner();
-		spinner_1.setBounds(114, 210, 61, 20);
-		spinner_1.setModel(new SpinnerNumberModel(2000, 2000, 2020, 1));
-		add(spinner_1);
+		spnAnyo = new JSpinner();
+		spnAnyo.setBounds(114, 210, 61, 20);
+		spnAnyo.setModel(new SpinnerNumberModel(2000, 2000, 2020, 1));
+		add(spnAnyo);
 
 		lblCurso = new JLabel("Curso:");
 		lblCurso.setBounds(218, 188, 46, 14);
 		add(lblCurso);
 
-		radioButton = new JRadioButton("1\u00BA");
-		radioButton.setBounds(270, 184, 46, 23);
-		buttonGroup.add(radioButton);
-		add(radioButton);
+		rdbtn1 = new JRadioButton("1\u00BA");
+		rdbtn1.setBounds(270, 184, 46, 23);
+		btnGCursos.add(rdbtn1);
+		add(rdbtn1);
 
-		radioButton_1 = new JRadioButton("2\u00BA");
-		radioButton_1.setBounds(331, 184, 46, 23);
-		buttonGroup.add(radioButton_1);
-		add(radioButton_1);
+		rdbtn2 = new JRadioButton("2\u00BA");
+		rdbtn2.setBounds(331, 184, 46, 23);
+		btnGCursos.add(rdbtn2);
+		add(rdbtn2);
 
 		lblGrupo = new JLabel("Grupo:");
 		lblGrupo.setBounds(218, 213, 46, 14);
 		add(lblGrupo);
 
-		textField_1 = new JTextField();
-		textField_1.setBounds(270, 210, 86, 20);
-		add(textField_1);
-		textField_1.setColumns(10);
+		txtGrupo = new JTextField();
+		txtGrupo.setBounds(270, 210, 86, 20);
+		add(txtGrupo);
+		txtGrupo.setColumns(10);
 
 		lblArea = new JLabel("Area:");
 		lblArea.setBounds(10, 247, 46, 14);
 		add(lblArea);
 
-		comboBox = new JComboBox();
-		comboBox.setBounds(143, 244, 281, 20);
-		add(comboBox);
+		cmbArea = new JComboBox();
+		cmbArea.setBounds(143, 244, 281, 20);
+		add(cmbArea);
 
 		btnGuardar = new JButton("Guardar");
 		btnGuardar.setBounds(86, 275, 89, 23);
@@ -159,15 +154,11 @@ public class CrearPI extends JPanel implements EstructVentana{
 		btnQuitar.setBounds(10, 112, 89, 23);
 		add(btnQuitar);
 
-		lblIdentificadorunico = new JLabel("Identificador \u00FAnico:");
-		lblIdentificadorunico.setBounds(10, 11, 123, 14);
-		add(lblIdentificadorunico);
-
 	}
 
-	public void setControlador() {
-		// TODO hay que poner el nombre del controlador en los argumentos y añadir todos
-		// los botones addactioncommand
-
-	}
+	//Añadir el controlador
+		
+	/*public void setControlador(ControladorPI control) {
+			
+	}*/
 }

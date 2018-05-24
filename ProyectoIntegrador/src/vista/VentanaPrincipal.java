@@ -56,15 +56,15 @@ public class VentanaPrincipal extends JFrame implements EstructVentana{
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
 	
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); // por defecto en todo
-	setBounds(250, 250, 704, 520); // por defecto en todo
-	setResizable(true);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); // por defecto en todo
+		setPreferredSize(new Dimension(610, 510)); // por defecto en todo
+		setResizable(true);
 		
 
 
 		// asignamos tamaño a la ventana 
 
-		setPreferredSize(new Dimension(600, 400));  
+		setPreferredSize(new Dimension(620, 580));  
 
 		// Se obtienen las dimensiones en pixels de la pantalla.       
 
@@ -134,6 +134,7 @@ public class VentanaPrincipal extends JFrame implements EstructVentana{
 	
 	
 	public void hacerVisible() {
+		pack();
 		setVisible(true);
 	}
 	

@@ -76,10 +76,16 @@ public class CVentanaPrincipal implements ActionListener {
 				vp1.verPanel(vConsultaArea);
 			} else if (source.equals(vp1.getMntmAltaAR())) {
 				System.out.println("boton de alta de Area");
+				vAltaArea = new AltaArea();
+				vp1.verPanel(vAltaArea);
 			} else if (source.equals(vp1.getMntmBajaAR())) {
 				System.out.println("boton de baja de Area");
+				vBajaArea = new BajaArea();
+				vp1.verPanel(vBajaArea);
 			} else if (source.equals(vp1.getMntmModificacionAR())) {
 				System.out.println("Boton de modificacion de Area");
+				vModificacionArea = new ModificacionArea();
+				vp1.verPanel(vModificacionArea);
 			}
 		}
 	}

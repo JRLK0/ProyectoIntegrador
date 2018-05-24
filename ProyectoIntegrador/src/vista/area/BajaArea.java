@@ -79,7 +79,7 @@ public class BajaArea extends JPanel implements EstructVentana{
 		txtNombre.setColumns(10);
 		
 		lblApellidos = new JLabel("Apellidos");
-		lblApellidos.setBounds(266, 62, 46, 14);
+		lblApellidos.setBounds(266, 62, 54, 14);
 		pnlBusqueda.add(lblApellidos);
 		
 		txtApellidos = new JTextField();
@@ -88,7 +88,7 @@ public class BajaArea extends JPanel implements EstructVentana{
 		txtApellidos.setColumns(10);
 		
 		btnActBusqueda = new JButton("Comenzar");
-		btnActBusqueda.setBounds(245, 94, 89, 23);
+		btnActBusqueda.setBounds(238, 94, 103, 23);
 		btnActBusqueda.setActionCommand("btnActBusqueda");
 		pnlBusqueda.add(btnActBusqueda);
 		
@@ -114,8 +114,6 @@ public class BajaArea extends JPanel implements EstructVentana{
 	}
 
 	public void addActionListener(CBajaArea control) {
-		rdbtnId.addActionListener(control);
-		rdbtnNombre.addActionListener(control);
 		btnActBusqueda.addActionListener(control);
 		btnEliminar.addActionListener(control);
 		btnFinalizar.addActionListener(control);
