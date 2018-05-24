@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import javax.swing.JButton;
 
-public class ConsultaPI extends JPanel{
+public class ConsultaPI extends JPanel implements EstructVentana{
 	private JTextField textField;
 	private JButton btnDetalle;
 	private JList list;
@@ -27,6 +27,7 @@ public class ConsultaPI extends JPanel{
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
 	public void inicializar() {
 		// TODO Auto-generated method stub
 

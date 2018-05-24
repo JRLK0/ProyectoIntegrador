@@ -7,6 +7,9 @@ import java.sql.Date;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.WindowConstants;
+
+import vista.EstructVentana;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -21,7 +24,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JPanel;
 import javax.swing.JCheckBox;
 
-public class CrearPI extends JPanel {
+public class CrearPI extends JPanel implements EstructVentana{
 	private JTextField textField;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JTextField textField_1;
@@ -53,8 +56,8 @@ public class CrearPI extends JPanel {
 		inicializar();
 
 	}
-
-	private void inicializar() {
+	@Override
+	public void inicializar() {
 
 		setLayout(null);
 

@@ -5,6 +5,9 @@ import java.awt.HeadlessException;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.WindowConstants;
+
+import vista.EstructVentana;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -16,7 +19,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ListSelectionModel;
 
-public class ModificarPI extends JPanel {
+public class ModificarPI extends JPanel implements EstructVentana{
 	private JTextField textField;
 	private JLabel lblModificarUnProyecto;
 	private JButton button;
@@ -31,7 +34,8 @@ public class ModificarPI extends JPanel {
 
 	}
 
-	private void inicializar() {
+	@Override
+	public void inicializar() {
 		
 		///////////////////////////////////////////////////////////////////////
 		setLayout(null);

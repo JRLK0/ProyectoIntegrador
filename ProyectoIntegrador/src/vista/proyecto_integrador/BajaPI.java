@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 
-
+import vista.EstructVentana;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
-public class BajaPI extends JPanel{
+public class BajaPI extends JPanel implements EstructVentana{
 	private JTextField textField;
 	private JLabel lblDarDeBaja;
 	private JList list;
@@ -29,8 +29,8 @@ public class BajaPI extends JPanel{
 		inicializar();
 	}
 
-	
-	private void inicializar() {
+	@Override
+	public void inicializar() {
 		
 		setLayout(null);
 		
