@@ -15,7 +15,7 @@ import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 
 @SuppressWarnings("serial")
-public class VentanaPrincipal extends JFrame {
+public class VentanaPrincipal extends JFrame implements EstructVentana{
 	private JMenuBar menuBar;
 	private JMenu mnPI;
 	private JMenuItem mntmConsultas;
@@ -39,7 +39,7 @@ public class VentanaPrincipal extends JFrame {
 		inicializar();
 	}
 
-	private void inicializar() {
+	public void inicializar() {
 		try { // por defecto en todo
 			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());// esto es pa que se vea en unos
 																						// laos igual Mac linux windows

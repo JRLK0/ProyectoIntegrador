@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <package id="1" language="java" name="vista" project="ProyectoIntegrador" 
+    file="/ProyectoIntegrador/ProyectoIntegrador/src/vista" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="586" width="1133" x="68" y="2"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="2" language="java" name="vista.alumno" project="ProyectoIntegrador" 
+    file="/ProyectoIntegrador/ProyectoIntegrador/src/vista/alumno" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="302" width="201" x="103" y="34"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="3" language="java" name="vista.area" project="ProyectoIntegrador" 
+    file="/ProyectoIntegrador/ProyectoIntegrador/src/vista/area" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="294" width="189" x="573" y="280"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="4" language="java" name="vista.proyecto_integrador" project="ProyectoIntegrador" 
+    file="/ProyectoIntegrador/ProyectoIntegrador/src/vista/proyecto_integrador" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="310" width="180" x="953" y="35"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <interface id="5" language="java" name="vista.EstructVentana" project="ProyectoIntegrador" 
+    file="/ProyectoIntegrador/ProyectoIntegrador/src/vista/EstructVentana.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="648" y="219"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="6" language="java" name="vista.alumno.AltaAlumnos" project="ProyectoIntegrador" 
+    file="/ProyectoIntegrador/ProyectoIntegrador/src/vista/alumno/AltaAlumnos.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="53" width="132" x="137" y="94"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="vista.VentanaPrincipal" project="ProyectoIntegrador" 
+    file="/ProyectoIntegrador/ProyectoIntegrador/src/vista/VentanaPrincipal.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="53" width="172" x="563" y="58"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="vista.alumno.BajaAlumnos" project="ProyectoIntegrador" 
+    file="/ProyectoIntegrador/ProyectoIntegrador/src/vista/alumno/BajaAlumnos.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="53" width="99" x="155" y="151"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="vista.alumno.ConsultaAlumnos" project="ProyectoIntegrador" 
+    file="/ProyectoIntegrador/ProyectoIntegrador/src/vista/alumno/ConsultaAlumnos.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="53" width="139" x="134" y="210"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="vista.alumno.ModificacionAlumnos" project="ProyectoIntegrador" 
+    file="/ProyectoIntegrador/ProyectoIntegrador/src/vista/alumno/ModificacionAlumnos.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="53" width="146" x="132" y="273"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="vista.area.AltaArea" project="ProyectoIntegrador" 
+    file="/ProyectoIntegrador/ProyectoIntegrador/src/vista/area/AltaArea.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="53" width="87" x="586" y="335"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="vista.area.BajaArea" project="ProyectoIntegrador" 
+    file="/ProyectoIntegrador/ProyectoIntegrador/src/vista/area/BajaArea.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="53" width="87" x="598" y="396"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="vista.area.ConsultaArea" project="ProyectoIntegrador" 
+    file="/ProyectoIntegrador/ProyectoIntegrador/src/vista/area/ConsultaArea.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="53" width="101" x="613" y="453"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="vista.area.ModificacionArea" project="ProyectoIntegrador" 
+    file="/ProyectoIntegrador/ProyectoIntegrador/src/vista/area/ModificacionArea.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="53" width="123" x="624" y="510"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="vista.proyecto_integrador.BajaPI" project="ProyectoIntegrador" 
+    file="/ProyectoIntegrador/ProyectoIntegrador/src/vista/proyecto_integrador/BajaPI.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="53" width="117" x="946" y="67"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="vista.proyecto_integrador.ConsultaPI" project="ProyectoIntegrador" 
+    file="/ProyectoIntegrador/ProyectoIntegrador/src/vista/proyecto_integrador/ConsultaPI.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="189" width="128" x="816" y="163"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <realization id="17">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <realization id="18">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <realization id="19">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <realization id="20">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <realization id="21">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <realization id="22">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <realization id="23">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <realization id="24">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <realization id="25">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
