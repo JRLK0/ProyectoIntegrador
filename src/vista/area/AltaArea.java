@@ -4,7 +4,7 @@ import java.awt.Dimension;
 
 import javax.swing.JPanel;
 
-import controlador.area.CAltaArea;
+import controlador.area.ControladorArea;
 import vista.EstructVentana;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -70,7 +70,7 @@ public class AltaArea extends JPanel implements EstructVentana{
 		
 	}
 
-	public void addActionListener(CAltaArea control) {
+	public void setControlador(ControladorArea control) {
 		btnCrear.addActionListener(control);
 		btnLimpiarDatos.addActionListener(control);
 		

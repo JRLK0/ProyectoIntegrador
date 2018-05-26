@@ -71,8 +71,6 @@ public class CVentanaPrincipal implements ActionListener {
 
 				//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			} else if (source.equals(vp1.getMntmConsultasAR())) {// #Alumnos#
-				System.out.println("boton de consulta Area");
-				vConsultaArea = new ConsultaArea();
 				vp1.verPanel(vConsultaArea);
 			} else if (source.equals(vp1.getMntmAltaAR())) {
 				System.out.println("boton de alta de Area");

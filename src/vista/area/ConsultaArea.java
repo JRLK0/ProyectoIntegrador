@@ -12,8 +12,9 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
-import controlador.area.CConsultaArea;
+import controlador.area.ControladorArea;
 import vista.EstructVentana;
+import javax.swing.JTable;
 
 @SuppressWarnings("serial")
 public class ConsultaArea extends JPanel implements EstructVentana{
@@ -33,6 +34,7 @@ public class ConsultaArea extends JPanel implements EstructVentana{
 	private JScrollPane scpTablaAreas;
 	
 	private JButton btnDetalles;
+	private JTable tblAreas;
 	
 	public ConsultaArea() {
 		inicializar();
@@ -98,6 +100,9 @@ public class ConsultaArea extends JPanel implements EstructVentana{
 		scpTablaAreas = new JScrollPane();
 		pnlTablaAreas.add(scpTablaAreas, BorderLayout.CENTER);
 		
+		tblAreas = new JTable();
+		scpTablaAreas.setViewportView(tblAreas);
+		
 		btnDetalles = new JButton("Detalles");
 		btnDetalles.setBounds(255, 468, 89, 23);
 		btnDetalles.setActionCommand("btnDetalles");
@@ -105,24 +110,46 @@ public class ConsultaArea extends JPanel implements EstructVentana{
 		
 	}
 
-	public void addActionListener(CConsultaArea control) {
+	public void setControlador(ControladorArea control) {
 		btnActBusqueda.addActionListener(control);
 		btnDetalles.addActionListener(control);
 	}
-	
+
 	public JRadioButton getRdbtnId() {
 		return rdbtnId;
 	}
-	
+
 	public JRadioButton getRdbtnNombre() {
 		return rdbtnNombre;
 	}
 
-	public JLabel getLblApellidos() {
-		return lblApellidos;
+	public JTextField getTxtId() {
+		return txtId;
+	}
+
+	public JTextField getTxtNombre() {
+		return txtNombre;
 	}
 
 	public JTextField getTxtApellidos() {
 		return txtApellidos;
+	}
+
+	public JButton getBtnActBusqueda() {
+		return btnActBusqueda;
+	}
+
+	public JButton getBtnDetalles() {
+		return btnDetalles;
+	}
+	
+	public void isIDactive() {
+		lblApellidos.setEnabled(false);
+		txtApellidos.setEnabled(false);
+	}
+	
+	public void isNombreActive() {
+		lblApellidos.setEnabled(true);
+		txtApellidos.setEnabled(true);
 	}
 }

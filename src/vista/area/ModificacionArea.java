@@ -12,9 +12,10 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
-import controlador.area.CModificacionArea;
+import controlador.area.ControladorArea;
 import vista.EstructVentana;
 import java.awt.Color;
+import javax.swing.JTable;
 
 @SuppressWarnings("serial")
 public class ModificacionArea extends JPanel implements EstructVentana{
@@ -34,7 +35,8 @@ public class ModificacionArea extends JPanel implements EstructVentana{
 	private JScrollPane scpTablaAreas;
 	
 	private JButton btnGuardarCambios;
-	private JButton btnReset;
+	private JButton btnRestaurar;
+	private JTable tblAreas;
 	
 	public ModificacionArea() {
 		inicializar();
@@ -100,11 +102,14 @@ public class ModificacionArea extends JPanel implements EstructVentana{
 		scpTablaAreas = new JScrollPane();
 		pnlTablaAreas.add(scpTablaAreas, BorderLayout.CENTER);
 		
-		btnReset = new JButton("Reset");
-		btnReset.setForeground(new Color(204, 0, 0));
-		btnReset.setBounds(324, 468, 89, 23);
-		btnReset.setActionCommand("btnReset");
-		add(btnReset);
+		tblAreas = new JTable();
+		scpTablaAreas.setViewportView(tblAreas);
+		
+		btnRestaurar = new JButton("Restaurar");
+		btnRestaurar.setForeground(new Color(204, 0, 0));
+		btnRestaurar.setBounds(324, 468, 89, 23);
+		btnRestaurar.setActionCommand("btnReset");
+		add(btnRestaurar);
 		
 		btnGuardarCambios = new JButton("Guardar Cambios");
 		btnGuardarCambios.setForeground(Color.BLUE);
@@ -114,25 +119,51 @@ public class ModificacionArea extends JPanel implements EstructVentana{
 		
 	}
 
-	public void addActionListener(CModificacionArea control) {
+	public void setControlador(ControladorArea control) {
 		btnActBusqueda.addActionListener(control);
-		btnReset.addActionListener(control);
+		btnRestaurar.addActionListener(control);
 		btnGuardarCambios.addActionListener(control);
 	}
 	
 	public JRadioButton getRdbtnId() {
 		return rdbtnId;
 	}
-	
+
 	public JRadioButton getRdbtnNombre() {
 		return rdbtnNombre;
 	}
 
-	public JLabel getLblApellidos() {
-		return lblApellidos;
+	public JTextField getTxtId() {
+		return txtId;
+	}
+
+	public JTextField getTxtNombre() {
+		return txtNombre;
 	}
 
 	public JTextField getTxtApellidos() {
 		return txtApellidos;
+	}
+
+	public JButton getBtnActBusqueda() {
+		return btnActBusqueda;
+	}
+
+	public JButton getBtnGuardarCambios() {
+		return btnGuardarCambios;
+	}
+
+	public JButton getBtnRestaurar() {
+		return btnRestaurar;
+	}
+	
+	public void isIDactive() {
+		lblApellidos.setEnabled(false);
+		txtApellidos.setEnabled(false);
+	}
+	
+	public void isNombreActive() {
+		lblApellidos.setEnabled(true);
+		txtApellidos.setEnabled(true);
 	}
 }

@@ -85,31 +85,31 @@ public class VentanaPrincipal extends JFrame implements EstructVentana{
 
 		mnPI = new JMenu("P.I.");
 		menuBar.add(mnPI);
+		
+				mntmAlta = new JMenuItem("Alta");
+				mnPI.add(mntmAlta);
+		
+				mntmBaja = new JMenuItem("Baja");
+				mnPI.add(mntmBaja);
 
 		mntmConsultas = new JMenuItem("Consultas");
 		mnPI.add(mntmConsultas);
 		mntmConsultas.setActionCommand("ConsultaPI");
-
-		mntmAlta = new JMenuItem("Alta");
-		mnPI.add(mntmAlta);
-
-		mntmBaja = new JMenuItem("Baja");
-		mnPI.add(mntmBaja);
 
 		mntmModificacion = new JMenuItem("Modificacion");
 		mnPI.add(mntmModificacion);
 
 		mnAlumnos = new JMenu("Alumnos");
 		menuBar.add(mnAlumnos);
-		
-		mntmConsultasA = new JMenuItem("Consultas");
-		mnAlumnos.add(mntmConsultasA);
 
 		mntmAltaA = new JMenuItem("Alta");
 		mnAlumnos.add(mntmAltaA);
 
 		mntmBajaA = new JMenuItem("Baja");
 		mnAlumnos.add(mntmBajaA);
+		
+		mntmConsultasA = new JMenuItem("Consultas");
+		mnAlumnos.add(mntmConsultasA);
 
 		mntmModificacionA = new JMenuItem("Modificacion");
 		mnAlumnos.add(mntmModificacionA);
@@ -117,15 +117,15 @@ public class VentanaPrincipal extends JFrame implements EstructVentana{
 		mnAreas = new JMenu("Areas");
 		menuBar.add(mnAreas);
 		
-		mntmConsultasAR = new JMenuItem("Consultas");
-		mnAreas.add(mntmConsultasAR);
-		mntmConsultasAR.setActionCommand("mntmConsultasAR");
-		
 		mntmAltaAR = new JMenuItem("Alta");
 		mnAreas.add(mntmAltaAR);
 
 		mntmBajaAR = new JMenuItem("Baja");
 		mnAreas.add(mntmBajaAR);
+		
+		mntmConsultasAR = new JMenuItem("Consultas");
+		mnAreas.add(mntmConsultasAR);
+		mntmConsultasAR.setActionCommand("mntmConsultasAR");
 		
 		mntmModificacionAR = new JMenuItem("Modificacion");
 		mnAreas.add(mntmModificacionAR);

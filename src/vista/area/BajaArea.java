@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-import controlador.area.CBajaArea;
+import controlador.area.ControladorArea;
 import vista.EstructVentana;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 import java.awt.Color;
+import javax.swing.JTable;
 
 @SuppressWarnings("serial")
 public class BajaArea extends JPanel implements EstructVentana{
@@ -35,6 +36,7 @@ public class BajaArea extends JPanel implements EstructVentana{
 	
 	private JButton btnEliminar;
 	private JButton btnFinalizar;
+	private JTable tblAreas;
 	
 	public BajaArea() {
 		inicializar();
@@ -100,6 +102,9 @@ public class BajaArea extends JPanel implements EstructVentana{
 		scpTablaAreas = new JScrollPane();
 		pnlTablaAreas.add(scpTablaAreas, BorderLayout.CENTER);
 		
+		tblAreas = new JTable();
+		scpTablaAreas.setViewportView(tblAreas);
+		
 		btnEliminar = new JButton("Eliminar");
 		btnEliminar.setForeground(Color.RED);
 		btnEliminar.setBounds(301, 468, 89, 23);
@@ -113,7 +118,7 @@ public class BajaArea extends JPanel implements EstructVentana{
 		
 	}
 
-	public void addActionListener(CBajaArea control) {
+	public void setControlador(ControladorArea control) {
 		btnActBusqueda.addActionListener(control);
 		btnEliminar.addActionListener(control);
 		btnFinalizar.addActionListener(control);
@@ -122,13 +127,9 @@ public class BajaArea extends JPanel implements EstructVentana{
 	public JRadioButton getRdbtnId() {
 		return rdbtnId;
 	}
-	
+
 	public JRadioButton getRdbtnNombre() {
 		return rdbtnNombre;
-	}
-
-	public JLabel getLblApellidos() {
-		return lblApellidos;
 	}
 
 	public JTextField getTxtId() {
@@ -153,5 +154,15 @@ public class BajaArea extends JPanel implements EstructVentana{
 
 	public JButton getBtnFinalizar() {
 		return btnFinalizar;
+	}
+	
+	public void isIDactive() {
+		lblApellidos.setEnabled(false);
+		txtApellidos.setEnabled(false);
+	}
+	
+	public void isNombreActive() {
+		lblApellidos.setEnabled(true);
+		txtApellidos.setEnabled(true);
 	}
 }
