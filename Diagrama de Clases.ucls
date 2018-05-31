@@ -13,7 +13,7 @@
   </package>  
   <package id="3" language="java" name="vista.area" project="ProyectoIntegrador" 
     file="/ProyectoIntegrador/ProyectoIntegrador/src/vista/area" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="294" width="189" x="573" y="280"/>    
+    <position height="294" width="189" x="574" y="282"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <package id="4" language="java" name="vista.proyecto_integrador" project="ProyectoIntegrador" 
@@ -114,60 +114,40 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="vista.proyecto_integrador.BajaPI" project="ProyectoIntegrador" 
-    file="/ProyectoIntegrador/ProyectoIntegrador/src/vista/proyecto_integrador/BajaPI.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="53" width="117" x="946" y="67"/>    
-    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="16" language="java" name="vista.proyecto_integrador.ConsultaPI" project="ProyectoIntegrador" 
-    file="/ProyectoIntegrador/ProyectoIntegrador/src/vista/proyecto_integrador/ConsultaPI.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="189" width="128" x="816" y="163"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <realization id="17">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="5"/>  
-  </realization>  
-  <realization id="18">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="5"/>  
-  </realization>  
-  <realization id="19">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="5"/>  
-  </realization>  
-  <realization id="20">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="5"/>  
-  </realization>  
-  <realization id="21">    
+  <realization id="15">    
     <end type="SOURCE" refId="12"/>    
     <end type="TARGET" refId="5"/>  
   </realization>  
-  <realization id="22">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="5"/>  
-  </realization>  
-  <realization id="23">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="5"/>  
-  </realization>  
-  <realization id="24">    
+  <realization id="16">    
     <end type="SOURCE" refId="14"/>    
     <end type="TARGET" refId="5"/>  
   </realization>  
-  <realization id="25">    
+  <realization id="17">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <realization id="18">    
     <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <realization id="19">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <realization id="20">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <realization id="21">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <realization id="22">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <realization id="23">    
+    <end type="SOURCE" refId="10"/>    
     <end type="TARGET" refId="5"/>  
   </realization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
