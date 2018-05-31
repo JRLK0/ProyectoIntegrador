@@ -28,13 +28,15 @@ public class CVentanaPrincipal implements ActionListener {
 	private ConsultaArea vConsultaArea;
 
 	public CVentanaPrincipal(VentanaPrincipal vp1) {
-		super();
 		this.vp1 = vp1;
+		vConsultaArea = new ConsultaArea();
+		vAltaArea = new AltaArea();
+		vBajaArea = new BajaArea();
+		vModificacionArea = new ModificacionArea();		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		Object source = e.getSource();
 
 		if (source instanceof JMenuItem) {
@@ -60,7 +62,7 @@ public class CVentanaPrincipal implements ActionListener {
 				vp1.verPanel(mPI3);
 
 				////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-			} else if (source.equals(vp1.getMntmConsultasA())) {// #AREA#
+			} else if (source.equals(vp1.getMntmConsultasA())) {// #ALUMNOS#
 				System.out.println("Boton de consulta de alumnos");
 			} else if (source.equals(vp1.getMntmAltaA())) {
 				System.out.println("Boton de alta de alumnos");
@@ -70,19 +72,13 @@ public class CVentanaPrincipal implements ActionListener {
 				System.out.println("boton de modificacion de alumnos");
 
 				//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-			} else if (source.equals(vp1.getMntmConsultasAR())) {// #Alumnos#
+			} else if (source.equals(vp1.getMntmConsultasAR())) {// #AREA#
 				vp1.verPanel(vConsultaArea);
 			} else if (source.equals(vp1.getMntmAltaAR())) {
-				System.out.println("boton de alta de Area");
-				vAltaArea = new AltaArea();
 				vp1.verPanel(vAltaArea);
 			} else if (source.equals(vp1.getMntmBajaAR())) {
-				System.out.println("boton de baja de Area");
-				vBajaArea = new BajaArea();
 				vp1.verPanel(vBajaArea);
 			} else if (source.equals(vp1.getMntmModificacionAR())) {
-				System.out.println("Boton de modificacion de Area");
-				vModificacionArea = new ModificacionArea();
 				vp1.verPanel(vModificacionArea);
 			}
 		}

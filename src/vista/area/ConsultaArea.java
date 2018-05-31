@@ -58,7 +58,6 @@ public class ConsultaArea extends JPanel implements EstructVentana{
 		rdbtnId = new JRadioButton("ID");
 		btnGBusqueda.add(rdbtnId);
 		rdbtnId.setBounds(27, 32, 51, 23);
-		rdbtnId.setActionCommand("rdbtnId");
 		pnlBusqueda.add(rdbtnId);
 		
 		txtId = new JTextField();
@@ -70,7 +69,6 @@ public class ConsultaArea extends JPanel implements EstructVentana{
 		rdbtnNombre.setSelected(true);
 		btnGBusqueda.add(rdbtnNombre);
 		rdbtnNombre.setBounds(27, 58, 79, 23);
-		rdbtnNombre.setActionCommand("rdbtnNombre");
 		pnlBusqueda.add(rdbtnNombre);
 		
 		txtNombre = new JTextField();
@@ -89,7 +87,6 @@ public class ConsultaArea extends JPanel implements EstructVentana{
 		
 		btnActBusqueda = new JButton("Comenzar");
 		btnActBusqueda.setBounds(239, 94, 102, 23);
-		btnActBusqueda.setActionCommand("btnActBusqueda");
 		pnlBusqueda.add(btnActBusqueda);
 		
 		pnlTablaAreas = new JPanel();
@@ -105,7 +102,6 @@ public class ConsultaArea extends JPanel implements EstructVentana{
 		
 		btnDetalles = new JButton("Detalles");
 		btnDetalles.setBounds(255, 468, 89, 23);
-		btnDetalles.setActionCommand("btnDetalles");
 		add(btnDetalles);
 		
 	}

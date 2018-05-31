@@ -60,7 +60,6 @@ public class ModificacionArea extends JPanel implements EstructVentana{
 		rdbtnId = new JRadioButton("ID");
 		btnGBusqueda.add(rdbtnId);
 		rdbtnId.setBounds(27, 32, 51, 23);
-		rdbtnId.setActionCommand("rdbtnId");
 		pnlBusqueda.add(rdbtnId);
 		
 		txtId = new JTextField();
@@ -72,7 +71,6 @@ public class ModificacionArea extends JPanel implements EstructVentana{
 		rdbtnNombre.setSelected(true);
 		btnGBusqueda.add(rdbtnNombre);
 		rdbtnNombre.setBounds(27, 58, 79, 23);
-		rdbtnNombre.setActionCommand("rdbtnNombre");
 		pnlBusqueda.add(rdbtnNombre);
 		
 		txtNombre = new JTextField();
@@ -91,7 +89,6 @@ public class ModificacionArea extends JPanel implements EstructVentana{
 		
 		btnActBusqueda = new JButton("Comenzar");
 		btnActBusqueda.setBounds(238, 94, 103, 23);
-		btnActBusqueda.setActionCommand("btnActBusqueda");
 		pnlBusqueda.add(btnActBusqueda);
 		
 		pnlTablaAreas = new JPanel();
@@ -108,13 +105,11 @@ public class ModificacionArea extends JPanel implements EstructVentana{
 		btnRestaurar = new JButton("Restaurar");
 		btnRestaurar.setForeground(new Color(204, 0, 0));
 		btnRestaurar.setBounds(324, 468, 89, 23);
-		btnRestaurar.setActionCommand("btnReset");
 		add(btnRestaurar);
 		
 		btnGuardarCambios = new JButton("Guardar Cambios");
 		btnGuardarCambios.setForeground(Color.BLUE);
 		btnGuardarCambios.setBounds(161, 468, 153, 23);
-		btnGuardarCambios.setActionCommand("btnGuardarCambios");
 		add(btnGuardarCambios);
 		
 	}

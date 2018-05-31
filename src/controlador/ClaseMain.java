@@ -40,7 +40,7 @@ public class ClaseMain {
 				
 				//Hacer visible la VentanaPrincipal
 				
-				vp.hacerVisible();	
+				vp.hacerVisible();
 			}
 		});
 	}

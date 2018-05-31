@@ -17,7 +17,7 @@ public class AccesoDB {
 
 	public AccesoDB() {
 		driver = "org.sqlite.JDBC";
-		url = "jdbc:sqlite:dbSQLite/LOGIN.db";//Esto hay que cambiarlo.
+		url = "jdbc:sqlite:dbSQLite/PROYECTO_INTEGRADOR.db";
 	}
 
 	public Connection getConexion() throws ClassNotFoundException, SQLException {

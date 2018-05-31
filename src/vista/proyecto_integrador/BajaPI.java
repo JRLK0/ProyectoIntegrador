@@ -49,18 +49,15 @@ public class BajaPI extends JPanel implements EstructVentana{
 		
 		btnBorrarSeleccion = new JButton("Borrar seleccion");
 		btnBorrarSeleccion.setBounds(30, 268, 131, 20);
-		btnBorrarSeleccion.setActionCommand("btnBorrarSeleccion");
 		add(btnBorrarSeleccion);
 		
 		
 		btnBuscar = new JButton("Buscar");
 		btnBuscar.setBounds(10, 42, 89, 23);
-		btnBuscar.setActionCommand("btnBuscar");
 		add(btnBuscar);
 		
 		btnRestaurar = new JButton("Restaurar");
 		btnRestaurar.setBounds(275, 267, 89, 23);
-		btnRestaurar.setActionCommand("btnReset");
 		add(btnRestaurar);
 		
 		

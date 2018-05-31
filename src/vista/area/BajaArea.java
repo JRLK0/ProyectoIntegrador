@@ -60,7 +60,6 @@ public class BajaArea extends JPanel implements EstructVentana{
 		rdbtnId = new JRadioButton("ID");
 		btnGBusqueda.add(rdbtnId);
 		rdbtnId.setBounds(27, 32, 51, 23);
-		rdbtnId.setActionCommand("rdbtnId");
 		pnlBusqueda.add(rdbtnId);
 		
 		txtId = new JTextField();
@@ -70,7 +69,6 @@ public class BajaArea extends JPanel implements EstructVentana{
 		
 		rdbtnNombre = new JRadioButton("Nombre");
 		rdbtnNombre.setSelected(true);
-		rdbtnNombre.setActionCommand("rdbtnNombre");
 		btnGBusqueda.add(rdbtnNombre);
 		rdbtnNombre.setBounds(27, 58, 79, 23);
 		pnlBusqueda.add(rdbtnNombre);
@@ -91,7 +89,6 @@ public class BajaArea extends JPanel implements EstructVentana{
 		
 		btnActBusqueda = new JButton("Comenzar");
 		btnActBusqueda.setBounds(238, 94, 103, 23);
-		btnActBusqueda.setActionCommand("btnActBusqueda");
 		pnlBusqueda.add(btnActBusqueda);
 		
 		pnlTablaAreas = new JPanel();
@@ -108,17 +105,17 @@ public class BajaArea extends JPanel implements EstructVentana{
 		btnEliminar = new JButton("Eliminar");
 		btnEliminar.setForeground(Color.RED);
 		btnEliminar.setBounds(301, 468, 89, 23);
-		btnEliminar.setActionCommand("btnEliminar");
 		add(btnEliminar);
 		
 		btnFinalizar = new JButton("Finalizar");
 		btnFinalizar.setBounds(201, 468, 89, 23);
-		btnFinalizar.setActionCommand("btnFinalizar");
 		add(btnFinalizar);
 		
 	}
 
 	public void setControlador(ControladorArea control) {
+		rdbtnId.addActionListener(control);
+		rdbtnNombre.addActionListener(control);
 		btnActBusqueda.addActionListener(control);
 		btnEliminar.addActionListener(control);
 		btnFinalizar.addActionListener(control);

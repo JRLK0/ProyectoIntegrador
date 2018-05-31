@@ -86,11 +86,11 @@ public class VentanaPrincipal extends JFrame implements EstructVentana{
 		mnPI = new JMenu("P.I.");
 		menuBar.add(mnPI);
 		
-				mntmAlta = new JMenuItem("Alta");
-				mnPI.add(mntmAlta);
+		mntmAlta = new JMenuItem("Alta");
+		mnPI.add(mntmAlta);
 		
-				mntmBaja = new JMenuItem("Baja");
-				mnPI.add(mntmBaja);
+		mntmBaja = new JMenuItem("Baja");
+		mnPI.add(mntmBaja);
 
 		mntmConsultas = new JMenuItem("Consultas");
 		mnPI.add(mntmConsultas);
@@ -208,6 +208,4 @@ public class VentanaPrincipal extends JFrame implements EstructVentana{
 	public void verPanel(JPanel obj1) {
 		scrollPane.setViewportView(obj1);
 	}
-		
-	
 }
