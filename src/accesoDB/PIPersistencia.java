@@ -45,9 +45,13 @@ public class PIPersistencia {
 
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
+			
+			System.out.println("QQQQ1");
 			e.printStackTrace();
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			System.out.println("qqqqq2");
 			e.printStackTrace();
 		}finally {
 			

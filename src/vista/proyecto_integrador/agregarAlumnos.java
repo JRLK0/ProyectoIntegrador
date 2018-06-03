@@ -24,6 +24,7 @@ public class agregarAlumnos extends JFrame {
 		super();
 
 		inicializar(ArrayListAlumnos);
+		hacerVisible();
 
 	}
 
@@ -63,6 +64,10 @@ public class agregarAlumnos extends JFrame {
 
 	public JButton getBtnAgregar() {
 		return btnAgregar;
+	}
+	
+	public void hacerVisible() {
+		setVisible(true);
 	}
 	
 	
