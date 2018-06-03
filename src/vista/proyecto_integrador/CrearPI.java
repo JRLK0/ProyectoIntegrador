@@ -11,15 +11,20 @@ import javax.swing.JList;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JRadioButton;
+
+import java.awt.geom.Area;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.DefaultComboBoxModel;
 
-public class CrearPI extends JPanel implements EstructVentana{
+public class CrearPI extends JPanel implements IVpi {
 	private JTextField txtUrl;
 	private final ButtonGroup btnGCursos = new ButtonGroup();
-	private JTextField txtGrupo;
 	private JLabel lblNombreDelProyecto;
 	private JTextField txtNamePrj;
 	private JLabel lblComponentes;
@@ -34,40 +39,42 @@ public class CrearPI extends JPanel implements EstructVentana{
 	private JRadioButton rdbtn2;
 	private JLabel lblGrupo;
 	private JLabel lblArea;
-	private JComboBox cmbArea;
+	private JComboBox<String>cmbArea;
 	private JButton btnGuardar;
 	private JButton btnLimpiar;
 	private JLabel lblIdentificadorunico;
 	private JTextField txtIdun;
 	private JButton btnQuitar;
 	private JButton btnAgregar;
+	private JComboBox cmbGrupo;
 
 	public CrearPI() {
 		super();
 		inicializar();
 
 	}
+
 	@Override
 	public void inicializar() {
 
 		setLayout(null);
-		
+
 		lblIdentificadorunico = new JLabel("Identificador \u00FAnico:");
 		lblIdentificadorunico.setBounds(10, 11, 123, 14);
 		add(lblIdentificadorunico);
 
 		txtIdun = new JTextField();
-		txtIdun.setBounds(143, 8, 281, 20);
+		txtIdun.setBounds(153, 8, 271, 20);
 		txtIdun.setHorizontalAlignment(SwingConstants.CENTER);
 		add(txtIdun);
 		txtIdun.setColumns(10);
 
 		lblNombreDelProyecto = new JLabel("Nombre del proyecto:");
-		lblNombreDelProyecto.setBounds(10, 36, 123, 14);
+		lblNombreDelProyecto.setBounds(10, 36, 131, 14);
 		add(lblNombreDelProyecto);
 
 		txtNamePrj = new JTextField();
-		txtNamePrj.setBounds(143, 33, 281, 20);
+		txtNamePrj.setBounds(153, 33, 271, 20);
 		txtNamePrj.setHorizontalAlignment(SwingConstants.CENTER);
 		add(txtNamePrj);
 		txtNamePrj.setColumns(10);
@@ -77,7 +84,7 @@ public class CrearPI extends JPanel implements EstructVentana{
 		add(lblComponentes);
 
 		listComponentes = new JList<String>();
-		listComponentes.setBounds(143, 64, 281, 71);
+		listComponentes.setBounds(153, 64, 271, 71);
 		add(listComponentes);
 
 		lblUrlGithubProyecto = new JLabel("URL GitHub Proyecto:");
@@ -85,7 +92,7 @@ public class CrearPI extends JPanel implements EstructVentana{
 		add(lblUrlGithubProyecto);
 
 		txtUrl = new JTextField();
-		txtUrl.setBounds(143, 146, 281, 20);
+		txtUrl.setBounds(153, 146, 271, 20);
 		add(txtUrl);
 		txtUrl.setColumns(10);
 
@@ -125,16 +132,17 @@ public class CrearPI extends JPanel implements EstructVentana{
 		lblGrupo.setBounds(218, 213, 46, 14);
 		add(lblGrupo);
 
-		txtGrupo = new JTextField();
-		txtGrupo.setBounds(270, 210, 86, 20);
-		add(txtGrupo);
-		txtGrupo.setColumns(10);
-
 		lblArea = new JLabel("Area:");
 		lblArea.setBounds(10, 247, 46, 14);
 		add(lblArea);
-
+		
+		ArrayList<String> places = new ArrayList<String>();
+		places.add("Buenos Aires");
+		places.add("Córdoba");
+		places.add("La Plata");
+		
 		cmbArea = new JComboBox();
+		cmbArea.setModel(new DefaultComboBoxModel(places.toArray()));
 		cmbArea.setBounds(143, 244, 281, 20);
 		add(cmbArea);
 
@@ -154,11 +162,57 @@ public class CrearPI extends JPanel implements EstructVentana{
 		btnQuitar.setBounds(10, 112, 89, 23);
 		add(btnQuitar);
 
+		cmbGrupo = new JComboBox();
+		cmbGrupo.setBounds(270, 209, 154, 22);
+		add(cmbGrupo);
+
 	}
 
-	//Añadir el controlador
+	@Override
+	public void setControlador(ControladorPI control) {
+
+		rdbtn1.addActionListener(control);// segun que btn hago un filtro del grupo
+		rdbtn2.addActionListener(control);
+
+		btnAgregar.addActionListener(control);
+		btnGuardar.addActionListener(control);
+		btnLimpiar.addActionListener(control);
+		btnQuitar.addActionListener(control);
+	}
+
+	/*
+	 * @author JorgeM Mis0 getters
+	 */
+
+	public JRadioButton getRdbtn1() {
+		return rdbtn1;
+	}
+
+	public JRadioButton getRdbtn2() {
+		return rdbtn2;
+	}
+
+	public JButton getBtnGuardar() {
+		return btnGuardar;
+	}
+
+	public JButton getBtnLimpiar() {
+		return btnLimpiar;
+	}
+
+	public JButton getBtnQuitar() {
+		return btnQuitar;
+	}
+
+	public JButton getBtnAgregar() {
+		return btnAgregar;
+	}
+
+	public void agregarAlumno() {
+		// TODO Auto-generated method stub
 		
-	/*public void setControlador(ControladorPI control) {
-			
-	}*/
+	}
+
+
+
 }

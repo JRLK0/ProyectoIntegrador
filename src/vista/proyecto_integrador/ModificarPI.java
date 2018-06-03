@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 
 @SuppressWarnings("serial")
-public class ModificarPI extends JPanel implements EstructVentana{
+public class ModificarPI extends JPanel implements IVpi{
 	private JTextField txtBuscar;
 	private JLabel lblModificarUnProyecto;
 	private JButton button;
@@ -65,9 +65,11 @@ public class ModificarPI extends JPanel implements EstructVentana{
 
 	}
 
-	//Añadir el controlador
+	@Override
+	public void setControlador(ControladorPI control) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
-	/*public void setControlador(ControladorPI control) {
-				
-	}*/
 }
