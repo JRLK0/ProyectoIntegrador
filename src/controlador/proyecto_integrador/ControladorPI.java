@@ -64,7 +64,7 @@ public class ControladorPI implements ActionListener {
 			System.out.println("hola");
 
 		} else if (source.equals(crearPI.getBtnLimpiar())) {
-			// boton limpiar
+			// boton limpiar0
 
 			System.out.println("hola");
 
