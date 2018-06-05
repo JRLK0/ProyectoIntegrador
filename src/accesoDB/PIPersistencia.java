@@ -26,7 +26,7 @@ public class PIPersistencia {
 
 		try {
 			con = acceso.getConexion();
-			String query = "SELECT * FROM ALUMNOS";
+			String query = "SELECT  * FROM ALUMNOS";
 			pstmt = con.prepareStatement(query);
 			rstl = pstmt.executeQuery();
 

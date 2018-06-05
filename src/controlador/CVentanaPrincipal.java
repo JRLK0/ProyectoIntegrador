@@ -46,7 +46,7 @@ public class CVentanaPrincipal implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		
-		ControladorPI = new ControladorPI();
+		ControladorPI = new ControladorPI(vp1);
 
 
 		if (source instanceof JMenuItem) {

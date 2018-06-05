@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import accesoDB.PIPersistencia;
 import modelo.Alumno;
+import vista.VentanaPrincipal;
 import vista.proyecto_integrador.CrearPI;
 import vista.proyecto_integrador.agregarAlumnos;
 
@@ -21,9 +22,11 @@ public class ControladorPI implements ActionListener {
 	private CrearPI crearPI;
 	private PIPersistencia piPersis;
 	private agregarAlumnos agAlumno;
+	private VentanaPrincipal ventanillaPrincipal;
 
-	public ControladorPI() {
+	public ControladorPI(VentanaPrincipal vp1) {
 		super();
+		ventanillaPrincipal=vp1;
 	}
 
 	public void setCrearPI(CrearPI crearPI) {
@@ -51,7 +54,8 @@ public class ControladorPI implements ActionListener {
 			System.out.println("hola");
 			// funciona pero necesita convertirse a tostring el array list eso se deberia de
 			// hacer en la clase de agregarAlumno
-			agAlumno = new agregarAlumnos(kiki);
+			agAlumno = new agregarAlumnos(kiki, ventanillaPrincipal, true);// ESTA MIERDA A VER COMO LO HAGO, HAY QUE PONERLE LA
+																// VENTANA PRINCIPAL EN TO EL PUTO MEDIO PRIMO
 
 		} else if (source.equals(crearPI.getBtnQuitar())) {
 			// boton quitar
