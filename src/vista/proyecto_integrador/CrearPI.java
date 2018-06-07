@@ -1,7 +1,7 @@
 package vista.proyecto_integrador;
 
 import vista.EstructVentana;
-
+import vista.VentanaPrincipal;
 import controlador.proyecto_integrador.ControladorPI;
 import modelo.Alumno;
 
@@ -13,6 +13,7 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JRadioButton;
 
+import java.awt.Frame;
 import java.awt.geom.Area;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -231,4 +232,6 @@ public class CrearPI extends JPanel implements IVpi {
 		listComponentes.setModel(modelo);
 		
 	}
+
+
 }

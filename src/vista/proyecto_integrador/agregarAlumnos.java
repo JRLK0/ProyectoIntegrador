@@ -28,6 +28,7 @@ import modelo.Alumno;
 public class agregarAlumnos extends JDialog {
 	private JScrollPane scrollPane;
 	private JButton btnAgregar;
+	private JList list;
 
 	public agregarAlumnos(ArrayList<Alumno> ArrayListAlumnos,Frame frame, boolean block) throws HeadlessException {
 		super(frame, block);
@@ -56,12 +57,7 @@ public class agregarAlumnos extends JDialog {
 		scrollPane = new JScrollPane();
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
 
-		ArrayList<String> AlumnosNombre = new ArrayList<String>();
-		for (Alumno alumno : alAlumno) {
-			AlumnosNombre.add(alumno.getNombre());
-		}
-
-		JList list = new JList(alAlumno.toArray());
+		list = new JList(alAlumno.toArray());
 
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(list);
@@ -110,8 +106,8 @@ public class agregarAlumnos extends JDialog {
 
 	public Alumno getSelectedItem() {
 		// TODO Auto-generated method stub
-		
-		return null;
+		Alumno alumnoSeleccionado = (Alumno) list.getSelectedValue();
+		return alumnoSeleccionado;
 	}
 
 }
