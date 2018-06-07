@@ -1,150 +1,165 @@
 package vista.area;
 
-import java.awt.Dimension;
-
 import javax.swing.JPanel;
 
 import controlador.area.ControladorArea;
 import modelo.Area;
-import vista.EstructVentana;
+
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.JTextArea;
+import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
+import javax.swing.JTextArea;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 
 @SuppressWarnings("serial")
-public class AltaArea extends JPanel implements EstructVentana{
-	
-	private JLabel lblId;
-	private JTextField txtId;
-	private JButton btnIdentificarId;
-	private JLabel lblNombre;
+public class AltaArea extends JPanel{
 	private JTextField txtNombre;
+	private JLabel lblId;
+	private JButton btnVerificarId;
+	private JLabel lblNombre;
 	private JLabel lblDescripcion;
 	private JTextArea txtDescripcion;
-	private JButton btnLimpiarDatos;
-	private JButton btnCrear;
+	private JButton btnBorrarCampos;
+	private JButton btnAnadirArea;
+	private JSpinner spnId;
 	
 	public AltaArea() {
+		super();
 		inicializar();
 	}
 
-	@Override
 	public void inicializar() {
-		setPreferredSize(new Dimension(600, 400));
-		setLayout(null);
 		
 		lblId = new JLabel("ID:");
-		lblId.setBounds(32, 37, 46, 14);
-		add(lblId);
 		
-		txtId = new JTextField();
-		txtId.setBounds(88, 34, 122, 20);
-		add(txtId);
-		txtId.setColumns(10);
+		btnVerificarId = new JButton("Verificar ID");
 		
 		lblNombre = new JLabel("Nombre:");
 		lblNombre.setEnabled(false);
-		lblNombre.setBounds(32, 82, 56, 14);
-		add(lblNombre);
 		
 		txtNombre = new JTextField();
 		txtNombre.setEnabled(false);
-		txtNombre.setBounds(88, 79, 174, 20);
-		add(txtNombre);
 		txtNombre.setColumns(10);
 		
-		lblDescripcion = new JLabel("Descripci\u00F3n:");
+		lblDescripcion = new JLabel("Descripcion:");
 		lblDescripcion.setEnabled(false);
-		lblDescripcion.setBounds(32, 132, 73, 14);
-		add(lblDescripcion);
 		
 		txtDescripcion = new JTextArea();
 		txtDescripcion.setEnabled(false);
-		txtDescripcion.setBounds(32, 157, 531, 131);
-		add(txtDescripcion);
 		
-		btnCrear = new JButton("Crear");
-		btnCrear.setEnabled(false);
-		btnCrear.setBounds(197, 325, 89, 23);
-		add(btnCrear);
+		btnBorrarCampos = new JButton("Borrar Campos");
+		btnBorrarCampos.setEnabled(false);
 		
-		btnLimpiarDatos = new JButton("Limpiar Datos");
-		btnLimpiarDatos.setEnabled(false);
-		btnLimpiarDatos.setBounds(308, 325, 114, 23);
-		add(btnLimpiarDatos);
+		btnAnadirArea = new JButton("A\u00F1adir area");
+		btnAnadirArea.setEnabled(false);
 		
-		btnIdentificarId = new JButton("Identificar ID");
-		btnIdentificarId.setBounds(267, 33, 122, 23);
-		add(btnIdentificarId);
-		
+		spnId = new JSpinner();
+		spnId.setModel(new SpinnerNumberModel(1, 1, 999, 1));
+		GroupLayout groupLayout = new GroupLayout(this);
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(38)
+							.addComponent(lblId)
+							.addGap(18)
+							.addComponent(spnId, GroupLayout.PREFERRED_SIZE, 49, GroupLayout.PREFERRED_SIZE)
+							.addGap(41)
+							.addComponent(btnVerificarId))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(30)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(lblDescripcion)
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addComponent(txtDescripcion, GroupLayout.PREFERRED_SIZE, 284, GroupLayout.PREFERRED_SIZE))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(lblNombre)
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addComponent(txtNombre, GroupLayout.PREFERRED_SIZE, 129, GroupLayout.PREFERRED_SIZE))))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(135)
+							.addComponent(btnBorrarCampos)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnAnadirArea)))
+					.addContainerGap(68, Short.MAX_VALUE))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(44)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblId)
+						.addComponent(btnVerificarId)
+						.addComponent(spnId, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(53)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblNombre)
+						.addComponent(txtNombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(35)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblDescripcion)
+						.addComponent(txtDescripcion, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
+					.addGap(26)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnBorrarCampos)
+						.addComponent(btnAnadirArea))
+					.addGap(28))
+		);
+		setLayout(groupLayout);
 	}
-
+	
 	public void setControlador(ControladorArea control) {
-		btnIdentificarId.addActionListener(control);
-		btnCrear.addActionListener(control);
-		btnLimpiarDatos.addActionListener(control);
-		
+		btnVerificarId.addActionListener(control);
+		btnAnadirArea.addActionListener(control);
+		btnBorrarCampos.addActionListener(control);
+	}
+	
+	public JButton getBtnVerificarId() {
+		return btnVerificarId;
 	}
 
-	public JTextField getTxtId() {
-		return txtId;
+	public JButton getBtnBorrarCampos() {
+		return btnBorrarCampos;
 	}
 
-	public JTextField getTxtNombre() {
-		return txtNombre;
-	}
-
-	public JTextArea getTxtDescripcion() {
-		return txtDescripcion;
-	}
-
-	public JButton getBtnLimpiarDatos() {
-		return btnLimpiarDatos;
-	}
-
-	public JButton getBtnCrear() {
-		return btnCrear;
-	}
-
-	public JButton getBtnIdentificarId() {
-		return btnIdentificarId;
+	public JButton getBtnAnadirArea() {
+		return btnAnadirArea;
 	}
 
 	public int obtenerID() {
-		int id = 0;
-		try {
-			id = Integer.parseInt(txtId.getText());
-		} catch (NumberFormatException e){
-			JOptionPane.showMessageDialog(getParent(), "El id debe ser número","Error",JOptionPane.ERROR_MESSAGE);
-		}
+		int id = (int)spnId.getValue();
 		return id;
 	}
 
-	public void activarCampos() {
+	public JSpinner getSpnId() {
+		return spnId;
+	}
+
+	public void mostrarCampos() {
 		lblId.setEnabled(false);
-		txtId.setEnabled(false);
-		btnIdentificarId.setEnabled(false);
-		
+		spnId.setEnabled(false);
 		lblNombre.setEnabled(true);
 		txtNombre.setEnabled(true);
 		lblDescripcion.setEnabled(true);
 		txtDescripcion.setEnabled(true);
-		
-		btnCrear.setEnabled(true);
-		btnLimpiarDatos.setEnabled(true);
+		btnAnadirArea.setEnabled(true);
+		btnBorrarCampos.setEnabled(true);
 	}
 
-	public void limpiarDatos() {
+	public void borrarCampos() {
 		txtNombre.setText("");
 		txtDescripcion.setText("");
 	}
 
 	public Area obtenerArea() {
 		Area area = null;
-		area = new Area(Integer.parseInt(txtId.getText()), txtNombre.getText(), txtDescripcion.getText());
+		area = new Area((int)spnId.getValue(), txtNombre.getText(), txtDescripcion.getText());
 		return area;
 	}
-	
 }

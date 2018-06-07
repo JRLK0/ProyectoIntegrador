@@ -5,7 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 import modelo.Area;
+import vista.area.AltaArea;
 
 public class AreaPersistencia {
 
@@ -15,8 +18,8 @@ public class AreaPersistencia {
 		acc = new AccesoDB();
 	}
 
-	public boolean comprobarID(int id) {
-		boolean resultado = false;
+	public boolean consutarID(int id) {
+		boolean verificar = false;
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -24,14 +27,15 @@ public class AreaPersistencia {
 		
 		try {
 			con = acc.getConexion();
-			String query = "SELECT id_area FROM areas WHERE id_areas = ?";
+			String query = "SELECT * FROM areas WHERE id_area = ?";
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, id);
 			rslt = pstmt.executeQuery();
 			
 			if(rslt.next()) {
-				resultado = true;
+				verificar = true;
 			}
+			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -45,30 +49,28 @@ public class AreaPersistencia {
 				e.printStackTrace();
 			}
 		}
-		
-		return resultado;
+		return verificar;
 	}
 
-	public String guardarArea(Area area) {
-		String msg = "";
+	public void guardarArea(Area area) {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
 		try {
 			con = acc.getConexion();
-			String query = "INSERT INTO areas VALUES(?,?,?)";
+			String query = "INSERT INTO areas VALUES(?, ?, ?)";
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, area.getId_area());
 			pstmt.setString(2, area.getNombre());
 			pstmt.setString(3, area.getDescripcion());
-			int result = pstmt.executeUpdate();
+			int rslt = pstmt.executeUpdate();
 			
-			if(result == 1) {
-				msg ="La area se ha guardado en la base de datos";
+			if(rslt > 0) {
+				JOptionPane.showMessageDialog(new AltaArea(), "La area se ha guardado en la base de datos","Guardado correctamente",JOptionPane.INFORMATION_MESSAGE);
 			}
 			else {
-				msg ="Error al guardar la area";
+				JOptionPane.showMessageDialog(new AltaArea(), "La area no se ha guardado en la base de datos","Guardado fallido",JOptionPane.ERROR_MESSAGE);
 			}
 			
 		} catch (ClassNotFoundException e) {
@@ -83,8 +85,5 @@ public class AreaPersistencia {
 				e.printStackTrace();
 			}
 		}
-		
-		return msg;
 	}
-
 }

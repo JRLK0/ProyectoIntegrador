@@ -154,11 +154,13 @@ public class BajaArea extends JPanel implements EstructVentana{
 	}
 	
 	public void isIDactive() {
+		txtNombre.setEnabled(false);
 		lblApellidos.setEnabled(false);
 		txtApellidos.setEnabled(false);
 	}
 	
 	public void isNombreActive() {
+		txtNombre.setEnabled(true);
 		lblApellidos.setEnabled(true);
 		txtApellidos.setEnabled(true);
 	}
