@@ -2,12 +2,14 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JMenuItem;
 
 import accesoDB.PIPersistencia;
 import controlador.area.ControladorArea;
 import controlador.proyecto_integrador.ControladorPI;
+import modelo.Alumno;
 import vista.VentanaPrincipal;
 import vista.area.AltaArea;
 import vista.area.BajaArea;
@@ -17,15 +19,18 @@ import vista.proyecto_integrador.BajaPI;
 import vista.proyecto_integrador.ConsultaPI;
 import vista.proyecto_integrador.CrearPI;
 import vista.proyecto_integrador.ModificarPI;
+import vista.proyecto_integrador.agregarAlumnos;
 
 public class CVentanaPrincipal implements ActionListener {
 	
 	private VentanaPrincipal vp1;
 	
-	private CrearPI aPI1;
-	private BajaPI bPI2;
-	private ConsultaPI cPI0;
-	private ModificarPI mPI3;
+	private CrearPI crearPII;
+	private BajaPI BajaPII;
+	private ConsultaPI ConsultaPII;
+	private ModificarPI ModificarPII;
+	private agregarAlumnos agregarAlumnosI;
+	private PIPersistencia piPersis;
 	
 	private ControladorPI ControladorPI;
 	
@@ -36,46 +41,38 @@ public class CVentanaPrincipal implements ActionListener {
 	
 	private ControladorArea controladorArea;
 	
-	private PIPersistencia piPersis;
+	
 
 	public CVentanaPrincipal(VentanaPrincipal vp1) {
 		this.vp1 = vp1;
+		ControladorPI = new ControladorPI();
+		piPersis = new PIPersistencia();
+		controladorArea = new ControladorArea();
+		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		
-		ControladorPI = new ControladorPI(vp1);
-		controladorArea = new ControladorArea();
+		
+		
 
 		if (source instanceof JMenuItem) {
 			//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-			if (source.equals(vp1.getMntmAlta())) {// #PI#
-				System.out.println("boton de alta de PI");
-				aPI1 = new CrearPI();
-				piPersis = new PIPersistencia();
-				vp1.verPanel(aPI1);
-				aPI1.setControlador(ControladorPI);
-				ControladorPI.setCrearPI(aPI1);
-				ControladorPI.setPiPersis(piPersis);				
-
+			if (source.equals(vp1.getMntmAlta())) {
+				ArrayList<Alumno> alumnosTODOS = piPersis.dameAlumnos();
+				
+				crearPII = new CrearPI();
+				agregarAlumnosI = new agregarAlumnos(alumnosTODOS,vp1, true);				
+				crearPII.setControlador(ControladorPI);
+				
 			} else if (source.equals(vp1.getMntmConsultas())) {
-				System.out.println("boton de consulta de PI");
-				cPI0 = new ConsultaPI();
-				vp1.verPanel(cPI0);
-
+				
 			} else if (source.equals(vp1.getMntmBaja())) {
-				System.out.println("boton de baja de PI");
-				bPI2 = new BajaPI();
-				vp1.verPanel(bPI2);
-
+				
 			} else if (source.equals(vp1.getMntmModificacion())) {
-				System.out.println("boton modificacion de PI");
-				mPI3 = new ModificarPI();
-				vp1.verPanel(mPI3);
-
-				////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+				
 			} else if (source.equals(vp1.getMntmConsultasA())) {// #ALUMNOS#
 				System.out.println("Boton de consulta de alumnos");
 			} else if (source.equals(vp1.getMntmAltaA())) {
@@ -109,4 +106,5 @@ public class CVentanaPrincipal implements ActionListener {
 			}
 		}
 	}
+	
 }
