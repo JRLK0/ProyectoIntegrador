@@ -1,8 +1,20 @@
 package vista.alumno;
 
+import java.awt.BorderLayout;
+import java.awt.Font;
+import java.awt.HeadlessException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import controlador.CVentanaPrincipal;
+import controlador.area.ControladorArea;
 import vista.EstructVentana;
 
 /**
@@ -12,18 +24,14 @@ import vista.EstructVentana;
 @SuppressWarnings("serial")
 public class ConsultaAlumnos extends JPanel implements EstructVentana{
 
-	@Override
-	public void inicializar() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	public void addActionListener(CVentanaPrincipal control) {
 		// TODO Auto-generated method stub
 		
 	}
 	
-	/*private JPanel pnlBusqueda;  //Panel de los componentes búsqueda
+	private JPanel pnlBusqueda;  //Panel de los componentes búsqueda
 	private JLabel lblBsqueda;   //"Búsqueda"
 
 	private JLabel lblNombre;   //"Nombre:"
@@ -43,18 +51,18 @@ public class ConsultaAlumnos extends JPanel implements EstructVentana{
 	private JButton btnFinalizar;  //Botón "Finalizar"
 	
 	public ConsultaAlumnos() throws HeadlessException {
-		super("Consulta de alumnos");
+
 		inicializar();
 	}
 
 	@Override
 	public void inicializar() {
-		getContentPane().setLayout(null);
+		setLayout(null);
 		
 		pnlBusqueda = new JPanel();
 		pnlBusqueda.setToolTipText("");
 		pnlBusqueda.setBounds(10, 11, 790, 132);
-		getContentPane().add(pnlBusqueda);
+		add(pnlBusqueda);
 		pnlBusqueda.setLayout(null);
 		
 		lblBsqueda = new JLabel("B\u00FAsqueda");
@@ -100,7 +108,7 @@ public class ConsultaAlumnos extends JPanel implements EstructVentana{
 		
 		pnlAlumnos = new JPanel();
 		pnlAlumnos.setBounds(10, 154, 790, 378);
-		getContentPane().add(pnlAlumnos);
+		add(pnlAlumnos);
 		pnlAlumnos.setLayout(new BorderLayout(0, 0));
 		
 		scrpAlumnos = new JScrollPane();
@@ -112,11 +120,50 @@ public class ConsultaAlumnos extends JPanel implements EstructVentana{
 			}
 		});
 		btnFinalizar.setBounds(360, 543, 89, 23);
-		getContentPane().add(btnFinalizar);
+	    add(btnFinalizar);
 		
 	}
+	public void setControlador(ControladorArea control) {
+		btnActivarBusqueda.addActionListener(control);
+		btnFinalizar.addActionListener(control);
+	}
 
-	public void hacerVisible() {
-		setVisible(true);
-	}*/
+
+	public JTextField getTxtNombre() {
+		return txtNombre;
+	}
+
+
+	
+	public JTextField getTxtApellidos() {
+		return txtApellidos;
+	}
+
+
+	public JTextField getTxtId() {
+		return txtId;
+	}
+
+	public JButton getBtnActivarBusqueda() {
+		return btnActivarBusqueda;
+	}
+
+
+	public JButton getBtnFinalizar() {
+		return btnFinalizar;
+	}
+	
+	public void adA() {
+		txtNombre.setEnabled(false);
+		txtApellidos.setEnabled(false);
+	}
+	
+	public void nombreA() {
+		txtNombre.setEnabled(true);
+		txtApellidos.setEnabled(true);
+	}
+
+
+	
+	
 }

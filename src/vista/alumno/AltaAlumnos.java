@@ -12,6 +12,9 @@ import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 
 import controlador.CVentanaPrincipal;
+import controlador.area.ControladorArea;
+import modelo.Alumno;
+import modelo.Area;
 import vista.EstructVentana;
 
 /**
@@ -31,7 +34,6 @@ public class AltaAlumnos extends JPanel implements EstructVentana{
 	}
 	
 	private JLabel lblId;  //"ID:"
-	private JTextField txtId;  //Introducir ID
 	
 	private JLabel lblNombre;  //"Nombre:"
 	private JTextField txtNombre;  //Introducir nombre
@@ -58,54 +60,90 @@ public class AltaAlumnos extends JPanel implements EstructVentana{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		setLayout(null);
 		
 		
 		lblId = new JLabel("ID:");
 		lblId.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblId.setBounds(37, 16, 52, 23);
-		
-		txtId = new JTextField();
-		txtId.setColumns(10);
-		txtId.setBounds(116, 18, 125, 20);
+		lblId.setBounds(216, 40, 19, 16);
+		add(lblId);
 		
 		lblNombre = new JLabel("Nombre:");
 		lblNombre.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNombre.setBounds(37, 50, 65, 23);
-		
-		txtNombre = new JTextField();
-		txtNombre.setColumns(10);
-		txtNombre.setBounds(116, 52, 145, 20);
+		lblNombre.setBounds(181, 71, 54, 16);
+		add(lblNombre);
 		
 		lblApellidos = new JLabel("Apellidos:");
 		lblApellidos.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblApellidos.setBounds(37, 84, 74, 23);
+		lblApellidos.setBounds(172, 101, 63, 16);
+		add(lblApellidos);
+		
+		txtNombre = new JTextField();
+		txtNombre.setColumns(10);
+		txtNombre.setBounds(245, 70, 101, 20);
+		add(txtNombre);
 		
 		txtApellidos = new JTextField();
 		txtApellidos.setColumns(10);
-		txtApellidos.setBounds(116, 86, 168, 20);
-		
-		lblExpediente = new JLabel("Expediente:");
-		lblExpediente.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblExpediente.setBounds(37, 118, 89, 23);
+		txtApellidos.setBounds(245, 100, 138, 20);
+		add(txtApellidos);
 		
 		
 		txtAExpediente = new JTextArea();
-		txtAExpediente.setBounds(37, 140, 355, 79);
+		txtAExpediente.setBounds(245, 131, 101, 22);
+		add(txtAExpediente);
+		
+		lblExpediente = new JLabel("Expediente:");
+		lblExpediente.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblExpediente.setBounds(159, 134, 76, 16);
+		add(lblExpediente);
 		
 		
 		btnFinalizar = new JButton("Finalizar");
-		btnFinalizar.setBounds(98, 228, 89, 23);
+		btnFinalizar.setBounds(193, 199, 71, 23);
+		add(btnFinalizar);
 		
 		
 		btnLimpiar = new JButton("Limpiar");
-		btnLimpiar.setBounds(224, 228, 89, 23);
-		
+		btnLimpiar.setBounds(330, 199, 65, 23);
+		add(btnLimpiar);
 		
 		
 	}
-
 	
+	public void setControlador(ControladorArea control) {
+		btnFinalizar.addActionListener(control);
+		btnLimpiar.addActionListener(control);
+		
+	}
 
+	public JButton getBtnFinalizar() {
+		return btnFinalizar;
+	}
+
+	public JButton getBtnLimpiar() {
+		return btnLimpiar;
+	}
+	
+	public void mostrarCampos() {
+		lblId.setEnabled(false);
+		txtApellidos.setEnabled(false);
+		lblNombre.setEnabled(true);
+		txtNombre.setEnabled(true);
+		lblExpediente.setEnabled(true);
+		txtAExpediente.setEnabled(true);
+		btnFinalizar.setEnabled(true);
+		btnLimpiar.setEnabled(true);
+		lblApellidos.setEnabled(true);
+	}
+	
+	public void borrarCampos() {
+		txtNombre.setText("");
+		txtAExpediente.setText("");
+		txtApellidos.setText("");
+	}
+	
+	
 	
 }
 
