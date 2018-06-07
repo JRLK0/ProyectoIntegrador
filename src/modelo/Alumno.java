@@ -36,7 +36,7 @@ public class Alumno {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		String alumno = ""+id_alumno;
+		String alumno = ""+nombre+" "+apellidos;
 		return alumno;
 	}
 	

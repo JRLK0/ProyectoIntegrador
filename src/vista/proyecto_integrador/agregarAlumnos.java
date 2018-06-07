@@ -15,6 +15,7 @@ import java.awt.Frame;
 import javax.swing.JList;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
+import javax.swing.ListModel;
 import javax.swing.AbstractListModel;
 import javax.swing.DefaultListModel;
 import javax.swing.ListSelectionModel;
@@ -60,7 +61,7 @@ public class agregarAlumnos extends JDialog {
 			AlumnosNombre.add(alumno.getNombre());
 		}
 
-		JList list = new JList(AlumnosNombre.toArray());
+		JList list = new JList(alAlumno.toArray());
 
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(list);
@@ -105,6 +106,12 @@ public class agregarAlumnos extends JDialog {
 
 	public void hacerVisible() {
 		setVisible(true);
+	}
+
+	public Alumno getSelectedItem() {
+		// TODO Auto-generated method stub
+		
+		return null;
 	}
 
 }

@@ -24,11 +24,6 @@ public class AltaAlumnos extends JPanel implements EstructVentana{
 	
 
 	
-
-	public Object getBtnCrear() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	private JLabel lblId;  //"ID:"
 	private JTextField txtId;  //Introducir ID
@@ -52,12 +47,7 @@ public class AltaAlumnos extends JPanel implements EstructVentana{
 
 	@Override
 	public void inicializar() {
-		
-		try {
-			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	
 		
 		
 		lblId = new JLabel("ID:");
