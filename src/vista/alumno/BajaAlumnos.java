@@ -147,6 +147,10 @@ public class BajaAlumnos extends JPanel implements EstructVentana{
 		btnFinalizar.addActionListener(control);
 	}
 
+	public JButton getBtnComenzar() {
+		return btnComenzar;
+	}
+
 	public ButtonGroup getId_Nombre() {
 		return Id_Nombre;
 	}

@@ -3,6 +3,8 @@ package controlador.alumnos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JRadioButton;
+
 import accesoDB.AlumnoPersistencia;
 import accesoDB.AreaPersistencia;
 import modelo.Alumno;
@@ -64,8 +66,15 @@ public class ControladorAlumnos implements ActionListener {
 			if(alumno != null) {
 				ap.guardarAlumno(alumno);
 			}
+		}else if (fuente instanceof JRadioButton) {
+			
+			if(fuente.equals(bajaAL.getRdbtnBusqId())) {
+				bajaAL.idA();
+			}
+			else if(fuente.equals(bajaAL.getRdbtnBusqNombre())) {
+				bajaAL.nombreA();
+			}
 		}
-		
 	}
 
 }
