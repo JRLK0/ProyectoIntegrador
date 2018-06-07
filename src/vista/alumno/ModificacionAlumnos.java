@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 import controlador.CVentanaPrincipal;
+import controlador.alumnos.ControladorAlumnos;
 import controlador.area.ControladorArea;
 
 /**
@@ -106,7 +107,7 @@ public class ModificacionAlumnos extends JPanel implements EstructVentana{
 		
 			
 	}
-	public void setControlador(ControladorArea control) {
+	public void setControlador(ControladorAlumnos control) {
 		btnFinalizar.addActionListener(control);
 		btnModificar.addActionListener(control);
 	}
@@ -115,17 +116,10 @@ public class ModificacionAlumnos extends JPanel implements EstructVentana{
 		return rbtnId;
 	}
 
-	public JTextField getTxtId() {
-		return txtId;
-	}
-
 	public JRadioButton getRbtnNombre() {
 		return rbtnNombre;
 	}
 
-	public JTextField getTxtNombre() {
-		return txtNombre;
-	}
 
 	public JRadioButton getRbtnApellidos() {
 		return rbtnApellidos;

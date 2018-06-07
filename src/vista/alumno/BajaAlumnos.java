@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 import controlador.CVentanaPrincipal;
+import controlador.alumnos.ControladorAlumnos;
 import controlador.area.ControladorArea;
 import vista.EstructVentana;
 
@@ -110,15 +111,12 @@ public class BajaAlumnos extends JPanel implements EstructVentana{
 		
 	}
 	
-	public void setControlador(ControladorArea control) {
+	public void setControlador(ControladorAlumnos control) {
 		rdbtnBusqApellidos.addActionListener(control);
 		rdbtnBusqId.addActionListener(control);
 		rdbtnBusqNombre.addActionListener(control);
 		btnEliminar.addActionListener(control);
 		btnFinalizar.addActionListener(control);
-		txtApellidos.addActionListener(control);
-		txtID.addActionListener(control);
-		txtNombre.addActionListener(control);
 	}
 
 	public ButtonGroup getId_Nombre() {
@@ -129,25 +127,15 @@ public class BajaAlumnos extends JPanel implements EstructVentana{
 		return rdbtnBusqId;
 	}
 
-	public JTextField getTxtID() {
-		return txtID;
-	}
-
 	public JRadioButton getRdbtnBusqNombre() {
 		return rdbtnBusqNombre;
 	}
 
-	public JTextField getTxtNombre() {
-		return txtNombre;
-	}
 
 	public JRadioButton getRdbtnBusqApellidos() {
 		return rdbtnBusqApellidos;
 	}
 
-	public JTextField getTxtApellidos() {
-		return txtApellidos;
-	}
 
 	public JButton getBtnFinalizar() {
 		return btnFinalizar;

@@ -129,20 +129,6 @@ public class ConsultaAlumnos extends JPanel implements EstructVentana{
 	}
 
 
-	public JTextField getTxtNombre() {
-		return txtNombre;
-	}
-
-
-	
-	public JTextField getTxtApellidos() {
-		return txtApellidos;
-	}
-
-
-	public JTextField getTxtId() {
-		return txtId;
-	}
 
 	public JButton getBtnActivarBusqueda() {
 		return btnActivarBusqueda;

@@ -12,6 +12,7 @@ import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 
 import controlador.CVentanaPrincipal;
+import controlador.alumnos.ControladorAlumnos;
 import controlador.area.ControladorArea;
 import modelo.Alumno;
 import modelo.Area;
@@ -41,6 +42,7 @@ public class AltaAlumnos extends JPanel implements EstructVentana{
 	
 	private JButton btnFinalizar;  //Botón "Finalizar"
 	private JButton btnLimpiar;	 //Botón Limpiar
+	private JTextField txtID;
 	
 	public AltaAlumnos() throws HeadlessException {
 		
@@ -49,58 +51,65 @@ public class AltaAlumnos extends JPanel implements EstructVentana{
 
 	@Override
 	public void inicializar() {
+		setLayout(null);
 
 		
 		
 		lblId = new JLabel("ID:");
 		lblId.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblId.setBounds(216, 40, 19, 16);
+		lblId.setBounds(139, 47, 19, 16);
 		add(lblId);
 		
 		lblNombre = new JLabel("Nombre:");
 		lblNombre.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNombre.setBounds(181, 71, 54, 16);
+		lblNombre.setBounds(124, 78, 54, 16);
 		add(lblNombre);
 		
 		lblApellidos = new JLabel("Apellidos:");
 		lblApellidos.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblApellidos.setBounds(172, 101, 63, 16);
+		lblApellidos.setBounds(125, 119, 63, 16);
 		add(lblApellidos);
 		
 		txtNombre = new JTextField();
 		txtNombre.setColumns(10);
-		txtNombre.setBounds(245, 70, 101, 20);
+		txtNombre.setBounds(198, 77, 86, 20);
 		add(txtNombre);
 		
 		txtApellidos = new JTextField();
 		txtApellidos.setColumns(10);
-		txtApellidos.setBounds(245, 100, 138, 20);
+		txtApellidos.setBounds(198, 118, 86, 20);
 		add(txtApellidos);
 		
 		
 		txtAExpediente = new JTextArea();
-		txtAExpediente.setBounds(245, 131, 101, 22);
+		txtAExpediente.setBounds(208, 159, 174, 22);
 		add(txtAExpediente);
 		
 		lblExpediente = new JLabel("Expediente:");
 		lblExpediente.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblExpediente.setBounds(159, 134, 76, 16);
+		lblExpediente.setBounds(124, 162, 76, 16);
 		add(lblExpediente);
 		
 		
 		btnFinalizar = new JButton("Finalizar");
-		btnFinalizar.setBounds(193, 199, 71, 23);
+		btnFinalizar.setBounds(128, 193, 71, 23);
 		add(btnFinalizar);
 		
 		
 		btnLimpiar = new JButton("Limpiar");
-		btnLimpiar.setBounds(330, 199, 65, 23);
+		btnLimpiar.setBounds(255, 205, 65, 23);
 		add(btnLimpiar);
+		
+		txtID = new JTextField();
+		txtID.setEnabled(false);
+		txtID.setBounds(198, 46, 86, 20);
+		add(txtID);
+		txtID.setColumns(10);
 		
 		
 	}
 	
-	public void setControlador(ControladorArea control) {
+	public void setControlador(ControladorAlumnos control) {
 		btnFinalizar.addActionListener(control);
 		btnLimpiar.addActionListener(control);
 		
@@ -131,8 +140,5 @@ public class AltaAlumnos extends JPanel implements EstructVentana{
 		txtAExpediente.setText("");
 		txtApellidos.setText("");
 	}
-	
-	
-	
 }
 
