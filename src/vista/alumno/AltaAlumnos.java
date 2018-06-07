@@ -57,7 +57,7 @@ public class AltaAlumnos extends JPanel implements EstructVentana{
 		
 		lblId = new JLabel("ID:");
 		lblId.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblId.setBounds(139, 47, 19, 16);
+		lblId.setBounds(159, 51, 19, 16);
 		add(lblId);
 		
 		lblNombre = new JLabel("Nombre:");
@@ -67,42 +67,42 @@ public class AltaAlumnos extends JPanel implements EstructVentana{
 		
 		lblApellidos = new JLabel("Apellidos:");
 		lblApellidos.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblApellidos.setBounds(125, 119, 63, 16);
+		lblApellidos.setBounds(113, 119, 63, 16);
 		add(lblApellidos);
 		
 		txtNombre = new JTextField();
 		txtNombre.setColumns(10);
-		txtNombre.setBounds(198, 77, 86, 20);
+		txtNombre.setBounds(188, 77, 112, 20);
 		add(txtNombre);
 		
 		txtApellidos = new JTextField();
 		txtApellidos.setColumns(10);
-		txtApellidos.setBounds(198, 118, 86, 20);
+		txtApellidos.setBounds(186, 118, 184, 20);
 		add(txtApellidos);
 		
 		
 		txtAExpediente = new JTextArea();
-		txtAExpediente.setBounds(208, 159, 174, 22);
+		txtAExpediente.setBounds(196, 159, 124, 22);
 		add(txtAExpediente);
 		
 		lblExpediente = new JLabel("Expediente:");
 		lblExpediente.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblExpediente.setBounds(124, 162, 76, 16);
+		lblExpediente.setBounds(102, 162, 76, 16);
 		add(lblExpediente);
 		
 		
 		btnFinalizar = new JButton("Finalizar");
-		btnFinalizar.setBounds(128, 193, 71, 23);
+		btnFinalizar.setBounds(159, 218, 71, 23);
 		add(btnFinalizar);
 		
 		
 		btnLimpiar = new JButton("Limpiar");
-		btnLimpiar.setBounds(255, 205, 65, 23);
+		btnLimpiar.setBounds(305, 218, 65, 23);
 		add(btnLimpiar);
 		
 		txtID = new JTextField();
 		txtID.setEnabled(false);
-		txtID.setBounds(198, 46, 86, 20);
+		txtID.setBounds(188, 50, 86, 20);
 		add(txtID);
 		txtID.setColumns(10);
 		

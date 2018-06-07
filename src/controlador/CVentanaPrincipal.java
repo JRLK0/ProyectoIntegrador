@@ -92,17 +92,12 @@ public class CVentanaPrincipal implements ActionListener {
 				controladorAlumno.setConsultaAL(vConsultaAlumnos);
 				vConsultaAlumnos.setControlador(controladorArea);
 				vp1.verPanel(vConsultaAlumnos);
-				
 			} else if (source.equals(vp1.getMntmAltaA())) {
 				System.out.println("Boton de alta de alumnos");
-				
 				vAltaAlumnos = new AltaAlumnos();//crear
 				controladorAlumno.setAltaAL(vAltaAlumnos);
 				vAltaAlumnos.setControlador(controladorAlumno);
 				vp1.verPanel(vAltaAlumnos);
-				
-				
-				
 			} else if (source.equals(vp1.getMntmBajaA())) {
 				System.out.println("Boton de baja de alumnos");
 				vBajaAlumnos = new BajaAlumnos();//crear
