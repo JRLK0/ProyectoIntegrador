@@ -16,6 +16,9 @@ import controlador.CVentanaPrincipal;
 import controlador.alumnos.ControladorAlumnos;
 import controlador.area.ControladorArea;
 import vista.EstructVentana;
+import javax.swing.JLabel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 /**
  * Eliminar alumno
@@ -46,6 +49,8 @@ public class BajaAlumnos extends JPanel implements EstructVentana{
 	
 	private JButton btnFinalizar;  //Botón "Finalizar"
 	private JButton btnEliminar;  //Botón "Eliminar"
+	private JButton btnComenzar;
+	private JLabel lblBusqueda;
 	
 	public BajaAlumnos() throws HeadlessException {
 		
@@ -62,51 +67,73 @@ public class BajaAlumnos extends JPanel implements EstructVentana{
 		
 		setLayout(null);
 		
-		rdbtnBusqId = new JRadioButton("Mediante ID");
+		rdbtnBusqId = new JRadioButton("ID");
 		Id_Nombre.add(rdbtnBusqId);
-		rdbtnBusqId.setBounds(50, 22, 109, 23);
+		rdbtnBusqId.setBounds(10, 22, 53, 23);
 		add(rdbtnBusqId);
 		
 		txtID = new JTextField();
-		txtID.setBounds(165, 23, 118, 20);
+		txtID.setBounds(78, 23, 89, 20);
 		add(txtID);
 		txtID.setColumns(10);
 		
-		rdbtnBusqNombre = new JRadioButton("Mediante Nombre");
-		rdbtnBusqNombre.setSelected(true);
-		Id_Nombre.add(rdbtnBusqNombre);
-		rdbtnBusqNombre.setBounds(50, 48, 109, 23);
-		add(rdbtnBusqNombre);
-		
 		txtNombre = new JTextField();
-		txtNombre.setBounds(165, 49, 118, 20);
+		txtNombre.setBounds(78, 52, 118, 20);
 		add(txtNombre);
 		txtNombre.setColumns(10);
 		
 		rdbtnBusqApellidos = new JRadioButton("Apellidos");
-		rdbtnBusqApellidos.setBounds(289, 48, 89, 23);
+		rdbtnBusqApellidos.setBounds(226, 51, 72, 23);
 		add(rdbtnBusqApellidos);
 		
 		txtApellidos = new JTextField();
-		txtApellidos.setBounds(378, 49, 159, 20);
+		txtApellidos.setBounds(304, 52, 159, 20);
 		add(txtApellidos);
 		txtApellidos.setColumns(10);
 		
 		pnlAlumnos = new JPanel();
-		pnlAlumnos.setBounds(10, 81, 527, 260);
+		pnlAlumnos.setBounds(27, 121, 527, 238);
 		add(pnlAlumnos);
 		pnlAlumnos.setLayout(new BorderLayout(0, 0));
 		
 		scrpAlumnos = new JScrollPane();
-		pnlAlumnos.add(scrpAlumnos, BorderLayout.CENTER);
+		pnlAlumnos.add(scrpAlumnos, BorderLayout.NORTH);
 		
 		btnFinalizar = new JButton("Finalizar");
-		btnFinalizar.setBounds(165, 352, 89, 23);
+		btnFinalizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnFinalizar.setBounds(162, 370, 89, 23);
 		add(btnFinalizar);
 		
 		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(289, 352, 89, 23);
+		btnEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnEliminar.setBounds(292, 370, 89, 23);
 		add(btnEliminar);
+		
+		rdbtnBusqNombre = new JRadioButton("Nombre");
+		rdbtnBusqNombre.setBounds(10, 48, 63, 30);
+		add(rdbtnBusqNombre);
+		rdbtnBusqNombre.setSelected(true);
+		Id_Nombre.add(rdbtnBusqNombre);
+		
+		lblBusqueda = new JLabel("    B\u00DASQUEDA");
+		lblBusqueda.setBounds(226, 0, 72, 34);
+		add(lblBusqueda);
+		
+		btnComenzar = new JButton("Comenzar");
+		btnComenzar.addActionListener(new ActionListener() {
+			
+			
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnComenzar.setBounds(206, 87, 118, 23);
+		add(btnComenzar);
 		
 		
 	}
@@ -115,6 +142,7 @@ public class BajaAlumnos extends JPanel implements EstructVentana{
 		rdbtnBusqApellidos.addActionListener(control);
 		rdbtnBusqId.addActionListener(control);
 		rdbtnBusqNombre.addActionListener(control);
+		btnComenzar.addActionListener(control);
 		btnEliminar.addActionListener(control);
 		btnFinalizar.addActionListener(control);
 	}
@@ -145,7 +173,7 @@ public class BajaAlumnos extends JPanel implements EstructVentana{
 		return btnEliminar;
 	}
 	
-	public void adA() {
+	public void idA() {
 		txtNombre.setEnabled(false);
 		txtApellidos.setEnabled(false);
 	}
@@ -154,6 +182,4 @@ public class BajaAlumnos extends JPanel implements EstructVentana{
 		txtNombre.setEnabled(true);
 		txtApellidos.setEnabled(true);
 	}
-
-	
 }

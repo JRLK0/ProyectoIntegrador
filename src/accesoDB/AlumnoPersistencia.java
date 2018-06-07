@@ -26,12 +26,12 @@ public class AlumnoPersistencia {
 			
 			try {
 				con = acceso.getConexion();
-				String query = "INSERT INTO areas VALUES(?, ?, ?)";
+				String query = "INSERT INTO alumno VALUES( ?, ?, ?)";
 				pstmt = con.prepareStatement(query);
-				pstmt.setInt(1, alumno.getId_alumno());
-				pstmt.setString(2,alumno.getNombre());
-				pstmt.setString(3, alumno.getApellidos());
-				pstmt.setString(4, alumno.getExpediente());
+				
+				pstmt.setString(1,alumno.getNombre());
+				pstmt.setString(2, alumno.getApellidos());
+				pstmt.setString(3, alumno.getExpediente());
 				pstmt = con.prepareStatement(query);
 				int rslt = pstmt.executeUpdate();
 				

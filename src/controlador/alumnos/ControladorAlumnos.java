@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 
 import accesoDB.AlumnoPersistencia;
 import accesoDB.AreaPersistencia;
+import modelo.Alumno;
+import modelo.Area;
 import vista.alumno.AltaAlumnos;
 import vista.alumno.BajaAlumnos;
 import vista.alumno.ConsultaAlumnos;
@@ -53,14 +55,16 @@ public class ControladorAlumnos implements ActionListener {
 		
 				
 		if(fuente.equals(altaAL.getBtnLimpiar())) {
-			System.out.println("comrpruebo boton limpiar");
-		}else if (fuente.equals(altaAL.getBtnFinalizar())) {
-			System.out.println("compruebo boton finalizar");
+			altaAL.borrarCampos();
 			
-			
-			
-		}
 		
+			
+		}else if(fuente.equals(altaAL.getBtnFinalizar())) {
+			Alumno alumno = altaAL.cogerDatos();
+			if(alumno != null) {
+				ap.guardarAlumno(alumno);
+			}
+		}
 		
 	}
 

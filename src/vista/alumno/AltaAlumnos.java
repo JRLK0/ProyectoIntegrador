@@ -11,12 +11,15 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 
+import org.omg.PortableServer.ID_ASSIGNMENT_POLICY_ID;
+
 import controlador.CVentanaPrincipal;
 import controlador.alumnos.ControladorAlumnos;
 import controlador.area.ControladorArea;
 import modelo.Alumno;
 import modelo.Area;
 import vista.EstructVentana;
+import javax.swing.JSpinner;
 
 /**
  * Añadir alumnos
@@ -42,7 +45,7 @@ public class AltaAlumnos extends JPanel implements EstructVentana{
 	
 	private JButton btnFinalizar;  //Botón "Finalizar"
 	private JButton btnLimpiar;	 //Botón Limpiar
-	private JTextField txtID;
+	private JSpinner spnId;
 	
 	public AltaAlumnos() throws HeadlessException {
 		
@@ -100,11 +103,9 @@ public class AltaAlumnos extends JPanel implements EstructVentana{
 		btnLimpiar.setBounds(305, 218, 65, 23);
 		add(btnLimpiar);
 		
-		txtID = new JTextField();
-		txtID.setEnabled(false);
-		txtID.setBounds(188, 50, 86, 20);
-		add(txtID);
-		txtID.setColumns(10);
+		spnId = new JSpinner();
+		spnId.setBounds(188, 50, 54, 20);
+		add(spnId);
 		
 		
 	}
@@ -140,5 +141,14 @@ public class AltaAlumnos extends JPanel implements EstructVentana{
 		txtAExpediente.setText("");
 		txtApellidos.setText("");
 	}
+
+	public Alumno cogerDatos() {
+		
+		Alumno alumno =null;
+		alumno = new Alumno( (int) spnId.getValue(), txtNombre.getText(), txtApellidos.getText(), txtAExpediente.getText());
+		return alumno;
+	}
+
+	
 }
 
