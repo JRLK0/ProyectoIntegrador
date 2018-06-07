@@ -14,7 +14,7 @@ public class AccesoDB {
 		this.driver = driver;
 		this.url = url;
 	}
-
+//hola
 	public AccesoDB() {
 		driver = "org.sqlite.JDBC";
 		url = "jdbc:sqlite:dbSQLite/PROYECTO_INTEGRADOR.db";
