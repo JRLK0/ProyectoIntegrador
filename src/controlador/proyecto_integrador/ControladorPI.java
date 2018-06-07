@@ -50,11 +50,11 @@ public class ControladorPI implements ActionListener {
 		if (source.equals(crearPI.getBtnAgregar())) {
 			// boton agregar
 
-			ArrayList<Alumno> kiki = piPersis.dameAlumnos();
+			ArrayList<Alumno> alumnosTODOS = piPersis.dameAlumnos();
 			System.out.println("hola");
 			// funciona pero necesita convertirse a tostring el array list eso se deberia de
 			// hacer en la clase de agregarAlumno
-			agAlumno = new agregarAlumnos(kiki, ventanillaPrincipal, true);// ESTA MIERDA A VER COMO LO HAGO, HAY QUE PONERLE LA
+			agAlumno = new agregarAlumnos(alumnosTODOS, ventanillaPrincipal, true);// ESTA MIERDA A VER COMO LO HAGO, HAY QUE PONERLE LA
 																// VENTANA PRINCIPAL EN TO EL PUTO MEDIO PRIMO
 
 		} else if (source.equals(crearPI.getBtnQuitar())) {
