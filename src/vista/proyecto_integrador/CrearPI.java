@@ -4,11 +4,13 @@ import vista.EstructVentana;
 import vista.VentanaPrincipal;
 import controlador.proyecto_integrador.ControladorPI;
 import modelo.Alumno;
+import modelo.Grupo;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JRadioButton;
@@ -19,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -44,16 +47,19 @@ public class CrearPI extends JPanel implements IVpi {
 	private JRadioButton rdbtn2;
 	private JLabel lblGrupo;
 	private JLabel lblArea;
-	private JComboBox<String>cmbArea;
+	private JComboBox<Area> cmbArea;
 	private JButton btnGuardar;
 	private JButton btnLimpiar;
 	private JLabel lblIdentificadorunico;
 	private JTextField txtIdun;
 	private JButton btnQuitar;
 	private JButton btnAgregar;
-	private JComboBox cmbGrupo;
+	private JComboBox<Grupo> cmbGrupo;
 	private JList listComponentes;
 	private JScrollPane scrollPane;
+	private DefaultListModel modelo;
+	private DefaultComboBoxModel<Area> ComboBoxModelArea;
+	private DefaultComboBoxModel<Grupo> GrupoCombo;
 
 	public CrearPI() {
 		super();
@@ -138,14 +144,15 @@ public class CrearPI extends JPanel implements IVpi {
 		lblArea = new JLabel("Area:");
 		lblArea.setBounds(10, 247, 46, 14);
 		add(lblArea);
-		
-		ArrayList<String> places = new ArrayList<String>();//ELIMINA LUEGO ESTO
-		places.add("Buenos Aires");
-		places.add("Córdoba");
-		places.add("La Plata");
-		
+
+		/*
+		 * ArrayList<String> places = new ArrayList<String>();// ELIMINA LUEGO ESTO
+		 * places.add("Buenos Aires"); places.add("Córdoba"); places.add("La Plata");
+		 */
+
 		cmbArea = new JComboBox();
-		cmbArea.setModel(new DefaultComboBoxModel(places.toArray()));
+		// cmbArea.setModel(places);//AREA COMBOBOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
 		cmbArea.setBounds(143, 244, 281, 20);
 		add(cmbArea);
 
@@ -165,18 +172,17 @@ public class CrearPI extends JPanel implements IVpi {
 		btnQuitar.setBounds(10, 112, 89, 23);
 		add(btnQuitar);
 
-		cmbGrupo = new JComboBox();
+		cmbGrupo = new JComboBox();////////////// GRUPO
 		cmbGrupo.setBounds(270, 209, 154, 22);
 		add(cmbGrupo);
-		
+
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(152, 64, 272, 73);
 		add(scrollPane);
-		
-		
-		
+
 		listComponentes = new JList();
-	
+		modelo = new DefaultListModel();
+
 		listComponentes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(listComponentes);
 
@@ -224,14 +230,39 @@ public class CrearPI extends JPanel implements IVpi {
 
 	public void agregarAlumno(Alumno alumnoAdd) {
 		// TODO Auto-generated method stub
-		
-		DefaultListModel modelo = new DefaultListModel();
-		        modelo.addElement(alumnoAdd);
-		
-		
+		int x = modelo.getSize();
+		boolean repe = false;
+
+		for (int i = 0; i < x; i++) {
+			if (modelo.getElementAt(i) == alumnoAdd) {
+				repe = true;
+			}
+		}
+		if (repe == false) {
+			modelo.addElement(alumnoAdd);
+		} else {
+			JOptionPane.showMessageDialog(getParent(), "Alumno ya agregado", "Info", JOptionPane.INFORMATION_MESSAGE);
+		}
 		listComponentes.setModel(modelo);
-		
+
 	}
 
+	public void borraAlum() {
+		// TODO Auto-generated method stub
+		if (listComponentes.getSelectedIndex() != -1) {
+			modelo.removeElementAt(listComponentes.getSelectedIndex());
+		}
+	}
+
+	public void cargarGrupoo(ArrayList<Grupo> grupis) {
+		// TODO Auto-generated method stub
+
+		cmbGrupo.removeAllItems();
+		
+		for (Grupo grupo : grupis) {
+			cmbGrupo.addItem(grupo);
+		}
+
+	}
 
 }

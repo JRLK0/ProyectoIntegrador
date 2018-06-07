@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.Alumno;
+import modelo.Grupo;
 
 public class PIPersistencia {
 
@@ -45,37 +46,96 @@ public class PIPersistencia {
 
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
-			
+
 			System.out.println("QQQQ1");
 			e.printStackTrace();
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			System.out.println("qqqqq2");
 			e.printStackTrace();
-		}finally {
-			
-				try {
-					if(rstl != null) {
-						rstl.close();
-						}
-					if(pstmt != null) {
-						pstmt.close();
-					}
-					
-					if(con != null) {
-						con.close();
-					}
-					
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+		} finally {
+
+			try {
+				if (rstl != null) {
+					rstl.close();
 				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+
+				if (con != null) {
+					con.close();
+				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		
+		}
 
-	return listaAlumnos;
+		return listaAlumnos;
 
-}
+	}
+
+	public ArrayList<Grupo> cargarGrupo(int i) {
+		ArrayList<Grupo> listaGrupo = new ArrayList<Grupo>();
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rstl = null;
+
+		try {
+			con = acceso.getConexion();
+			String query = "SELECT * FROM GRUPOS WHERE CURSO=?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, i); // aqui le metes el valor de la
+			// primera interrogacion
+
+			rstl = pstmt.executeQuery();
+
+			int idAlu = 0;
+			String grupo = "";
+			int curso = i;
+			
+
+			while (rstl.next()) {
+				grupo = rstl.getString(1);
+				curso = rstl.getInt(2);
+				listaGrupo.add(new Grupo(grupo, curso));
+			}
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+
+			System.out.println("QQQQ1");
+			e.printStackTrace();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("qqqqq2");
+			e.printStackTrace();
+		} finally {
+
+			try {
+				if (rstl != null) {
+					rstl.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+
+				if (con != null) {
+					con.close();
+				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		return listaGrupo;
+	}
 
 }

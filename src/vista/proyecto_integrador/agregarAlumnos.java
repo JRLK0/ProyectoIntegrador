@@ -34,7 +34,7 @@ public class agregarAlumnos extends JDialog {
 		super(frame, block);
 
 		inicializar(ArrayListAlumnos);
-		hacerVisible();
+		
 
 	}
 
