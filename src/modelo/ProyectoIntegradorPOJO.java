@@ -11,10 +11,10 @@ public class ProyectoIntegradorPOJO {
 	private int anyo; // año
 	private String grupo;
 	private int idArea;
-	private ArrayList<Alumno> componentes;
+	//private ArrayList<Alumno> componentes;
 
 	public ProyectoIntegradorPOJO(int idProyecto, String nombre, String url, int nota, int anyo, String grupo,
-			int idArea, ArrayList<Alumno> componentes) {
+			int idArea) {
 		super();
 		this.idProyecto = idProyecto;
 		this.nombre = nombre;
@@ -23,7 +23,45 @@ public class ProyectoIntegradorPOJO {
 		this.anyo = anyo;
 		this.grupo = grupo;
 		this.idArea = idArea;
-		this.componentes = componentes;
+		//this.componentes = componentes;
 	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		String pii = ""+idProyecto+" "+nombre+" "+url+" "+nota+" "+anyo+" "+grupo+" "+idArea+" ";
+		return pii;
+	}
+
+	public int getIdProyecto() {
+		return idProyecto;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public int getNota() {
+		return nota;
+	}
+
+	public int getAnyo() {
+		return anyo;
+	}
+
+	public String getGrupo() {
+		return grupo;
+	}
+
+	public int getIdArea() {
+		return idArea;
+	}
+	
+	
+	
 
 }

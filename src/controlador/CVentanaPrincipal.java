@@ -2,6 +2,7 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.Area;
 import java.util.ArrayList;
 
 import javax.swing.JMenuItem;
@@ -80,6 +81,9 @@ public class CVentanaPrincipal implements ActionListener {
 				ControladorPI.setPersistenciaPI(persistenciaPI);
 				ControladorPI.setAgregarAlumnosI(agregarAlumnosI);
 				vp1.verPanel(crearPII);
+				
+				ArrayList<modelo.Area> Areas = persistenciaPI.cargarArea();
+				crearPII.cargarAreas(Areas);
 
 			} else if (source.equals(vp1.getMntmConsultas())) {
 

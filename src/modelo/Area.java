@@ -37,4 +37,15 @@ public class Area {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+	
+	@Override
+	public String toString() {
+		String areaa = ""+nombre;
+		return areaa;
+	}
+	
+	public int toInt() {
+		int id = id_area;
+		return id;
+	}
 }

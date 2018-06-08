@@ -11,6 +11,7 @@ import accesoDB.PIPersistencia;
 import controlador.CVentanaPrincipal;
 import modelo.Alumno;
 import modelo.Grupo;
+import modelo.ProyectoIntegradorPOJO;
 import vista.VentanaPrincipal;
 import vista.proyecto_integrador.BajaPI;
 import vista.proyecto_integrador.ConsultaPI;
@@ -82,6 +83,21 @@ public class ControladorPI implements ActionListener {
 			ArrayList<Grupo> Grupis = persistenciaPI.cargarGrupo(2);
 
 			crearPII.cargarGrupoo(Grupis);
+		}else if(source.equals(crearPII.getBtnGuardar())) {
+			
+			if(crearPII.recogerDatosPI()!=null) {
+			ProyectoIntegradorPOJO piPJ = crearPII.recogerDatosPI();
+			int nice = persistenciaPI.agregarPI(piPJ);
+			
+			if(nice==0) {
+				crearPII.msgError("Inserccion no realizada por fallo con la base de datos");
+			}else {
+				crearPII.msgGood("creacion de PI realizada correctamente");
+			}
+			
+			}
+		}else if (source.equals(crearPII.getBtnLimpiar())) {
+			crearPII.porDefecto();
 		}
 
 	}

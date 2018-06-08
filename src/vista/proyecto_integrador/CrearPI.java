@@ -5,6 +5,7 @@ import vista.VentanaPrincipal;
 import controlador.proyecto_integrador.ControladorPI;
 import modelo.Alumno;
 import modelo.Grupo;
+import modelo.ProyectoIntegradorPOJO;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -47,7 +48,7 @@ public class CrearPI extends JPanel implements IVpi {
 	private JRadioButton rdbtn2;
 	private JLabel lblGrupo;
 	private JLabel lblArea;
-	private JComboBox<Area> cmbArea;
+	private JComboBox<modelo.Area> cmbArea;
 	private JButton btnGuardar;
 	private JButton btnLimpiar;
 	private JLabel lblIdentificadorunico;
@@ -77,6 +78,7 @@ public class CrearPI extends JPanel implements IVpi {
 		add(lblIdentificadorunico);
 
 		txtIdun = new JTextField();
+		txtIdun.setEnabled(false);
 		txtIdun.setBounds(153, 8, 271, 20);
 		txtIdun.setHorizontalAlignment(SwingConstants.CENTER);
 		add(txtIdun);
@@ -173,6 +175,7 @@ public class CrearPI extends JPanel implements IVpi {
 		add(btnQuitar);
 
 		cmbGrupo = new JComboBox();////////////// GRUPO
+		cmbGrupo.setEnabled(false);
 		cmbGrupo.setBounds(270, 209, 154, 22);
 		add(cmbGrupo);
 
@@ -258,11 +261,119 @@ public class CrearPI extends JPanel implements IVpi {
 		// TODO Auto-generated method stub
 
 		cmbGrupo.removeAllItems();
-		
+
 		for (Grupo grupo : grupis) {
 			cmbGrupo.addItem(grupo);
 		}
 
+		cmbGrupo.setEnabled(true);
+
+	}
+
+	public void cargarAreas(ArrayList<modelo.Area> areas) {
+		// TODO Auto-generated method stub
+		cmbArea.removeAllItems();
+
+		for (modelo.Area area : areas) {
+
+			if (area.getNombre().equals("")) {
+
+			} else {
+				cmbArea.addItem(area);
+			}
+
+		}
+	}
+
+	public ProyectoIntegradorPOJO recogerDatosPI() {
+
+		boolean todoOK = true;
+		String nombre = "";
+		String url = "";
+		int nota=0;
+		int anyo=0;
+		String grupo="";
+		int Idarea=0;
+		
+
+		if (txtNamePrj.getText().equals("")) {
+			msgError("Nombre necesario");
+			todoOK = false;
+		} else {
+			nombre = txtNamePrj.getText();
+		}
+
+		if (txtUrl.getText().equals("")) {
+			msgError("URL necesaria");
+			todoOK = false;
+		} else {
+			url = txtUrl.getText();
+		}
+
+		
+		if (!rdbtn1.isSelected()) {
+			if (!rdbtn2.isSelected()) {
+				msgError("Selecciona un curso");
+				todoOK = false;
+			} else {
+				anyo = 2;
+			}
+		} else {
+			anyo = 1;
+		}
+
+		ArrayList<Alumno> componentes;
+
+		if (listComponentes.getComponentCount() < 2) {
+			msgError("Agrega componentes, minimo 2");
+			todoOK = false;
+		}
+		
+		
+
+		if (todoOK) {
+			
+			nota = (int) spnNota.getValue();
+			anyo = (int) spnAnyo.getValue();
+			grupo = (String) GrupoCombo.getSelectedItem();
+			modelo.Area are = (modelo.Area) ComboBoxModelArea.getSelectedItem();
+			Idarea = are.getId_area();
+			
+			ProyectoIntegradorPOJO pi = new ProyectoIntegradorPOJO(0, nombre, url, nota, anyo, grupo, Idarea);
+			return pi;
+		}else {
+		return null;
+		}
+	}
+
+	public void msgError(String string) {
+		// TODO Auto-generated method stub
+		JOptionPane.showMessageDialog(getParent(), string, "ERROR", JOptionPane.ERROR_MESSAGE);
+	}
+
+	public void msgGood(String string) {
+		// TODO Auto-generated method stub
+		JOptionPane.showMessageDialog(getParent(), string, "ERROR", JOptionPane.INFORMATION_MESSAGE);
+	}
+
+	public void porDefecto() {
+		// TODO Auto-generated method stub
+		
+		txtNamePrj.setText("");
+		txtUrl.setText("");
+		txtIdun.setText("");
+		
+		//listComponentes.remove
+		
+		spnNota.setValue(0);
+		spnAnyo.setValue(2000);
+		rdbtn1.setSelected(false);
+		rdbtn2.setSelected(false);
+		
+		cmbGrupo.setEnabled(false);
+				
+		
+		
 	}
 
 }
