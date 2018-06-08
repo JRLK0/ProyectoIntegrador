@@ -55,7 +55,7 @@ public class ConsultaPI extends JPanel implements EstructVentana{
 
 	//Añadir el controlador
 	
-	/*public void setControlador(ControladorPI control) {
-				
-	}*/
+	public void setControlador(ControladorPI control) {
+		btnDetalle.addActionListener(control);	
+	}
 }

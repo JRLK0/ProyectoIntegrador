@@ -1,5 +1,6 @@
 package vista;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -11,6 +12,7 @@ import controlador.CVentanaPrincipal;
 import java.awt.Dimension;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
+import java.io.File;
 import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 
@@ -129,6 +131,8 @@ public class VentanaPrincipal extends JFrame implements EstructVentana{
 		
 		mntmModificacionAR = new JMenuItem("Modificacion");
 		mnAreas.add(mntmModificacionAR);
+		
+		
 		
 	}
 	

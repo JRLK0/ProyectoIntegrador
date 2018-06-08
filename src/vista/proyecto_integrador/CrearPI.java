@@ -329,8 +329,6 @@ public class CrearPI extends JPanel implements IVpi {
 			todoOK = false;
 		}
 		
-		
-
 		if (todoOK) {
 			
 			nota = (int) spnNota.getValue();
