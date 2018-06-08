@@ -2,16 +2,15 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.Area;
 import java.util.ArrayList;
 
 import javax.swing.JMenuItem;
 
 import accesoDB.PIPersistencia;
 import controlador.alumnos.ControladorAlumnos;
-import controlador.area.ControladorArea;
+import controlador.area.CAltaAreas;
+import controlador.area.CBajaAreas;
 import controlador.proyecto_integrador.ControladorPI;
-import modelo.Alumno;
 import vista.VentanaPrincipal;
 import vista.alumno.AltaAlumnos;
 import vista.alumno.BajaAlumnos;
@@ -19,8 +18,6 @@ import vista.alumno.ConsultaAlumnos;
 import vista.alumno.ModificacionAlumnos;
 import vista.area.AltaArea;
 import vista.area.BajaArea;
-import vista.area.ConsultaArea;
-import vista.area.ModificacionArea;
 import vista.proyecto_integrador.BajaPI;
 import vista.proyecto_integrador.ConsultaPI;
 import vista.proyecto_integrador.CrearPI;
@@ -40,13 +37,6 @@ public class CVentanaPrincipal implements ActionListener {
 
 	private ControladorPI ControladorPI;
 
-	private AltaArea vAltaArea;
-	private BajaArea vBajaArea;
-	private ConsultaArea vConsultaArea;
-	private ModificacionArea vModificacionArea;
-
-	private ControladorArea controladorArea;
-
 	private AltaAlumnos vAltaAlumnos;
 	private BajaAlumnos vBajaAlumnos;
 	private ModificacionAlumnos vModificiacionAlumnos;
@@ -58,7 +48,6 @@ public class CVentanaPrincipal implements ActionListener {
 		this.vp1 = vp1;
 		ControladorPI = new ControladorPI();// PI
 		persistenciaPI = new PIPersistencia();
-		controladorArea = new ControladorArea();// AR
 		controladorAlumno = new ControladorAlumnos();// CA
 
 	}
@@ -95,7 +84,7 @@ public class CVentanaPrincipal implements ActionListener {
 				System.out.println("Boton de consulta de alumnos");
 				vConsultaAlumnos = new ConsultaAlumnos();// crear
 				controladorAlumno.setConsultaAL(vConsultaAlumnos);
-				vConsultaAlumnos.setControlador(controladorArea);
+				vConsultaAlumnos.setControlador(controladorAlumno);
 				vp1.verPanel(vConsultaAlumnos);
 			} else if (source.equals(vp1.getMntmAltaA())) {
 				System.out.println("Boton de alta de alumnos");
@@ -118,29 +107,20 @@ public class CVentanaPrincipal implements ActionListener {
 
 				//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			} else if (source.equals(vp1.getMntmConsultasAR())) {// #AREA#
-				vConsultaArea = new ConsultaArea();
-				controladorArea.setConsultaAR(vConsultaArea);
-				vConsultaArea.setControlador(controladorArea);
-				vp1.verPanel(vConsultaArea);
-			} else if (source.equals(vp1.getMntmAltaAR())) {
-				vAltaArea = new AltaArea();
-				controladorArea.setAltaAR(vAltaArea);
-				vAltaArea.setControlador(controladorArea);
-				vp1.verPanel(vAltaArea);
+				
+			} else if (source.equals(vp1.getMntmAltaAR())) {				
+				AltaArea altaAR = new AltaArea();
+				CAltaAreas control = new CAltaAreas(altaAR);
+				altaAR.setControlador(control);
+				vp1.verPanel(altaAR);
 			} else if (source.equals(vp1.getMntmBajaAR())) {
-				vBajaArea = new BajaArea();
-				controladorArea.setBajaAR(vBajaArea);
-				;
-				vBajaArea.setControlador(controladorArea);
-				vp1.verPanel(vBajaArea);
+				BajaArea bajaAR = new BajaArea();
+				CBajaAreas control = new CBajaAreas(bajaAR);
+				bajaAR.setControlador(control);
+				vp1.verPanel(bajaAR);
 			} else if (source.equals(vp1.getMntmModificacionAR())) {
-				vModificacionArea = new ModificacionArea();
-				controladorArea.setModificacionAR(vModificacionArea);
-				;
-				vModificacionArea.setControlador(controladorArea);
-				vp1.verPanel(vModificacionArea);
+				
 			}
 		}
 	}
-
 }

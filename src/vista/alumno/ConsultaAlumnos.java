@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import controlador.CVentanaPrincipal;
+import controlador.alumnos.ControladorAlumnos;
 import controlador.area.ControladorArea;
 import vista.EstructVentana;
 
@@ -123,7 +124,7 @@ public class ConsultaAlumnos extends JPanel implements EstructVentana{
 	    add(btnFinalizar);
 		
 	}
-	public void setControlador(ControladorArea control) {
+	public void setControlador(ControladorAlumnos control) {
 		btnActivarBusqueda.addActionListener(control);
 		btnFinalizar.addActionListener(control);
 	}

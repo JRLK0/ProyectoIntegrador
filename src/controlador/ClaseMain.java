@@ -18,7 +18,7 @@ public class ClaseMain {
 				
 				vp.setControlador(cvp);
 				
-				vp.hacerVisible();				
+				vp.hacerVisible();
 				
 			}
 		});
