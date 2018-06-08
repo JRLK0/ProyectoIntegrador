@@ -70,7 +70,7 @@ public class BajaPI extends JPanel implements EstructVentana{
 	
 	//Añadir el controlador
 		
-	/*public void setControlador(ControladorPI control) {			
+	public void setControlador(ControladorPI control) {			
 	
-	}*/
+	}
 }

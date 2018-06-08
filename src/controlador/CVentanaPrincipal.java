@@ -86,11 +86,28 @@ public class CVentanaPrincipal implements ActionListener {
 				crearPII.cargarAreas(Areas);
 
 			} else if (source.equals(vp1.getMntmConsultas())) {
+				ConsultaPII = new ConsultaPI();
+				ConsultaPII.setControlador(ControladorPI);
+				ControladorPI.setConsultaPII(ConsultaPII);
+				
+				vp1.verPanel(ConsultaPII);
+				
 
 			} else if (source.equals(vp1.getMntmBaja())) {
+				
+				BajaPII = new BajaPI();
+				BajaPII.setControlador(ControladorPI);
+				ControladorPI.setAgregarAlumnosI(agregarAlumnosI);
+				vp1.verPanel(BajaPII);
 
 			} else if (source.equals(vp1.getMntmModificacion())) {
 
+				ModificarPII = new ModificarPI();
+				ModificarPII.setControlador(ControladorPI);
+				ControladorPI.setModificarPII(ModificarPII);
+				vp1.verPanel(ModificarPII);
+			
+				
 			} else if (source.equals(vp1.getMntmConsultasA())) {// #ALUMNOS#
 				System.out.println("Boton de consulta de alumnos");
 				vConsultaAlumnos = new ConsultaAlumnos();// crear
