@@ -15,7 +15,6 @@ import javax.swing.SwingConstants;
 
 import controlador.CVentanaPrincipal;
 import controlador.alumnos.ControladorAlumnos;
-import controlador.area.ControladorArea;
 import vista.EstructVentana;
 
 /**

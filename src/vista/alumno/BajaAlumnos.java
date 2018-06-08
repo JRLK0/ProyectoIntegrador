@@ -14,7 +14,6 @@ import javax.swing.UIManager;
 
 import controlador.CVentanaPrincipal;
 import controlador.alumnos.ControladorAlumnos;
-import controlador.area.ControladorArea;
 import vista.EstructVentana;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;

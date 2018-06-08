@@ -10,6 +10,8 @@ import accesoDB.PIPersistencia;
 import controlador.alumnos.ControladorAlumnos;
 import controlador.area.CAltaAreas;
 import controlador.area.CBajaAreas;
+import controlador.area.CConsultaAreas;
+import controlador.area.CModificacionAreas;
 import controlador.proyecto_integrador.ControladorPI;
 import vista.VentanaPrincipal;
 import vista.alumno.AltaAlumnos;
@@ -18,6 +20,8 @@ import vista.alumno.ConsultaAlumnos;
 import vista.alumno.ModificacionAlumnos;
 import vista.area.AltaArea;
 import vista.area.BajaArea;
+import vista.area.ConsultaArea;
+import vista.area.ModificacionArea;
 import vista.proyecto_integrador.BajaPI;
 import vista.proyecto_integrador.ConsultaPI;
 import vista.proyecto_integrador.CrearPI;
@@ -124,7 +128,10 @@ public class CVentanaPrincipal implements ActionListener {
 
 				//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			} else if (source.equals(vp1.getMntmConsultasAR())) {// #AREA#
-				
+				ConsultaArea consultaAR = new ConsultaArea();
+				CConsultaAreas control = new CConsultaAreas(consultaAR);
+				consultaAR.setControlador(control);
+				vp1.verPanel(consultaAR);
 			} else if (source.equals(vp1.getMntmAltaAR())) {				
 				AltaArea altaAR = new AltaArea();
 				CAltaAreas control = new CAltaAreas(altaAR);
@@ -136,7 +143,10 @@ public class CVentanaPrincipal implements ActionListener {
 				bajaAR.setControlador(control);
 				vp1.verPanel(bajaAR);
 			} else if (source.equals(vp1.getMntmModificacionAR())) {
-				
+				ModificacionArea modificacionAR = new ModificacionArea();
+				CModificacionAreas control = new CModificacionAreas(modificacionAR);
+				modificacionAR.setControlador(control);
+				vp1.verPanel(modificacionAR);
 			}
 		}
 	}

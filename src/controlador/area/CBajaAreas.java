@@ -48,7 +48,6 @@ public class CBajaAreas implements ActionListener {
 					ArrayList<Area> listaAreas = ap.obtenerARNombre(nombre);
 					bajaAR.cargarTabla(listaAreas);
 				}
-				
 			}
 		}
 	}

@@ -9,15 +9,15 @@ import javax.swing.JRadioButton;
 
 import accesoDB.AreaPersistencia;
 import modelo.Area;
-import vista.area.BajaArea;
+import vista.area.ConsultaArea;
 
 public class CConsultaAreas implements ActionListener {
 
-	private BajaArea bajaAR;
+	private ConsultaArea consultaAR;
 	private AreaPersistencia ap;
 	
-	public CConsultaAreas(BajaArea bajaAR) {
-		this.bajaAR = bajaAR;
+	public CConsultaAreas(ConsultaArea consultaAR) {
+		this.consultaAR = consultaAR;
 		ap = new AreaPersistencia();
 	}
 
@@ -27,24 +27,26 @@ public class CConsultaAreas implements ActionListener {
 		
 		if (cmd instanceof JRadioButton) {		
 			//BajaAreas
-			if(cmd.equals(bajaAR.getRdbtnId())) {
-				bajaAR.isIDactive();
+			if(cmd.equals(consultaAR.getRdbtnId())) {
+				consultaAR.isIDactive();
 			}
-			else if(cmd.equals(bajaAR.getRdbtnNombre())) {
-				bajaAR.isNombreActive();
+			else if(cmd.equals(consultaAR.getRdbtnNombre())) {
+				consultaAR.isNombreActive();
 			}	
 		}
 		else if(cmd instanceof JButton) {
-			if(cmd.equals(bajaAR.getBtnActBusqueda())) {
-				if(bajaAR.getRdbtnId().isSelected()) {
-					int id = bajaAR.obtenerIB();
+			if(cmd.equals(consultaAR.getBtnActBusqueda())) {
+				if(consultaAR.getRdbtnId().isSelected()) {
+					int id = consultaAR.obtenerIB();
 					if(id != 0) {
 						ArrayList<Area> listaAreas = ap.obtenerARID(id);
-						bajaAR.cargarTabla(listaAreas);
+						consultaAR.cargarTabla(listaAreas);
 					}
 				}				
-				else if(bajaAR.getRdbtnNombre().isSelected()) {
-					
+				else if(consultaAR.getRdbtnNombre().isSelected()) {
+					String nombre = consultaAR.obtenerNombre();
+					ArrayList<Area> listaAreas = ap.obtenerARNombre(nombre);
+					consultaAR.cargarTabla(listaAreas);
 				}
 				
 			}

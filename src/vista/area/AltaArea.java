@@ -3,7 +3,6 @@ package vista.area;
 import javax.swing.JPanel;
 
 import controlador.area.CAltaAreas;
-import controlador.area.ControladorArea;
 import modelo.Area;
 
 import javax.swing.GroupLayout;

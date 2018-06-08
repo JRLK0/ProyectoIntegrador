@@ -7,7 +7,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import controlador.area.CBajaAreas;
+import accesoDB.AreaPersistencia;
+import controlador.area.CConsultaAreas;
 import modelo.Area;
 import vista.EstructVentana;
 import javax.swing.JLabel;
@@ -36,21 +37,22 @@ public class ConsultaArea extends JPanel implements EstructVentana{
 	
 	private JPanel pnlTablaAreas;
 	private JScrollPane scpTablaAreas;
-	
-	private JButton btnDetalles;
 	private JTable tblAreas;
 	private DefaultTableModel dTabModel;
 	private static final String COLUMNA1="ID_AREA";
 	private static final String COLUMNA2="NOMBRE";
 	private static final String COLUMNA3="DESCRIPCIÓN";
 	
+	private AreaPersistencia ap;
+	
 	public ConsultaArea() {
+		ap = new AreaPersistencia();
 		inicializar();
 	}
 
 	@Override
 	public void inicializar() {
-		setPreferredSize(new Dimension(600, 500));
+		setPreferredSize(new Dimension(600, 473));
 		setLayout(null);
 		
 		pnlBusqueda = new JPanel();
@@ -100,17 +102,14 @@ public class ConsultaArea extends JPanel implements EstructVentana{
 		tblAreas = new JTable();
 		scpTablaAreas.setViewportView(tblAreas);
 		
-		btnDetalles = new JButton("Detalles");
-		btnDetalles.setBounds(255, 468, 89, 23);
-		add(btnDetalles);
-		
+		ArrayList<Area> tblAreas = ap.obtenerAR();
+		cargarTabla(tblAreas);
 	}
 
-	public void setControlador(CBajaAreas control) {
+	public void setControlador(CConsultaAreas control) {
 		rdbtnId.addActionListener(control);
 		rdbtnNombre.addActionListener(control);
 		btnActBusqueda.addActionListener(control);
-		btnDetalles.addActionListener(control);
 	}
 
 	public JRadioButton getRdbtnId() {
@@ -131,10 +130,6 @@ public class ConsultaArea extends JPanel implements EstructVentana{
 
 	public JButton getBtnActBusqueda() {
 		return btnActBusqueda;
-	}
-
-	public JButton getBtnEliminar() {
-		return btnDetalles;
 	}
 	
 	public void isIDactive() {
@@ -184,5 +179,10 @@ public class ConsultaArea extends JPanel implements EstructVentana{
 			fila[2] = itera.getDescripcion();
 			dTabModel.addRow(fila);
 		}
+	}
+
+	public String obtenerNombre() {
+		String nombre = txtNombre.getText();
+		return nombre;
 	}
 }

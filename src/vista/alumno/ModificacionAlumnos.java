@@ -14,7 +14,6 @@ import javax.swing.UIManager;
 
 import controlador.CVentanaPrincipal;
 import controlador.alumnos.ControladorAlumnos;
-import controlador.area.ControladorArea;
 
 /**
  * Modificar alumnos en bases de datos

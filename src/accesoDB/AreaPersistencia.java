@@ -123,7 +123,7 @@ public class AreaPersistencia {
 	}
 
 	public ArrayList<Area> obtenerARNombre(String nombre) {
-ArrayList<Area> listaAreas = new ArrayList<>();
+		ArrayList<Area> listaAreas = new ArrayList<>();
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -134,6 +134,39 @@ ArrayList<Area> listaAreas = new ArrayList<>();
 			String query = "SELECT * FROM areas WHERE nombre = ?";
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, nombre);
+			rslt = pstmt.executeQuery();
+			
+			while(rslt.next()) {
+				listaAreas.add(new Area(rslt.getInt(1), rslt.getString(2), rslt.getString(3)));
+			}
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rslt != null) rslt.close();
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return listaAreas;
+	}
+	
+	public ArrayList<Area> obtenerAR() {
+		ArrayList<Area> listaAreas = new ArrayList<>();
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rslt = null;
+		
+		try {
+			con = acc.getConexion();
+			String query = "SELECT * FROM areas";
+			pstmt = con.prepareStatement(query);
 			rslt = pstmt.executeQuery();
 			
 			while(rslt.next()) {

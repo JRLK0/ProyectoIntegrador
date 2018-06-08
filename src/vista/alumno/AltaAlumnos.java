@@ -15,7 +15,6 @@ import org.omg.PortableServer.ID_ASSIGNMENT_POLICY_ID;
 
 import controlador.CVentanaPrincipal;
 import controlador.alumnos.ControladorAlumnos;
-import controlador.area.ControladorArea;
 import modelo.Alumno;
 import modelo.Area;
 import vista.EstructVentana;
