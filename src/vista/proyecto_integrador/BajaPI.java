@@ -71,6 +71,23 @@ public class BajaPI extends JPanel implements EstructVentana{
 	//Añadir el controlador
 		
 	public void setControlador(ControladorPI control) {			
-	
+		btnBorrarSeleccion.addActionListener(control);
+		btnBuscar.addActionListener(control);
+		btnRestaurar.addActionListener(control);
 	}
+
+	public JButton getBtnRestaurar() {
+		return btnRestaurar;
+	}
+
+	public JButton getBtnBuscar() {
+		return btnBuscar;
+	}
+
+	public JButton getBtnBorrarSeleccion() {
+		return btnBorrarSeleccion;
+	}
+	
+	
+	
 }

@@ -60,6 +60,11 @@ public class ProyectoIntegradorPOJO {
 	public int getIdArea() {
 		return idArea;
 	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	
 	
 	
 	

@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 import modelo.Alumno;
 import modelo.Grupo;
@@ -102,7 +103,6 @@ public class PIPersistencia {
 			int idAlu = 0;
 			String grupo = "";
 			int curso = i;
-			
 
 			while (rstl.next()) {
 				grupo = rstl.getString(1);
@@ -144,7 +144,7 @@ public class PIPersistencia {
 	}
 
 	public ArrayList<modelo.Area> cargarArea() {
-		
+
 		ArrayList<modelo.Area> listaArea = new ArrayList<modelo.Area>();
 
 		Connection con = null;
@@ -155,7 +155,7 @@ public class PIPersistencia {
 			con = acceso.getConexion();
 			String query = "SELECT * FROM AREAS";
 			pstmt = con.prepareStatement(query);
-			//pstmt.setInt(1, i); // aqui le metes el valor de la
+			// pstmt.setInt(1, i); // aqui le metes el valor de la
 			// primera interrogacion
 
 			rstl = pstmt.executeQuery();
@@ -163,7 +163,6 @@ public class PIPersistencia {
 			int idAre = 0;
 			String nombre = "";
 			String descripcion = "";
-			
 
 			while (rstl.next()) {
 				idAre = rstl.getInt(1);
@@ -208,40 +207,173 @@ public class PIPersistencia {
 	public int agregarPI(ProyectoIntegradorPOJO piPJ) {
 		// TODO Auto-generated method stub
 
-		int rslt=0;
+		int rslt = 0;
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		
+
 		try {
 			con = acceso.getConexion();
+			int ll = 1;
+			while(consultarRegistro(piPJ)!=-1) {
+				piPJ.setNombre(piPJ.getNombre()+"("+ll+")");
+				ll++;
+			}
 			String query = "INSERT INTO proyectos_integradores(nombre,url,nota,anio,grupo,id_area) VALUES(?, ?, ?,?,?,?)";
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1,piPJ.getNombre());
+			pstmt.setString(1, piPJ.getNombre());
 			pstmt.setString(2, piPJ.getUrl());
 			pstmt.setInt(3, piPJ.getNota());
 			pstmt.setInt(4, piPJ.getAnyo());
 			pstmt.setString(5, piPJ.getGrupo());
 			pstmt.setInt(6, piPJ.getIdArea());
-			
+
 			rslt = pstmt.executeUpdate();
-			
-			
-			
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if(pstmt != null) pstmt.close();
-				if(con != null) con.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
-		
+
 		return rslt;
+
+	}
+
+	private int consultarRegistro(ProyectoIntegradorPOJO piPJ) {
+		// TODO Auto-generated method stub
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rslt = null;
+		int id_proyectoQ = -1;
+
+		try {
+			con = acceso.getConexion();
+			String query = "SELECT ID_PROYECTO FROM PROYECTOS_INTEGRADORES WHERE NOMBRE=? AND URL=? AND GRUPO=? AND ID_AREA=?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, piPJ.getNombre());
+			pstmt.setString(2, piPJ.getUrl());
+			pstmt.setString(3, piPJ.getGrupo());
+			pstmt.setString(4, String.valueOf(piPJ.getIdArea()));
+
+			rslt = pstmt.executeQuery();
+			
+			if(rslt.next()) {
+			id_proyectoQ = rslt.getInt(1);
+			}
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rslt != null)
+					rslt.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return id_proyectoQ;
+
 	
+		// TODO Auto-generated method stub
+		
+	}
+
+	public int ObtenerLastId(ProyectoIntegradorPOJO piPJ) {
+		// TODO Auto-generated method stub
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rslt = null;
+		int id_proyectoQ = -1;
+
+		try {
+			con = acceso.getConexion();
+			String query = "SELECT ID_PROYECTO FROM PROYECTOS_INTEGRADORES WHERE NOMBRE=? AND URL=? AND GRUPO=? AND ID_AREA=?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, piPJ.getNombre());
+			pstmt.setString(2, piPJ.getUrl());
+			pstmt.setString(3, piPJ.getGrupo());
+			pstmt.setString(4, String.valueOf(piPJ.getIdArea()));
+
+			rslt = pstmt.executeQuery();
+
+			id_proyectoQ = rslt.getInt(1);
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rslt != null)
+					rslt.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return id_proyectoQ;
+
+	}
+
+	public int AgregarParticipantes(ArrayList<Alumno> alumm, int x) {
+		// TODO Auto-generated method stub
+
+		int rslt = 0;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			con = acceso.getConexion();
+
+			for (Alumno alumno : alumm) {
+				String query = "INSERT INTO participantes(id_alumno,id_proyecto) VALUES(?, ?)";
+				pstmt = con.prepareStatement(query);
+				pstmt.setInt(1, alumno.getId_alumno());
+				pstmt.setInt(2, x);
+				rslt += pstmt.executeUpdate();
+			}
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return rslt;
+
+		// TODO Auto-generated method stub
+
 	}
 
 }

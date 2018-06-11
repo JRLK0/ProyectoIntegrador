@@ -56,9 +56,9 @@ public class CrearPI extends JPanel implements IVpi {
 	private JButton btnQuitar;
 	private JButton btnAgregar;
 	private JComboBox<Grupo> cmbGrupo;
-	private JList listComponentes;
+	private JList<Alumno> listComponentes;//añadir elemento 
 	private JScrollPane scrollPane;
-	private DefaultListModel modelo;
+	private DefaultListModel <Alumno>modelo;
 	private DefaultComboBoxModel<Area> ComboBoxModelArea;
 	private DefaultComboBoxModel<Grupo> GrupoCombo;
 
@@ -284,6 +284,12 @@ public class CrearPI extends JPanel implements IVpi {
 
 		}
 	}
+	
+
+	public void setTxtIdun(int id) {
+		
+		txtIdun.setText("");
+	}
 
 	public ProyectoIntegradorPOJO recogerDatosPI() {
 
@@ -322,9 +328,9 @@ public class CrearPI extends JPanel implements IVpi {
 			anyo = 1;
 		}
 
-		ArrayList<Alumno> componentes;
+		//ArrayList<Alumno> componentes;
 
-		if (listComponentes.getComponentCount() < 2) {
+		if (modelo.size() < 2) {
 			msgError("Agrega componentes, minimo 2");
 			todoOK = false;
 		}
@@ -333,8 +339,8 @@ public class CrearPI extends JPanel implements IVpi {
 			
 			nota = (int) spnNota.getValue();
 			anyo = (int) spnAnyo.getValue();
-			grupo = (String) GrupoCombo.getSelectedItem();
-			modelo.Area are = (modelo.Area) ComboBoxModelArea.getSelectedItem();
+			grupo = cmbGrupo.getSelectedItem().toString();
+			modelo.Area are = (modelo.Area) cmbArea.getSelectedItem();
 			Idarea = are.getId_area();
 			
 			ProyectoIntegradorPOJO pi = new ProyectoIntegradorPOJO(0, nombre, url, nota, anyo, grupo, Idarea);
@@ -351,7 +357,7 @@ public class CrearPI extends JPanel implements IVpi {
 
 	public void msgGood(String string) {
 		// TODO Auto-generated method stub
-		JOptionPane.showMessageDialog(getParent(), string, "ERROR", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(getParent(), string, "NICEE", JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	public void porDefecto() {
@@ -368,10 +374,35 @@ public class CrearPI extends JPanel implements IVpi {
 		rdbtn1.setSelected(false);
 		rdbtn2.setSelected(false);
 		
+		
+		cmbGrupo.removeAllItems();
+		modelo.clear();
+		cmbArea.setSelectedIndex(0);
+		
 		cmbGrupo.setEnabled(false);
 				
 		
 		
+	}
+
+	public void ponerId(int x) {
+		// TODO Auto-generated method stub
+		
+		txtIdun.setText(String.valueOf(x));
+		
+	}
+
+	public ArrayList<Alumno> DameComponentes() {
+		// TODO Auto-generated method stub
+		
+		ArrayList<Alumno> alumnoss = new ArrayList<Alumno>();
+		
+		for (int i = 0; i < modelo.size(); i++) {
+			alumnoss.add(modelo.getElementAt(i));
+		}
+		
+		
+		return alumnoss;
 	}
 
 }

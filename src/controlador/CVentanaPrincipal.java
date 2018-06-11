@@ -74,24 +74,26 @@ public class CVentanaPrincipal implements ActionListener {
 				ControladorPI.setPersistenciaPI(persistenciaPI);
 				ControladorPI.setAgregarAlumnosI(agregarAlumnosI);
 				vp1.verPanel(crearPII);
-				
+
 				ArrayList<modelo.Area> Areas = persistenciaPI.cargarArea();
 				crearPII.cargarAreas(Areas);
 
-			} else if (source.equals(vp1.getMntmConsultas())) {
+			} else if (source.equals(vp1.getMntmConsultas())) {//Consultas
 				ConsultaPII = new ConsultaPI();
 				ConsultaPII.setControlador(ControladorPI);
 				ControladorPI.setConsultaPII(ConsultaPII);
-				
-				vp1.verPanel(ConsultaPII);
-				
 
-			} else if (source.equals(vp1.getMntmBaja())) {
-				
+				vp1.verPanel(ConsultaPII);
+
+			} else if (source.equals(vp1.getMntmBaja())) {//baja
+
 				BajaPII = new BajaPI();
 				BajaPII.setControlador(ControladorPI);
-				ControladorPI.setAgregarAlumnosI(agregarAlumnosI);
+				ControladorPI.setBajaPII(BajaPII);
+
 				vp1.verPanel(BajaPII);
+				
+				
 
 			} else if (source.equals(vp1.getMntmModificacion())) {
 
@@ -99,8 +101,7 @@ public class CVentanaPrincipal implements ActionListener {
 				ModificarPII.setControlador(ControladorPI);
 				ControladorPI.setModificarPII(ModificarPII);
 				vp1.verPanel(ModificarPII);
-			
-				
+
 			} else if (source.equals(vp1.getMntmConsultasA())) {// #ALUMNOS#
 				System.out.println("Boton de consulta de alumnos");
 				vConsultaAlumnos = new ConsultaAlumnos();// crear
@@ -132,7 +133,7 @@ public class CVentanaPrincipal implements ActionListener {
 				CConsultaAreas control = new CConsultaAreas(consultaAR);
 				consultaAR.setControlador(control);
 				vp1.verPanel(consultaAR);
-			} else if (source.equals(vp1.getMntmAltaAR())) {				
+			} else if (source.equals(vp1.getMntmAltaAR())) {
 				AltaArea altaAR = new AltaArea();
 				CAltaAreas control = new CAltaAreas(altaAR);
 				altaAR.setControlador(control);

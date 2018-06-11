@@ -83,21 +83,51 @@ public class ControladorPI implements ActionListener {
 			ArrayList<Grupo> Grupis = persistenciaPI.cargarGrupo(2);
 
 			crearPII.cargarGrupoo(Grupis);
-		}else if(source.equals(crearPII.getBtnGuardar())) {
-			
-			if(crearPII.recogerDatosPI()!=null) {
-			ProyectoIntegradorPOJO piPJ = crearPII.recogerDatosPI();
-			int nice = persistenciaPI.agregarPI(piPJ);
-			
-			if(nice==0) {
-				crearPII.msgError("Inserccion no realizada por fallo con la base de datos");
-			}else {
-				crearPII.msgGood("creacion de PI realizada correctamente");
+		} else if (source.equals(crearPII.getBtnGuardar())) {
+
+			if (crearPII.recogerDatosPI() != null) {
+				ProyectoIntegradorPOJO piPJ = crearPII.recogerDatosPI();
+				int nice = persistenciaPI.agregarPI(piPJ);
+
+				if (nice == 0) {
+					crearPII.msgError("Inserccion no realizada por fallo con la base de datos");
+				} else {
+					int x = persistenciaPI.ObtenerLastId(piPJ);
+
+					if (x != -1) {
+						crearPII.ponerId(x);
+						// ahora hay que agregar a todos los componentes del pi en la tabla
+						// correspondiente
+
+						ArrayList<Alumno> alumm = crearPII.DameComponentes();
+
+						int commp = persistenciaPI.AgregarParticipantes(alumm, x);
+
+						if (commp == alumm.size()) {
+							crearPII.msgGood("creacion de PI realizada correctamente, número identificador: " + x
+									+ " componentes agregados correctamente: " + commp);
+						} else {
+							crearPII.msgGood("creacion de PI realizada con errores, número identificador: " + x
+									+ " componentes agregados correctamente: " + commp + " componentes erroneos: "
+									+ (commp - alumm.size()));
+
+						}
+
+					} else {
+						crearPII.msgError(
+								"El valor devuelto del ID es erroneo. FALLO DEL SISTEMA. Contacte con el administrador.");
+					}
+
+				}
+
 			}
-			
-			}
-		}else if (source.equals(crearPII.getBtnLimpiar())) {
+
+			// si es null no hagas nada
+
+		} else if (source.equals(crearPII.getBtnLimpiar())) {
 			crearPII.porDefecto();
+		}else if(source.equals(BajaPII)) {
+			
 		}
 
 	}
