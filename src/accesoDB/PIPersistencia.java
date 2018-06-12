@@ -376,4 +376,72 @@ public class PIPersistencia {
 
 	}
 
+	public ArrayList<ProyectoIntegradorPOJO> damePI(String busqueda) {
+
+		ArrayList<ProyectoIntegradorPOJO> listaPI = new ArrayList<ProyectoIntegradorPOJO>();
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rstl = null;
+
+		try {
+			con = acceso.getConexion();
+			String query = "SELECT * FROM PROYECTOS_INTEGRADORES WHERE NOMBRE like ?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, "%"+busqueda+"%");
+			rstl = pstmt.executeQuery();
+
+			 int idProyecto;
+			 String nombre;
+			 String url;
+			 int nota;
+			 int anyo; // año
+			 String grupo;
+			 int idArea;
+
+			while (rstl.next()) {
+				  idProyecto= rstl.getInt(1);
+				  nombre = rstl.getString(2);
+				  url = rstl.getString(3);
+				  nota= rstl.getInt(4);
+				  anyo= rstl.getInt(5);
+				  grupo= rstl.getString(6);
+				  idArea= rstl.getInt(7);
+				listaPI.add(new ProyectoIntegradorPOJO(idProyecto, nombre, url, nota, anyo, grupo, idArea));
+			}
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+
+			System.out.println("QQQQ1");
+			e.printStackTrace();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("qqqqq2");
+			e.printStackTrace();
+		} finally {
+
+			try {
+				if (rstl != null) {
+					rstl.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+
+				if (con != null) {
+					con.close();
+				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		return listaPI;
+
+	}
+
 }

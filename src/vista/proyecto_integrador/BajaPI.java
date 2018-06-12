@@ -8,19 +8,28 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import controlador.proyecto_integrador.ControladorPI;
+import modelo.Alumno;
+import modelo.ProyectoIntegradorPOJO;
 
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
 
 @SuppressWarnings("serial")
 public class BajaPI extends JPanel implements EstructVentana{
 	private JTextField txtBusqueda;
 	private JLabel lblDarDeBaja;
-	private JList listaResultado;
+	private JList <ProyectoIntegradorPOJO>listaResultado;
 	private JButton btnRestaurar;
 	private JButton btnBuscar;
 	private JButton btnBorrarSeleccion;
+	private DefaultListModel<ProyectoIntegradorPOJO>modeloPI;
 
 	public BajaPI() throws HeadlessException {
 		super();
@@ -38,27 +47,31 @@ public class BajaPI extends JPanel implements EstructVentana{
 		add(lblDarDeBaja);
 		
 		txtBusqueda = new JTextField();
-		txtBusqueda.setBounds(112, 43, 312, 20);
+		txtBusqueda.setBounds(133, 36, 298, 23);
 		add(txtBusqueda);
 		txtBusqueda.setColumns(10);
-		
-		listaResultado = new JList();
-		listaResultado.setToolTipText("");
-		listaResultado.setBounds(10, 93, 414, 164);
-		add(listaResultado);
+		modeloPI = new DefaultListModel();
 		
 		btnBorrarSeleccion = new JButton("Borrar seleccion");
-		btnBorrarSeleccion.setBounds(30, 268, 131, 20);
+		btnBorrarSeleccion.setBounds(147, 268, 131, 20);
 		add(btnBorrarSeleccion);
 		
 		
 		btnBuscar = new JButton("Buscar");
-		btnBuscar.setBounds(10, 42, 89, 23);
+		btnBuscar.setBounds(10, 36, 113, 23);
 		add(btnBuscar);
 		
-		btnRestaurar = new JButton("Restaurar");
-		btnRestaurar.setBounds(275, 267, 89, 23);
+		btnRestaurar = new JButton("Restaurar Filtro");
+		btnRestaurar.setBounds(10, 59, 113, 23);
 		add(btnRestaurar);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 93, 414, 167);
+		add(scrollPane);
+		
+		listaResultado = new JList();
+		scrollPane.setViewportView(listaResultado);
+		listaResultado.setToolTipText("");
 		
 		
 		
@@ -88,6 +101,21 @@ public class BajaPI extends JPanel implements EstructVentana{
 		return btnBorrarSeleccion;
 	}
 	
-	
-	
+	public void agregarPI(ArrayList<ProyectoIntegradorPOJO> arraListPI) {
+		// TODO Auto-generated method stub
+
+		modeloPI.clear();
+		
+		for (ProyectoIntegradorPOJO proyectoIntegradorPOJO : arraListPI) {
+			modeloPI.addElement(proyectoIntegradorPOJO);
+		}
+		listaResultado.setModel(modeloPI);
+		
+		
+	}//end agregarPIs
+
+	public String recogeBusqueda() {
+		// TODO Auto-generated method stub
+		return txtBusqueda.getText();
+	}
 }

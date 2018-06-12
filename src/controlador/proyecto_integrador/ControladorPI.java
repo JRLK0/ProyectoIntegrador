@@ -126,8 +126,14 @@ public class ControladorPI implements ActionListener {
 
 		} else if (source.equals(crearPII.getBtnLimpiar())) {
 			crearPII.porDefecto();
-		}else if(source.equals(BajaPII)) {
-			
+		}
+
+		if (source.equals(BajaPII.getBtnBuscar())) {
+
+			String busqueda = BajaPII.recogeBusqueda();
+
+			BajaPII.agregarPI(persistenciaPI.damePI(busqueda));
+
 		}
 
 	}

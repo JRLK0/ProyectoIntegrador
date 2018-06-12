@@ -50,10 +50,38 @@ public class CVentanaPrincipal implements ActionListener {
 
 	public CVentanaPrincipal(VentanaPrincipal vp1) {
 		this.vp1 = vp1;
-		ControladorPI = new ControladorPI();// PI
-		persistenciaPI = new PIPersistencia();
+		// ControladorPI = new ControladorPI();// PI
+		// persistenciaPI = new PIPersistencia();
 		controladorAlumno = new ControladorAlumnos();// CA
 
+	}
+
+	public void setCrearPII(CrearPI crearPII) {
+		this.crearPII = crearPII;
+	}
+
+	public void setBajaPII(BajaPI bajaPII) {
+		BajaPII = bajaPII;
+	}
+
+	public void setConsultaPII(ConsultaPI consultaPII) {
+		ConsultaPII = consultaPII;
+	}
+
+	public void setModificarPII(ModificarPI modificarPII) {
+		ModificarPII = modificarPII;
+	}
+
+	public void setAgregarAlumnosI(agregarAlumnos agregarAlumnosI) {
+		this.agregarAlumnosI = agregarAlumnosI;
+	}
+
+	public void setPersistenciaPI(PIPersistencia persistenciaPI) {
+		this.persistenciaPI = persistenciaPI;
+	}
+
+	public void setControladorPI(ControladorPI controladorPI) {
+		ControladorPI = controladorPI;
 	}
 
 	@Override
@@ -64,36 +92,24 @@ public class CVentanaPrincipal implements ActionListener {
 			//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			if (source.equals(vp1.getMntmAlta())) {
 
-				crearPII = new CrearPI();
-				agregarAlumnosI = new agregarAlumnos(persistenciaPI.dameAlumnos(), vp1, true);
-
-				crearPII.setControlador(ControladorPI);
-				agregarAlumnosI.setControlador(ControladorPI);
-
-				ControladorPI.setCrearPII(crearPII);
-				ControladorPI.setPersistenciaPI(persistenciaPI);
-				ControladorPI.setAgregarAlumnosI(agregarAlumnosI);
+			
 				vp1.verPanel(crearPII);
 
 				ArrayList<modelo.Area> Areas = persistenciaPI.cargarArea();
 				crearPII.cargarAreas(Areas);
 
-			} else if (source.equals(vp1.getMntmConsultas())) {//Consultas
+			} else if (source.equals(vp1.getMntmConsultas())) {// Consultas
 				ConsultaPII = new ConsultaPI();
 				ConsultaPII.setControlador(ControladorPI);
 				ControladorPI.setConsultaPII(ConsultaPII);
 
 				vp1.verPanel(ConsultaPII);
 
-			} else if (source.equals(vp1.getMntmBaja())) {//baja
+			} else if (source.equals(vp1.getMntmBaja())) {// baja
 
-				BajaPII = new BajaPI();
-				BajaPII.setControlador(ControladorPI);
-				ControladorPI.setBajaPII(BajaPII);
+
 
 				vp1.verPanel(BajaPII);
-				
-				
 
 			} else if (source.equals(vp1.getMntmModificacion())) {
 
