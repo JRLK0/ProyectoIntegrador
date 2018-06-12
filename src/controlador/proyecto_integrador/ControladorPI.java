@@ -31,10 +31,18 @@ public class ControladorPI implements ActionListener {
 	private ModificarPI ModificarPII;
 	private agregarAlumnos agregarAlumnosI;
 	private PIPersistencia persistenciaPI;
+	private VentanaPrincipal ventanaPrincipal;
 
 	public ControladorPI() {
 		super();
 	}
+
+	
+	
+	public void setVentanaPrincipal(VentanaPrincipal ventanaPrincipal) {
+		this.ventanaPrincipal = ventanaPrincipal;
+	}
+
 
 	public void setCrearPII(CrearPI crearPII) {
 		this.crearPII = crearPII;
@@ -127,7 +135,7 @@ public class ControladorPI implements ActionListener {
 		} else if (source.equals(crearPII.getBtnLimpiar())) {
 			crearPII.porDefecto();
 		}
-//baja
+		// baja
 		if (source.equals(BajaPII.getBtnBuscar())) {
 
 			String busqueda = BajaPII.recogeBusqueda();
@@ -136,17 +144,38 @@ public class ControladorPI implements ActionListener {
 
 		} else if (source.equals(BajaPII.getBtnRestaurar())) {
 			BajaPII.pordefecto();
-		}else if (source.equals(BajaPII.getBtnBorrarSeleccion())) {
-				persistenciaPI.eliminarComponentes(BajaPII.borrarSeleccionado());
-				int x = persistenciaPI.borrarPI(BajaPII.borrarSeleccionado());
-				
-				if(x==-1) {
-					BajaPII.msgError("No se ha borrado nada");
-				}else {
-					BajaPII.msgGood("Borrado PI "+BajaPII.borrarSeleccionado().getNombre());
-				}
-				
-				BajaPII.agregarPI(persistenciaPI.damePI(BajaPII.recogeBusqueda()));
+		} else if (source.equals(BajaPII.getBtnBorrarSeleccion())) {
+			persistenciaPI.eliminarComponentes(BajaPII.borrarSeleccionado());
+			int x = persistenciaPI.borrarPI(BajaPII.borrarSeleccionado());
+
+			if (x == -1) {
+				BajaPII.msgError("No se ha borrado nada");
+			} else {
+				BajaPII.msgGood("Borrado PI " + BajaPII.borrarSeleccionado().getNombre());
+			}
+
+			BajaPII.agregarPI(persistenciaPI.damePI(BajaPII.recogeBusqueda()));
+		}
+
+		// modifi
+
+		if (source.equals(ModificarPII.getButtonBuscar())) {
+
+			String busqueda = BajaPII.recogeBusqueda();
+			ModificarPII.agregarPI(persistenciaPI.damePI(busqueda));
+		}else if (source.equals(ModificarPII.getBtnModificarSeleccionado())) {
+			
+			ProyectoIntegradorPOJO pj1 = ModificarPII.modificarSeleccionado();
+			CrearPI ModificarPIcrea = new CrearPI(pj1);
+			
+			ventanaPrincipal.verPanel(ModificarPIcrea);
+
+			ArrayList<modelo.Area> Areas = persistenciaPI.cargarArea();
+			ModificarPIcrea.cargarAreas(Areas);
+			
+			
+		}else if (source.equals(ModificarPII.getBtnRestaurar())) {
+			ModificarPII.pordefecto();
 		}
 
 	}

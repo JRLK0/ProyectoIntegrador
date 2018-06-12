@@ -38,6 +38,7 @@ public class ClaseMain {
 				controladorPI.setCrearPII(crearPI);
 				controladorPI.setModificarPII(modificarPI);
 				controladorPI.setPersistenciaPI(persistenciaPI);
+				controladorPI.setVentanaPrincipal(vp);
 				
 				
 				CVentanaPrincipal cvp= new CVentanaPrincipal(vp);

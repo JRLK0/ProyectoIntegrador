@@ -22,7 +22,7 @@ import javax.swing.JScrollPane;
 public class ModificarPI extends JPanel implements IVpi {
 	private JTextField txtBuscar;
 	private JLabel lblModificarUnProyecto;
-	private JButton button;
+	private JButton buttonBuscar;
 	private JList<ProyectoIntegradorPOJO> listResultado;
 	private JButton btnModificarSeleccionado;
 	private JButton btnRestaurar;
@@ -51,9 +51,9 @@ public class ModificarPI extends JPanel implements IVpi {
 		txtBuscar.setBounds(112, 41, 312, 20);
 		add(txtBuscar);
 
-		button = new JButton("Buscar");
-		button.setBounds(10, 39, 89, 23);
-		add(button);
+		buttonBuscar = new JButton("Buscar");
+		buttonBuscar.setBounds(10, 39, 89, 23);
+		add(buttonBuscar);
 
 		btnModificarSeleccionado = new JButton("Modificar seleccionado");
 		// TODO que abra la ventana de CrearPi pero en MODO MODIFICAR
@@ -78,7 +78,9 @@ public class ModificarPI extends JPanel implements IVpi {
 	@Override
 	public void setControlador(ControladorPI control) {
 		// TODO Auto-generated method stub
-
+		btnModificarSeleccionado.addActionListener(control);
+		btnRestaurar.addActionListener(control);
+		buttonBuscar.addActionListener(control);
 	}
 
 	public void agregarPI(ArrayList<ProyectoIntegradorPOJO> arraListPI) {
@@ -91,10 +93,31 @@ public class ModificarPI extends JPanel implements IVpi {
 		}
 		listResultado.setModel(modeloPI);
 	}
-	
+
 	public String recogeBusqueda() {
-		// TODO Auto-generated method stub
 		return txtBuscar.getText();
 	}
-//a
+
+	public JButton getButtonBuscar() {
+		return buttonBuscar;
+	}
+
+	public JButton getBtnModificarSeleccionado() {
+		return btnModificarSeleccionado;
+	}
+
+	public JButton getBtnRestaurar() {
+		return btnRestaurar;
+	}
+
+	public void pordefecto() {
+		modeloPI.clear();
+	}
+	
+	public ProyectoIntegradorPOJO modificarSeleccionado() {
+		// TODO Auto-generated method stub
+		return listResultado.getSelectedValue();
+	}
+
+	// a
 }
