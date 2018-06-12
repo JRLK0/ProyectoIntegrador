@@ -162,4 +162,15 @@ public class AltaArea extends JPanel{
 		area = new Area((int)spnId.getValue(), txtNombre.getText(), txtDescripcion.getText());
 		return area;
 	}
+
+	public void restaurarTabla() {
+		lblId.setEnabled(true);
+		spnId.setEnabled(true);
+		lblNombre.setEnabled(false);
+		txtNombre.setEnabled(false);
+		lblDescripcion.setEnabled(false);
+		txtDescripcion.setEnabled(false);
+		btnAnadirArea.setEnabled(false);
+		btnBorrarCampos.setEnabled(false);
+	}
 }

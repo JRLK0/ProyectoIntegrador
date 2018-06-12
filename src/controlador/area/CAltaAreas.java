@@ -43,7 +43,9 @@ public class CAltaAreas implements ActionListener {
 			else if(cmd.equals(altaAR.getBtnAnadirArea())) {
 				Area area = altaAR.obtenerArea();		
 				if(area != null) {					
-					ap.guardarArea(area);				
+					ap.guardarArea(area);
+					altaAR.restaurarTabla();
+					altaAR.borrarCampos();
 				}				
 			}				
 			else if(cmd.equals(altaAR.getBtnBorrarCampos())) {						
