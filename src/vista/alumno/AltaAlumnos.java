@@ -26,12 +26,6 @@ import javax.swing.JSpinner;
  */
 @SuppressWarnings("serial")
 public class AltaAlumnos extends JPanel implements EstructVentana{
-
-	
-
-	
-	
-	private JLabel lblId;  //"ID:"
 	
 	private JLabel lblNombre;  //"Nombre:"
 	private JTextField txtNombre;  //Introducir nombre
@@ -40,11 +34,10 @@ public class AltaAlumnos extends JPanel implements EstructVentana{
 	private JTextField txtApellidos;  //Introducir apellidos
 	
 	private JLabel lblExpediente;  //"Expediente:"
-	private JTextArea txtAExpediente;  //"Introducir expediente"
 	
 	private JButton btnFinalizar;  //Botón "Finalizar"
 	private JButton btnLimpiar;	 //Botón Limpiar
-	private JSpinner spnId;
+	private JTextField textAExpediente;
 	
 	public AltaAlumnos() throws HeadlessException {
 		
@@ -54,13 +47,6 @@ public class AltaAlumnos extends JPanel implements EstructVentana{
 	@Override
 	public void inicializar() {
 		setLayout(null);
-
-		
-		
-		lblId = new JLabel("ID:");
-		lblId.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblId.setBounds(159, 51, 19, 16);
-		add(lblId);
 		
 		lblNombre = new JLabel("Nombre:");
 		lblNombre.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -82,11 +68,6 @@ public class AltaAlumnos extends JPanel implements EstructVentana{
 		txtApellidos.setBounds(186, 118, 184, 20);
 		add(txtApellidos);
 		
-		
-		txtAExpediente = new JTextArea();
-		txtAExpediente.setBounds(196, 159, 124, 22);
-		add(txtAExpediente);
-		
 		lblExpediente = new JLabel("Expediente:");
 		lblExpediente.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblExpediente.setBounds(102, 162, 76, 16);
@@ -102,9 +83,10 @@ public class AltaAlumnos extends JPanel implements EstructVentana{
 		btnLimpiar.setBounds(305, 218, 65, 23);
 		add(btnLimpiar);
 		
-		spnId = new JSpinner();
-		spnId.setBounds(188, 50, 54, 20);
-		add(spnId);
+		textAExpediente = new JTextField();
+		textAExpediente.setBounds(188, 161, 119, 20);
+		add(textAExpediente);
+		textAExpediente.setColumns(10);
 		
 		
 	}
@@ -124,12 +106,12 @@ public class AltaAlumnos extends JPanel implements EstructVentana{
 	}
 	
 	public void mostrarCampos() {
-		lblId.setEnabled(false);
+		
 		txtApellidos.setEnabled(false);
 		lblNombre.setEnabled(true);
 		txtNombre.setEnabled(true);
 		lblExpediente.setEnabled(true);
-		txtAExpediente.setEnabled(true);
+		textAExpediente.setEnabled(true);
 		btnFinalizar.setEnabled(true);
 		btnLimpiar.setEnabled(true);
 		lblApellidos.setEnabled(true);
@@ -137,17 +119,14 @@ public class AltaAlumnos extends JPanel implements EstructVentana{
 	
 	public void borrarCampos() {
 		txtNombre.setText("");
-		txtAExpediente.setText("");
 		txtApellidos.setText("");
 	}
 
 	public Alumno cogerDatos() {
 		
 		Alumno alumno =null;
-		alumno = new Alumno( (int) spnId.getValue(), txtNombre.getText(), txtApellidos.getText(), txtAExpediente.getText());
+		alumno = new Alumno( txtNombre.getText(), txtApellidos.getText(), textAExpediente.getText());
 		return alumno;
 	}
-
-	
 }
 

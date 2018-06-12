@@ -8,7 +8,7 @@ public class Alumno {
 	private String apellidos;
 	
 	//Constructor
-	public Alumno(int id_alumno, String expediente, String nombre, String apellidos) {
+	public Alumno(String expediente, String nombre, String apellidos) {
 		this.id_alumno = id_alumno;
 		this.expediente = expediente;
 		this.nombre = nombre;
