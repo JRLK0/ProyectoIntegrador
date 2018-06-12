@@ -214,8 +214,8 @@ public class PIPersistencia {
 		try {
 			con = acceso.getConexion();
 			int ll = 1;
-			while(consultarRegistro(piPJ)!=-1) {
-				piPJ.setNombre(piPJ.getNombre()+"("+ll+")");
+			while (consultarRegistro(piPJ) != -1) {
+				piPJ.setNombre(piPJ.getNombre() + "(" + ll + ")");
 				ll++;
 			}
 			String query = "INSERT INTO proyectos_integradores(nombre,url,nota,anio,grupo,id_area) VALUES(?, ?, ?,?,?,?)";
@@ -266,9 +266,9 @@ public class PIPersistencia {
 			pstmt.setString(4, String.valueOf(piPJ.getIdArea()));
 
 			rslt = pstmt.executeQuery();
-			
-			if(rslt.next()) {
-			id_proyectoQ = rslt.getInt(1);
+
+			if (rslt.next()) {
+				id_proyectoQ = rslt.getInt(1);
 			}
 
 		} catch (ClassNotFoundException e) {
@@ -290,9 +290,8 @@ public class PIPersistencia {
 
 		return id_proyectoQ;
 
-	
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public int ObtenerLastId(ProyectoIntegradorPOJO piPJ) {
@@ -388,25 +387,25 @@ public class PIPersistencia {
 			con = acceso.getConexion();
 			String query = "SELECT * FROM PROYECTOS_INTEGRADORES WHERE NOMBRE like ?";
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, "%"+busqueda+"%");
+			pstmt.setString(1, "%" + busqueda + "%");
 			rstl = pstmt.executeQuery();
 
-			 int idProyecto;
-			 String nombre;
-			 String url;
-			 int nota;
-			 int anyo; // año
-			 String grupo;
-			 int idArea;
+			int idProyecto;
+			String nombre;
+			String url;
+			int nota;
+			int anyo; // año
+			String grupo;
+			int idArea;
 
 			while (rstl.next()) {
-				  idProyecto= rstl.getInt(1);
-				  nombre = rstl.getString(2);
-				  url = rstl.getString(3);
-				  nota= rstl.getInt(4);
-				  anyo= rstl.getInt(5);
-				  grupo= rstl.getString(6);
-				  idArea= rstl.getInt(7);
+				idProyecto = rstl.getInt(1);
+				nombre = rstl.getString(2);
+				url = rstl.getString(3);
+				nota = rstl.getInt(4);
+				anyo = rstl.getInt(5);
+				grupo = rstl.getString(6);
+				idArea = rstl.getInt(7);
 				listaPI.add(new ProyectoIntegradorPOJO(idProyecto, nombre, url, nota, anyo, grupo, idArea));
 			}
 
@@ -442,6 +441,75 @@ public class PIPersistencia {
 
 		return listaPI;
 
+	}
+
+	public int borrarPI(ProyectoIntegradorPOJO borrarSeleccionado) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int rslt = -1;
+
+		// DELETE FROM T_PEDIDOS WHERE COD_PEDIDO=15;
+		try {
+			con = acceso.getConexion();
+			String query = "DELETE FROM PROYECTOS_INTEGRADORES WHERE ID_PROYECTO=?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, borrarSeleccionado.getIdProyecto());
+
+			rslt = pstmt.executeUpdate();
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return rslt;
+
+	}
+
+	public void eliminarComponentes(ProyectoIntegradorPOJO borrarSeleccionado) {
+		// TODO Auto-generated method stub
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+
+		// DELETE FROM T_PEDIDOS WHERE COD_PEDIDO=15;
+		try {
+			con = acceso.getConexion();
+			String query = "DELETE FROM PARTICIPANTES WHERE ID_PROYECTO=?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, borrarSeleccionado.getIdProyecto());
+
+		pstmt.executeUpdate();
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		
 	}
 
 }

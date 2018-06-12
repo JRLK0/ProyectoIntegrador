@@ -127,13 +127,26 @@ public class ControladorPI implements ActionListener {
 		} else if (source.equals(crearPII.getBtnLimpiar())) {
 			crearPII.porDefecto();
 		}
-
+//baja
 		if (source.equals(BajaPII.getBtnBuscar())) {
 
 			String busqueda = BajaPII.recogeBusqueda();
 
 			BajaPII.agregarPI(persistenciaPI.damePI(busqueda));
 
+		} else if (source.equals(BajaPII.getBtnRestaurar())) {
+			BajaPII.pordefecto();
+		}else if (source.equals(BajaPII.getBtnBorrarSeleccion())) {
+				persistenciaPI.eliminarComponentes(BajaPII.borrarSeleccionado());
+				int x = persistenciaPI.borrarPI(BajaPII.borrarSeleccionado());
+				
+				if(x==-1) {
+					BajaPII.msgError("No se ha borrado nada");
+				}else {
+					BajaPII.msgGood("Borrado PI "+BajaPII.borrarSeleccionado().getNombre());
+				}
+				
+				BajaPII.agregarPI(persistenciaPI.damePI(BajaPII.recogeBusqueda()));
 		}
 
 	}

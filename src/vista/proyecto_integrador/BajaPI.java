@@ -20,6 +20,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
 
 @SuppressWarnings("serial")
 public class BajaPI extends JPanel implements EstructVentana{
@@ -47,31 +48,36 @@ public class BajaPI extends JPanel implements EstructVentana{
 		add(lblDarDeBaja);
 		
 		txtBusqueda = new JTextField();
-		txtBusqueda.setBounds(133, 36, 298, 23);
+		txtBusqueda.setBounds(133, 59, 385, 23);
 		add(txtBusqueda);
 		txtBusqueda.setColumns(10);
 		modeloPI = new DefaultListModel();
 		
 		btnBorrarSeleccion = new JButton("Borrar seleccion");
-		btnBorrarSeleccion.setBounds(147, 268, 131, 20);
+		btnBorrarSeleccion.setBounds(197, 294, 131, 20);
 		add(btnBorrarSeleccion);
 		
 		
 		btnBuscar = new JButton("Buscar");
-		btnBuscar.setBounds(10, 36, 113, 23);
+		btnBuscar.setBounds(10, 59, 113, 23);
 		add(btnBuscar);
 		
 		btnRestaurar = new JButton("Restaurar Filtro");
-		btnRestaurar.setBounds(10, 59, 113, 23);
+		btnRestaurar.setBounds(10, 36, 113, 23);
 		add(btnRestaurar);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 93, 414, 167);
+		scrollPane.setBounds(10, 93, 508, 190);
 		add(scrollPane);
 		
 		listaResultado = new JList();
+		listaResultado.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(listaResultado);
 		listaResultado.setToolTipText("");
+		
+		JLabel lblBuscarPorNombre = new JLabel("Buscar por nombre de PI");
+		lblBuscarPorNombre.setBounds(133, 40, 385, 14);
+		add(lblBuscarPorNombre);
 		
 		
 		
@@ -117,5 +123,25 @@ public class BajaPI extends JPanel implements EstructVentana{
 	public String recogeBusqueda() {
 		// TODO Auto-generated method stub
 		return txtBusqueda.getText();
+	}
+
+	public void pordefecto() {
+		// TODO Auto-generated method stub
+		modeloPI.clear();
+	}
+
+	public ProyectoIntegradorPOJO borrarSeleccionado() {
+		// TODO Auto-generated method stub
+		return listaResultado.getSelectedValue();
+	}
+	
+	public void msgError(String string) {
+		// TODO Auto-generated method stub
+		JOptionPane.showMessageDialog(getParent(), string, "ERROR", JOptionPane.ERROR_MESSAGE);
+	}
+
+	public void msgGood(String string) {
+		// TODO Auto-generated method stub
+		JOptionPane.showMessageDialog(getParent(), string, "NICEE", JOptionPane.INFORMATION_MESSAGE);
 	}
 }

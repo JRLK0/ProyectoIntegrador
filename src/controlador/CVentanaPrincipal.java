@@ -110,6 +110,7 @@ public class CVentanaPrincipal implements ActionListener {
 
 
 				vp1.verPanel(BajaPII);
+				BajaPII.agregarPI(persistenciaPI.damePI(""));
 
 			} else if (source.equals(vp1.getMntmModificacion())) {
 
