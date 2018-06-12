@@ -2,9 +2,15 @@ package controlador;
 
 import java.awt.EventQueue;
 
+import accesoDB.AreaPersistencia;
 import accesoDB.PIPersistencia;
+import controlador.area.ControladorAreas;
 import controlador.proyecto_integrador.ControladorPI;
 import vista.VentanaPrincipal;
+import vista.area.AltaArea;
+import vista.area.BajaArea;
+import vista.area.ConsultaArea;
+import vista.area.ModificacionArea;
 import vista.proyecto_integrador.BajaPI;
 import vista.proyecto_integrador.ConsultaPI;
 import vista.proyecto_integrador.CrearPI;
@@ -19,9 +25,6 @@ public class ClaseMain {
 			@Override
 			public void run() {
 				
-				
-			
-				
 				VentanaPrincipal vp = new VentanaPrincipal();
 				
 				CrearPI crearPI = new CrearPI();
@@ -31,6 +34,12 @@ public class ClaseMain {
 				PIPersistencia persistenciaPI = new PIPersistencia();
 				agregarAlumnos agregarAlumnos = new agregarAlumnos(persistenciaPI.dameAlumnos(), vp, true);
 				
+				AltaArea altaAR = new AltaArea();
+				BajaArea bajaAR = new BajaArea();
+				ConsultaArea consultaAR = new ConsultaArea();
+				ModificacionArea modificacionAR = new ModificacionArea();
+				AreaPersistencia arp = new AreaPersistencia();
+				
 				ControladorPI controladorPI = new ControladorPI();
 				controladorPI.setAgregarAlumnosI(agregarAlumnos);
 				controladorPI.setBajaPII(bajaPI);
@@ -38,8 +47,13 @@ public class ClaseMain {
 				controladorPI.setCrearPII(crearPI);
 				controladorPI.setModificarPII(modificarPI);
 				controladorPI.setPersistenciaPI(persistenciaPI);
-				controladorPI.setVentanaPrincipal(vp);
 				
+				ControladorAreas controladorAR = new ControladorAreas();
+				controladorAR.setAltaAR(altaAR);
+				controladorAR.setBajaAR(bajaAR);
+				controladorAR.setConsultaAR(consultaAR);
+				controladorAR.setModificacionAR(modificacionAR);
+				controladorAR.setArp(arp);
 				
 				CVentanaPrincipal cvp= new CVentanaPrincipal(vp);
 				cvp.setAgregarAlumnosI(agregarAlumnos);
@@ -50,6 +64,10 @@ public class ClaseMain {
 				cvp.setModificarPII(modificarPI);
 				cvp.setPersistenciaPI(persistenciaPI);
 				
+				cvp.setAltaAR(altaAR);
+				cvp.setBajaAR(bajaAR);
+				cvp.setConsultaAR(consultaAR);
+				cvp.setModificacionAR(modificacionAR);
 				
 				crearPI.setControlador(controladorPI);
 				bajaPI.setControlador(controladorPI);
@@ -57,7 +75,10 @@ public class ClaseMain {
 				modificarPI.setControlador(controladorPI);
 				agregarAlumnos.setControlador(controladorPI);
 				
-				
+				altaAR.setControlador(controladorAR);
+				bajaAR.setControlador(controladorAR);
+				consultaAR.setControlador(controladorAR);
+				modificacionAR.setControlador(controladorAR);
 				
 				vp.setControlador(cvp);
 				

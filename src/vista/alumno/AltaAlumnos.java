@@ -124,7 +124,7 @@ public class AltaAlumnos extends JPanel implements EstructVentana{
 
 	public Alumno cogerDatos() {
 		
-		Alumno alumno =null;
+		Alumno alumno = null;
 		alumno = new Alumno( txtNombre.getText(), txtApellidos.getText(), textAExpediente.getText());
 		return alumno;
 	}

@@ -8,10 +8,6 @@ import javax.swing.JMenuItem;
 
 import accesoDB.PIPersistencia;
 import controlador.alumnos.ControladorAlumnos;
-import controlador.area.CAltaAreas;
-import controlador.area.CBajaAreas;
-import controlador.area.CConsultaAreas;
-import controlador.area.CModificacionAreas;
 import controlador.proyecto_integrador.ControladorPI;
 import vista.VentanaPrincipal;
 import vista.alumno.AltaAlumnos;
@@ -48,6 +44,11 @@ public class CVentanaPrincipal implements ActionListener {
 
 	private ControladorAlumnos controladorAlumno;
 
+	private AltaArea altaAR;
+	private BajaArea bajaAR;
+	private ConsultaArea consultaAR;
+	private ModificacionArea modificacionAR;
+	
 	public CVentanaPrincipal(VentanaPrincipal vp1) {
 		this.vp1 = vp1;
 		// ControladorPI = new ControladorPI();// PI
@@ -82,6 +83,22 @@ public class CVentanaPrincipal implements ActionListener {
 
 	public void setControladorPI(ControladorPI controladorPI) {
 		ControladorPI = controladorPI;
+	}
+
+	public void setAltaAR(AltaArea altaAR) {
+		this.altaAR = altaAR;
+	}
+
+	public void setBajaAR(BajaArea bajaAR) {
+		this.bajaAR = bajaAR;
+	}
+
+	public void setConsultaAR(ConsultaArea consultaAR) {
+		this.consultaAR = consultaAR;
+	}
+
+	public void setModificacionAR(ModificacionArea modificacionAR) {
+		this.modificacionAR = modificacionAR;
 	}
 
 	@Override
@@ -146,24 +163,12 @@ public class CVentanaPrincipal implements ActionListener {
 
 				//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			} else if (source.equals(vp1.getMntmConsultasAR())) {// #AREA#
-				ConsultaArea consultaAR = new ConsultaArea();
-				CConsultaAreas control = new CConsultaAreas(consultaAR);
-				consultaAR.setControlador(control);
 				vp1.verPanel(consultaAR);
 			} else if (source.equals(vp1.getMntmAltaAR())) {
-				AltaArea altaAR = new AltaArea();
-				CAltaAreas control = new CAltaAreas(altaAR);
-				altaAR.setControlador(control);
 				vp1.verPanel(altaAR);
-			} else if (source.equals(vp1.getMntmBajaAR())) {
-				BajaArea bajaAR = new BajaArea();
-				CBajaAreas control = new CBajaAreas(bajaAR);
-				bajaAR.setControlador(control);
+			} else if (source.equals(vp1.getMntmBajaAR())) {			
 				vp1.verPanel(bajaAR);
 			} else if (source.equals(vp1.getMntmModificacionAR())) {
-				ModificacionArea modificacionAR = new ModificacionArea();
-				CModificacionAreas control = new CModificacionAreas(modificacionAR);
-				modificacionAR.setControlador(control);
 				vp1.verPanel(modificacionAR);
 			}
 		}

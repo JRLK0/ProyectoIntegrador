@@ -15,7 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import controlador.area.CModificacionAreas;
+import controlador.area.ControladorAreas;
 import modelo.Area;
 import vista.EstructVentana;
 import java.awt.Color;
@@ -106,7 +106,7 @@ public class ModificacionArea extends JPanel implements EstructVentana{
 		
 	}
 
-	public void setControlador(CModificacionAreas control) {
+	public void setControlador(ControladorAreas control) {
 		rdbtnId.addActionListener(control);
 		rdbtnNombre.addActionListener(control);
 		btnActBusqueda.addActionListener(control);

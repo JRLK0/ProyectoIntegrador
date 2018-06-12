@@ -19,10 +19,11 @@ public class AlumnoPersistencia {
 	public AlumnoPersistencia () {
 		acceso = new AccesoDB();
 	}
-		Connection con = null;
-		PreparedStatement pstmt = null;
 	
 		public void guardarAlumno(Alumno alumno) {
+			
+			Connection con = null;
+			PreparedStatement pstmt = null;	
 			
 			try {
 				con = acceso.getConexion();
@@ -32,7 +33,6 @@ public class AlumnoPersistencia {
 				pstmt.setString(1,alumno.getNombre());
 				pstmt.setString(2, alumno.getApellidos());
 				pstmt.setString(3, alumno.getExpediente());
-				pstmt = con.prepareStatement(query);
 				int rslt = pstmt.executeUpdate();
 				
 				if(rslt > 0) {
@@ -47,6 +47,13 @@ public class AlumnoPersistencia {
 				e.printStackTrace();
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+					try {
+						if(pstmt !=  null) pstmt.close();
+						if(con != null) con.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 			}
 	
 		

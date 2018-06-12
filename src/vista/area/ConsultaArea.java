@@ -8,7 +8,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import accesoDB.AreaPersistencia;
-import controlador.area.CConsultaAreas;
+import controlador.area.ControladorAreas;
 import modelo.Area;
 import vista.EstructVentana;
 import javax.swing.JLabel;
@@ -106,7 +106,7 @@ public class ConsultaArea extends JPanel implements EstructVentana{
 		cargarTabla(tblAreas);
 	}
 
-	public void setControlador(CConsultaAreas control) {
+	public void setControlador(ControladorAreas control) {
 		rdbtnId.addActionListener(control);
 		rdbtnNombre.addActionListener(control);
 		btnActBusqueda.addActionListener(control);

@@ -9,7 +9,6 @@ public class Alumno {
 	
 	//Constructor
 	public Alumno(String expediente, String nombre, String apellidos) {
-		this.id_alumno = id_alumno;
 		this.expediente = expediente;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
@@ -18,7 +17,6 @@ public class Alumno {
 
 	
 	public Alumno(int id_alumno, String expediente, String nombre, String apellidos) {
-		super();
 		this.id_alumno = id_alumno;
 		this.expediente = expediente;
 		this.nombre = nombre;

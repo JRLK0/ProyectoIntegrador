@@ -2,7 +2,7 @@ package vista.area;
 
 import javax.swing.JPanel;
 
-import controlador.area.CAltaAreas;
+import controlador.area.ControladorAreas;
 import modelo.Area;
 
 import javax.swing.GroupLayout;
@@ -114,7 +114,7 @@ public class AltaArea extends JPanel{
 		setLayout(groupLayout);
 	}
 	
-	public void setControlador(CAltaAreas control) {
+	public void setControlador(ControladorAreas control) {
 		btnVerificarId.addActionListener(control);
 		btnAnadirArea.addActionListener(control);
 		btnBorrarCampos.addActionListener(control);

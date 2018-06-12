@@ -7,7 +7,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import controlador.area.CBajaAreas;
+import controlador.area.ControladorAreas;
 import modelo.Area;
 import vista.EstructVentana;
 import javax.swing.JLabel;
@@ -113,7 +113,7 @@ public class BajaArea extends JPanel implements EstructVentana{
 		
 	}
 
-	public void setControlador(CBajaAreas control) {
+	public void setControlador(ControladorAreas control) {
 		rdbtnId.addActionListener(control);
 		rdbtnNombre.addActionListener(control);
 		btnActBusqueda.addActionListener(control);
