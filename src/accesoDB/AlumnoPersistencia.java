@@ -26,7 +26,7 @@ public class AlumnoPersistencia {
 			
 			try {
 				con = acceso.getConexion();
-				String query = "INSERT INTO alumno VALUES( ?, ?, ?)";
+				String query = "INSERT INTO alumnos (nombre, apellidos, expediente)  VALUES( ?, ?, ?)";
 				pstmt = con.prepareStatement(query);
 				
 				pstmt.setString(1,alumno.getNombre());
