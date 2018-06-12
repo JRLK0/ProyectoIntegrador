@@ -173,6 +173,13 @@ public class ControladorPI implements ActionListener {
 			ArrayList<modelo.Area> Areas = persistenciaPI.cargarArea();
 			ModificarPIcrea.cargarAreas(Areas);
 			
+			ArrayList<Grupo> Grupis = persistenciaPI.cargarGrupo(Integer.parseInt(pj1.getGrupo()));
+
+			ModificarPIcrea.cargarGrupoo(Grupis);
+			
+			ModificarPIcrea.cargarModifiPI(pj1);
+			
+			
 			
 		}else if (source.equals(ModificarPII.getBtnRestaurar())) {
 			ModificarPII.pordefecto();
