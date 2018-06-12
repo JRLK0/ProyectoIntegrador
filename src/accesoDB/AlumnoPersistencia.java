@@ -15,7 +15,7 @@ import vista.area.AltaArea;
 public class AlumnoPersistencia {
 	
 	private AccesoDB acceso;
-	
+	//PRUEBA
 	public AlumnoPersistencia () {
 		acceso = new AccesoDB();
 	}
