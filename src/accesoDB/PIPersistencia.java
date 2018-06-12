@@ -482,7 +482,6 @@ public class PIPersistencia {
 		// TODO Auto-generated method stub
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		
 
 		// DELETE FROM T_PEDIDOS WHERE COD_PEDIDO=15;
 		try {
@@ -491,7 +490,7 @@ public class PIPersistencia {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, borrarSeleccionado.getIdProyecto());
 
-		pstmt.executeUpdate();
+			pstmt.executeUpdate();
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -509,7 +508,116 @@ public class PIPersistencia {
 			}
 		}
 
-		
+	}
+
+	public int solicitarCurso(String grupo) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rstl = null;
+		int curso = 0;
+
+		try {
+			con = acceso.getConexion();
+			String query = "SELECT * FROM grupos WHERE grupo = ?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, grupo);
+			rstl = pstmt.executeQuery();
+
+			curso = rstl.getInt(1);
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+
+			System.out.println("QQQQ1");
+			e.printStackTrace();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("qqqqq2");
+			e.printStackTrace();
+		} finally {
+
+			try {
+				if (rstl != null) {
+					rstl.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+
+				if (con != null) {
+					con.close();
+				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		return curso;
+
+	}
+
+	public ArrayList<Alumno> DameLosComponentesDelPI(int idProyecto) {
+
+		ArrayList<Alumno> listaAlumnos = new ArrayList<Alumno>();
+
+		// TODO Auto-generated method stub
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rstl = null;
+		ResultSet rstl2 = null;
+
+		try {
+			con = acceso.getConexion();
+			String query = "SELECT * FROM PARTICIPANTES WHERE ID_PROYECTO=?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, idProyecto);
+
+			rstl = pstmt.executeQuery();
+
+			int idAlu = 0;
+			String nombre = "";
+			String apellidos = "";
+			String expediente = "";
+
+			while (rstl.next()) {
+				String query2 = "SELECT * FROM alumnos WHERE ID_alumno=?";
+				pstmt = con.prepareStatement(query2);
+				pstmt.setInt(1, rstl.getInt(1));
+				
+				rstl2 = pstmt.executeQuery();
+				
+				idAlu = rstl2.getInt(1);
+				nombre = rstl2.getString(2);
+				apellidos = rstl2.getString(3);
+				expediente = rstl2.getString(4);
+				listaAlumnos.add(new Alumno(idAlu, expediente, nombre, apellidos));
+				
+				
+			}
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rstl != null)
+					pstmt.close();
+
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return listaAlumnos;
+
 	}
 
 }

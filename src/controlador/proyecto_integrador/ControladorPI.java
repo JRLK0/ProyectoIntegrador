@@ -17,6 +17,7 @@ import vista.proyecto_integrador.BajaPI;
 import vista.proyecto_integrador.ConsultaPI;
 import vista.proyecto_integrador.CrearPI;
 import vista.proyecto_integrador.ModificarPI;
+import vista.proyecto_integrador.ModifyyyPI;
 import vista.proyecto_integrador.agregarAlumnos;
 
 /**
@@ -32,17 +33,19 @@ public class ControladorPI implements ActionListener {
 	private agregarAlumnos agregarAlumnosI;
 	private PIPersistencia persistenciaPI;
 	private VentanaPrincipal ventanaPrincipal;
+	private ModifyyyPI modifyyyPI;
 
 	public ControladorPI() {
 		super();
 	}
 
-	
-	
+	public void setModifyyyPI(ModifyyyPI modifyyyPI) {
+		this.modifyyyPI = modifyyyPI;
+	}
+
 	public void setVentanaPrincipal(VentanaPrincipal ventanaPrincipal) {
 		this.ventanaPrincipal = ventanaPrincipal;
 	}
-
 
 	public void setCrearPII(CrearPI crearPII) {
 		this.crearPII = crearPII;
@@ -163,27 +166,67 @@ public class ControladorPI implements ActionListener {
 
 			String busqueda = BajaPII.recogeBusqueda();
 			ModificarPII.agregarPI(persistenciaPI.damePI(busqueda));
-		}else if (source.equals(ModificarPII.getBtnModificarSeleccionado())) {
-			
+		} else if (source.equals(ModificarPII.getBtnModificarSeleccionado())) {
+
 			ProyectoIntegradorPOJO pj1 = ModificarPII.modificarSeleccionado();
-			CrearPI ModificarPIcrea = new CrearPI(pj1);
 			
-			ventanaPrincipal.verPanel(ModificarPIcrea);
+			ventanaPrincipal.verPanel(modifyyyPI);
 
 			ArrayList<modelo.Area> Areas = persistenciaPI.cargarArea();
-			ModificarPIcrea.cargarAreas(Areas);
+			modifyyyPI.cargarAreas(Areas);
 			
-			ArrayList<Grupo> Grupis = persistenciaPI.cargarGrupo(Integer.parseInt(pj1.getGrupo()));
+			int curso = persistenciaPI.solicitarCurso(pj1.getGrupo());
+			
+			ArrayList<Alumno> DameLosComponentesDelPI = persistenciaPI.DameLosComponentesDelPI(pj1.getIdProyecto());
+			
+			modifyyyPI.cargarModifiPI(pj1, curso, DameLosComponentesDelPI);
 
-			ModificarPIcrea.cargarGrupoo(Grupis);
+
+
 			
-			ModificarPIcrea.cargarModifiPI(pj1);
-			
-			
-			
-		}else if (source.equals(ModificarPII.getBtnRestaurar())) {
+
+		} else if (source.equals(ModificarPII.getBtnRestaurar())) {
 			ModificarPII.pordefecto();
 		}
+		/////////////////////////////////////////////////
+		
+		
+		
+		if (source.equals(modifyyyPI.getBtnAgregar())) {
+			agregarAlumnosI.hacerVisible();
+		} else if (source.equals(agregarAlumnosI.getBtnAgregar())) {
+
+			modifyyyPI.agregarAlumno(agregarAlumnosI.getSelectedItem());
+
+		} else if (source.equals(modifyyyPI.getBtnQuitar())) {
+			modifyyyPI.borraAlum();
+		} else if (source.equals(modifyyyPI.getRdbtn1())) {
+
+			ArrayList<Grupo> Grupis = persistenciaPI.cargarGrupo(1);
+
+			modifyyyPI.cargarGrupoo(Grupis);
+
+		} else if (source.equals(modifyyyPI.getRdbtn2())) {
+			ArrayList<Grupo> Grupis = persistenciaPI.cargarGrupo(2);
+
+			modifyyyPI.cargarGrupoo(Grupis);
+		} else if (source.equals(modifyyyPI.getBtnGuardar())) {
+			modifyyyPI.msgError("No me ha dado tiempo, lo siento.");
+			modifyyyPI.msgError("Esto debería de moficiar el PI recogiendo los datos y modificando la tabla PI usando el ID");
+			modifyyyPI.msgError("Tambien modificaria los componentes: para simplificar borraria los componentes y añadiria los que apareciesen aqui...");
+		} 
+		
+		
+		if(source.equals(ConsultaPII.getBtnDetalle())) {
+			String busqueda = ConsultaPII.recogeBusqueda();
+
+			ConsultaPII.agregarPI(persistenciaPI.damePI(busqueda));
+		}else if (source.equals(ConsultaPII.getBtnExplicacion())) {
+			ConsultaPII.msgError("Tampoco me ha dado tiempo a acabarlo");
+			ConsultaPII.msgError("Hubiese puesto que se pudiese filtrar por muchos más campos, individualmente o avanzado");
+			ConsultaPII.msgError("Y lo habría puesto de otra forma.");
+		}
+		
 
 	}
 

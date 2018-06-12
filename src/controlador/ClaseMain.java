@@ -15,6 +15,7 @@ import vista.proyecto_integrador.BajaPI;
 import vista.proyecto_integrador.ConsultaPI;
 import vista.proyecto_integrador.CrearPI;
 import vista.proyecto_integrador.ModificarPI;
+import vista.proyecto_integrador.ModifyyyPI;
 import vista.proyecto_integrador.agregarAlumnos;
 
 public class ClaseMain {
@@ -31,6 +32,7 @@ public class ClaseMain {
 				BajaPI bajaPI = new BajaPI();
 				ConsultaPI consultaPI = new ConsultaPI();
 				ModificarPI modificarPI = new ModificarPI();
+				ModifyyyPI modifyyyPI = new ModifyyyPI();
 				PIPersistencia persistenciaPI = new PIPersistencia();
 				agregarAlumnos agregarAlumnos = new agregarAlumnos(persistenciaPI.dameAlumnos(), vp, true);
 				
@@ -47,6 +49,9 @@ public class ClaseMain {
 				controladorPI.setCrearPII(crearPI);
 				controladorPI.setModificarPII(modificarPI);
 				controladorPI.setPersistenciaPI(persistenciaPI);
+				controladorPI.setModifyyyPI(modifyyyPI);
+				controladorPI.setVentanaPrincipal(vp);
+				
 				
 				ControladorAreas controladorAR = new ControladorAreas();
 				controladorAR.setAltaAR(altaAR);
@@ -74,6 +79,7 @@ public class ClaseMain {
 				consultaPI.setControlador(controladorPI);
 				modificarPI.setControlador(controladorPI);
 				agregarAlumnos.setControlador(controladorPI);
+				modifyyyPI.setControlador(controladorPI);
 				
 				altaAR.setControlador(controladorAR);
 				bajaAR.setControlador(controladorAR);
