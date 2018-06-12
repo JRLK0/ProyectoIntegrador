@@ -96,5 +96,5 @@ public class ModificarPI extends JPanel implements IVpi {
 		// TODO Auto-generated method stub
 		return txtBuscar.getText();
 	}
-
+//a
 }

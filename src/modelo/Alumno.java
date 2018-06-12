@@ -15,6 +15,18 @@ public class Alumno {
 		this.apellidos = apellidos;
 	}
 	
+
+	
+	public Alumno(int id_alumno, String expediente, String nombre, String apellidos) {
+		super();
+		this.id_alumno = id_alumno;
+		this.expediente = expediente;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+	}
+
+
+
 	//Setters y Getters
 	public int getId_alumno() {
 		return id_alumno;
